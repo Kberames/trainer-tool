@@ -1,0 +1,200 @@
+Project Description
+    This application will help clients find personal trainers in their area.  Once a trainer and client are connected, personal trainers will be able to create workout plans and assign them to their clients.  The app will use Google Maps API to locate trainers on a map near a client's location.
+
+
+
+User Types
+    SuperUser:
+    CRUD for all system data including user data and workout data.
+
+    Trainer:
+    CRUD for all workout data.
+
+    Client:
+    CRUD for personal logon and personal workout data.
+
+
+
+Feature List as User Stories
+
+    As a Client I should be able to:
+        Logon Tasks
+        -	Register (create new user)
+        -	Edit my user data
+        -	Unregister (delete my user data)
+
+        Trainer Tasks
+        -	Search for a trainer
+        -	View available trainers on a Google map
+        -	Select a trainer
+        -	Contact a trainer
+        -	Request a session with a trainer
+
+        Workout Tasks
+        -	View workout schedule (calendar)
+        -	View workout
+        -	Mark workout as completed
+        -	Add comment or question about a workout
+        -	View comments, questions and trainer's responses.
+
+
+    As an Trainer I should be able to:
+        Logon Tasks
+        -	Register (create new user)
+        -	Edit my user data
+        -	Unregister (delete my user data)
+
+        Client Tasks
+        -	Respond to a client
+        -	View other trainers on a Google map
+        -	Contact a client
+
+        Workout Tasks
+        -	Create workout schedule (calendar) for client
+        -	View workout schedule (calendar) for client
+        -	Edit workout schedule (calendar) for client
+        -	Delete workout schedule (calendar) for client
+        -	Create workout
+        -	View workout
+        -	Update workout
+        -	Delete workout
+        -	View client's comments or questions about a workout
+        -	Respond to client's comments or questions about a workout
+
+
+    As an SuperUser I should be able to:
+        -	Perform all Trainer and Client tasks
+        -	Create, View, Update & Delete User objects
+
+
+
+Object List
+
+    User Object:
+    -   User id
+    -	Type (SuperUser, Trainer, Client)
+    -	UserName
+    -	Password
+    -	FirstName
+    -	LastName
+    -	Email address
+    -	Phone
+    -	Address id
+
+    Address Object:
+    -   Address id
+    -	Street
+    -	City
+    -	State
+    -	Zip
+
+    Schedule Object:
+    -   Schedule id
+    -	Trainer id
+    -	Client id
+    -	Date
+    -	Workout id
+    -   Note id
+
+    Note Object:
+    -   Note id
+    -   Relationship type (schedule or workout)
+    -   Id (schedule id or workout id)
+    -	Type (comment, question or reply)
+    -	Content
+    -	Date/time
+
+    Workout
+    -	Workout id
+    -   Trainer id
+    -   description
+    -   date created
+    -   date modified
+
+
+
+Project URL Routes
+
+    User Routes:
+
+    -	GET /user
+        View a list of user
+
+    -	GET /user/:id
+        View a user by id
+
+    -	POST /user
+        Create a user
+
+    -	PUT /user/:id
+        Edit a user by id
+
+    -	DELETE /user/:id
+        Delete a user by id
+
+
+    Address Routes:
+
+    -	GET /address/:id
+        View a address by id
+
+    -	POST /address
+        Create a address
+
+    -	PUT /address/:id
+        Edit a address by id
+
+    -	DELETE /address/:id
+        Delete a address by id
+
+
+    Schedule Routes:
+
+    -	GET /schedule/:id
+        View a schedule by id
+
+    -	POST /schedule
+        Create a schedule
+
+    -	PUT /schedule/:id
+        Edit a schedule by id
+
+    -	DELETE /schedule/:id
+        Delete a schedule by id
+
+
+
+    Note Routes:
+
+    -	GET /note
+        View a list of notes
+
+    -	GET /note/:id
+        View a note by id
+
+    -	POST /note
+        Create a note
+
+    -	PUT /note/:id
+        Edit a note by id
+
+    -	DELETE /note/:id
+        Delete a note by id
+
+
+    Workout Routes:
+
+    -	GET /workout
+        View a list of workouts
+
+    -	GET /workout/:id
+        View a workout by id
+
+    -	POST /workout
+        Create a workout
+
+    -	PUT /workout/:id
+        Edit a workout by id
+
+    -	DELETE /workout/:id
+        Delete a workout by id
