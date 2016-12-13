@@ -1,0 +1,7 @@
+{
+    "dbConfig": {
+        "url": "mongodb://localhost",
+        "port": "27017",
+        "database": "trainer-tool"
+    }
+}

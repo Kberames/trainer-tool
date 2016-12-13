@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Trainer Tool</title>
+
+        <link rel="stylesheet" href="/css/style.less" type="text/less">
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" type="text/css">
+
+        <!-- set options before less.js script -->
+        <script>
+         less = {
+           env: "development",
+           async: false,
+           fileAsync: false,
+           poll: 1000,
+           functions: {},
+           dumpLineNumbers: "comments",
+           relativeUrls: false,
+           rootpath: ":/a.com/"
+         };
+        </script>
+        <script src="/lib/less/dist/less.js"></script>
+
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </head>
+    <body>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        {{{ body }}}
+    </body>
+</html>

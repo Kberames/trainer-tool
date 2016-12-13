@@ -1,0 +1,28 @@
+{
+  "name": "trainer-tool",
+  "version": "1.0.0",
+  "description": "A tool to help manage communication between personal trainers and clients.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "authors": [
+    "KimberlyAmes",
+    "Olivia Lemmelin",
+    "Adrian Amaya"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-ui-router": "^0.3.2",
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.2",
+    "fs-extra": "^1.0.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.1",
+    "nodemon": "^1.11.0"
+  }
+}
