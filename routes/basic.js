@@ -14,5 +14,16 @@ router.get('/contact', function(request, response) {
 router.get('/about', function(request, response) {
     response.render ('about');
 });
-module.exports = router
- 
+
+//--------------------------------
+//Route to load the Angular UI Frontend.
+router.get ('/trainer', function (request, response) {
+    // response.send ('This is the workout page with angular');
+
+    //Load the angular workout partial.
+    response.render ('home', {
+        layout: 'index-angular'
+    });
+});
+
+module.exports = router;
