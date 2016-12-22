@@ -1,7 +1,10 @@
 node_modules/
-public/lib/
+public/lib
 
 .DS_Store
 .orig
 
-*.js
+# comenting out this line of code because git need to track server side js
+# *.js
+
+typings/
