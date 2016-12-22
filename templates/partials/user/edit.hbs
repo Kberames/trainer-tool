@@ -1,0 +1,8 @@
+<h2>{{data.title}}</h2>
+
+<form method="POST" action="/user/{{ data.user.id }}" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="_method" value="{{data.method}}">
+    <input type="text" name="username" placeholder="Username" value="{{data.user.username}}">
+    <input type="password" name="password" placeholder="Password" value="{{data.user.password}}">
+    <button type="submit">{{data.title}}</button>
+</form>
