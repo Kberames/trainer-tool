@@ -10,6 +10,12 @@ var App;
                 templateUrl: '/angular/templates/partials/workout.html',
                 controller: App.WorkoutController,
                 controllerAs: 'workoutController'
+            })
+                .state('trainer-map', {
+                url: '/trainer-map',
+                templateUrl: '/angular/templates/partials/trainer-map.html',
+                controller: App.TrainerMapController,
+                controllerAs: 'trainerMapController'
             });
         }
     ]);
