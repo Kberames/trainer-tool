@@ -40,7 +40,7 @@ router.post ('/login', function (request, response){
             }
             else if (!result) {
                request.flash ('error', ' Your user name and pasword did not match');
-               response.redirect ('/user/login');
+               response.redirect ('/login');
             }
             else{
                 console.log('this is the fund user', result);
@@ -56,7 +56,7 @@ router.post ('/login', function (request, response){
 router.get ('/logout', function (request, response) {
     request.session.destroy ();
     console.log('session destroyed', request.session);
-    response.redirect ('/user/login')
+    response.redirect ('/login')
 })
 
 

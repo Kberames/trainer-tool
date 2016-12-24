@@ -51,7 +51,7 @@ router.get("/:id", function (request,response) {
     User.findById (userId, function(error,result) {
         if (error){
             console.log('***error finding the user', + userId);
-            response.send('something went wrong')
+            response.send('something went wrong getting the id')
         }
         else {
             response.render ('user/view', {
