@@ -41,6 +41,33 @@ server.use (methodOverride (function (request, response) {
     }
 }));
 
+// NOTE: bringing in session
+var session = require ('express-session');
+
+ server.use (session ({
+     secret: "this is secret phrase",
+     resave: false,
+     saveUninitialized: true
+ }));
+// NOTE: bringing in flash
+var flash = require ('connect-flash')
+server.use (flash ());
+
+server.use(function (request, response, next) {
+    response.locals.user = request.session.user;
+
+    response.locals.message = request.flash ();
+
+    var contentType = request.headers ['content-type'];
+    console.log('content type is: ', contentType);
+
+    if (contentType == 'application/json') {
+        request.sendJson = true;
+    }
+    next ();
+})
+
+
 // NOTE: The port.
 var port = 3000;
 
@@ -76,6 +103,12 @@ mongoose.connect ('mongodb://localhost:27017/trainer_database')
 // set the library to user
 
 mongoose.Promise = require('bluebird');
+
+// var GoogleMapsLoader = require('google-maps');
+//
+// GoogleMapsLoader.load(function(google) {
+//     new google.maps.Map(el, options);
+// });
 
 
 // NOTE: -----------------------------------------------------------------------

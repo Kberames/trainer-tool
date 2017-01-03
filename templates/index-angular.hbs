@@ -6,10 +6,27 @@
 
         <link rel="stylesheet" href="/css/style.less" type="text/less">
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" type="text/css">
-
         <script src="/lib/less/dist/less.js"></script>
         <script src="/lib/jquery/dist/jquery.js"></script>
         <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- set options before less.js script -->
+        <script>
+         less = {
+           env: "development",
+           async: false,
+           fileAsync: false,
+           poll: 1000,
+           functions: {},
+           dumpLineNumbers: "comments",
+           relativeUrls: false,
+           rootpath: ":/a.com/"
+         };
+        </script>
+        <script src="/lib/less/dist/less.js"></script>
+
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+
     </head>
     <body ng-app='App'>
 
@@ -19,6 +36,7 @@
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
             <a href="/user/register">Register</a>
+            <a href="/trainer/#/trainer-map">Trainer Map</a>
             <a href="/trainer/#/workout">Workouts</a>
         </nav>
 
@@ -31,6 +49,7 @@
         <script src="/angular/js/App.js"></script>
         <script src="/angular/js/WorkoutService.js"></script>
         <script src="/angular/js/WorkoutController.js"></script>
+        <script src="/angular/js/TrainerMapController.js"></script>
 
     </body>
 </html>
