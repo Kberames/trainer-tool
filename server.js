@@ -72,6 +72,12 @@ mongoose.connect ('mongodb://localhost:27017/trainer_database')
 
 mongoose.Promise = require('bluebird');
 
+// var GoogleMapsLoader = require('google-maps');
+//
+// GoogleMapsLoader.load(function(google) {
+//     new google.maps.Map(el, options);
+// });
+
 
 // NOTE: -----------------------------------------------------------------------
 // // NOTE: set up the first routes connetion
