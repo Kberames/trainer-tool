@@ -1,36 +1,34 @@
-//Pull in express to make use of the framework.
 var express = require ('express');
 
-//Grab the url router from express.
 var router = express.Router ();
 
-//Load in the workout schema object
-var Workout = require ('../model/workout.js')
+var Schedule = require ('../model/schedule.js');
 
+var moment = require ('moment');
 
 //Create
 router.post ('/', function (request, response) {
-    var newWorkout = Workout (request.body);
+    var newSchedule = Schedule (request.body);
 
-    newWorkout.save (function (error) {
+    moment().format("MMM Do YY");
+    newSchedule.save (function (error) {
         if (error) {
-            var errorMessage = 'Unable to save the workout';
+            var errorMessage = 'Unable to save the schedule.';
             console.log ('***ERROR: ' + errorMessage);
         }
         else {
             response.json ({
-                message: 'New workout was saved.'
+                message: 'New schedule was saved.'
             });
-
         }
     });
 });
 
 //Read
 router.get ('/', function (request, response) {
-    Workout.find (function (error, result) {
+    Schedule.find (function (error, result) {
         if (error) {
-            var errorMessage = 'Unable to sort workouts.';
+            var errorMessage = 'Unable to sort schedule.';
             console.log ('**ERROR: ' + errorMessage);
         }
         else {
@@ -40,35 +38,34 @@ router.get ('/', function (request, response) {
 });
 
 router.get ('/:id', function (request, response) {
-    var workoutId = request.params.id;
+    var scheduleId = request.params.id;
 
-    Workout.findById (workoutId, function (error, result) {
+    Schedule.findById (scheduleId, function (error, result) {
         if (error) {
-            var errorMessage = 'Unable to find workout by id: ' + workoutId;
+            var errorMessage = 'Unable to find schedule by id: ' + scheduleId;
             console.error ('***ERROR: ' + errorMessage);
             response.send (errorMessage);
         }
         else {
             response.json (result);
-
         }
     });
 });
 
 //Update
 router.get ('/:id/edit', function (request, resposne) {
-    var workoutId = request.params.id;
+    var scheduleId = request.params.id;
 
-    Workout.findById (workoutId, function (error, result) {
+    Schedule.findById (scheduleId, function (error, result) {
         if (error) {
-            var errorMessage = 'Unable to find workout by id: ' + workoutId;
+            var errorMessage = 'Unable to find schedule by id: ' + scheduleId;
             console.log ('***ERROR: ' + errorMessage);
             response.send (errorMessage);
         }
         else {
-            response.render ('workout/edit', {
+            response.render ('schedule/edit', {
                 data: {
-                    workout: result,
+                    schedule: result,
                     title: 'Edit',
                     method: 'PUT'
                 }
@@ -78,11 +75,11 @@ router.get ('/:id/edit', function (request, resposne) {
 });
 
 router.put ('/:id', function (request, response) {
-    var workoutId = request.params.id;
+    var scheduleId = request.params.id;
 
-    Workout.findByIdAndUpdate (workoutId, request.body, function (error, result) {
+    Schedule.findByIdAndUpdate (scheduleId, request.body, function (error, result) {
         if (error) {
-            var errorMessage = 'Unable to update workout: ' + workoutId;
+            var errorMessage = 'Unable to update schedule: ' + scheduleId;
             console.log ('***ERROR: ' + errorMessage);
             response.send (errorMessage);
         }
@@ -95,44 +92,44 @@ router.put ('/:id', function (request, response) {
 //Delete
 router.get ('/:id/delete', function (request, response) {
     // response.send ('Lesson was deleted');
-    var workoutId = request.params.id;
+    var scheduleId = request.params.id;
 
-    Workout.findByIdAndRemove (workoutId, function (error, result) {
+    Schedule.findByIdAndRemove (scheduleId, function (error, result) {
         if (error) {
-            var errorMessage = 'Unable to delete workout' + workoutId;
+            var errorMessage = 'Unable to delete schedule' + scheduleId;
             console.error ('***ERROR: ' + errorMessage);
             response.send (errorMessage);
         }
         else {
             if (request.sendJson) {
                 response.json ({
-                    message: 'Workout was deleted.'
+                    message: 'Schedule was deleted.'
                 });
             }
             else {
-                response.redirect ('/workout/')
+                response.redirect ('/schedule/')
             }
         }
     })
 });
 
 router.delete ('/:id', function (request, response) {
-    var workoutId = request.params.id;
+    var scheduleId = request.params.id;
 
-    Workout.findByIdAndRemove (workoutId, function (error, result) {
+    Schedule.findByIdAndRemove (scheduleId, function (error, result) {
         if (error) {
-            var errorMessage = 'Unable to delete workout.' + workoutId;
+            var errorMessage = 'Unable to delete schedule.' + scheduleId;
                 console.error ('***ERROR: ' + errorMessage);
                 response.send (errorMessage);
         }
         else {
             if (request.sendJson) {
                 response.json ({
-                    message: 'Workout was deleted.'
+                    message: 'Schedule was deleted.'
                 });
             }
             else {
-                response.redirect ('/workout/');
+                response.redirect ('/schedule/');
             }
         }
     });

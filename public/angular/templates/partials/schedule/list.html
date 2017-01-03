@@ -1,0 +1,12 @@
+<h2>Your Schedule</h2>
+
+<button ng-click="scheduleController.goToPage ('schedule-create')">Create</button>
+<button ng-click="scheduleController.read ()">View Schedules</button>
+
+<ul>
+    <li ng-repeat="schedule in scheduleController.list">
+        <div>
+            <strong>Date: </strong><a href="#" ng-click="scheduleController.goToPage('schedule-view', {id:schedule._id})">{{ schedule.date | date: 'yyyy-MM-dd' }}</a>
+        </div>
+    </li>
+</ul>

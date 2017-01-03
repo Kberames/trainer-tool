@@ -128,3 +128,6 @@ server.use ('/', basicRoutes);
 
  var workoutRoutes = require ('./routes/workout.js');
  server.use ('/workout', workoutRoutes);
+
+ var scheduleRoutes = require ('./routes/schedule.js');
+ server.use ('/schedule', scheduleRoutes);

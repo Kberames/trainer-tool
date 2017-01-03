@@ -1,0 +1,8 @@
+<h2>Your Schedule</h2>
+
+<button ng-click="scheduleController.goToPage('schedule-edit', { id: scheduleController.schedule._id })">Edit</button>
+<button ng-click="scheduleController.delete(scheduleController.schedule._id)">Delete</button>
+
+<div>
+    <strong>Date: </strong>{{ scheduleController.schedule.date | date: 'yyyy-MM-dd' }}
+</div>
