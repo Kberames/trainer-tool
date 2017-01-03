@@ -1,0 +1,11 @@
+<h2>Your Workout</h2>
+
+<button ng-click="workoutController.goToPage ('workout-edit', { id: workoutController.workout._id})">Edit</button>
+<button ng-click="workoutController.delete(workoutController.workout._id)">Delete</button>
+
+<div>
+    <strong>Name: </strong>{{ workoutController.workout.name }}
+</div>
+<div>
+    <strong>Workout: </strong> {{ workoutController.workout.workout }}
+</div>

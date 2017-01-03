@@ -42,6 +42,32 @@ namespace App {
 
             return promise;
         }
+
+        public update (id, workout) {
+            let promise = this.httpService ({
+                url: '/workout/' + id,
+                method: 'PUT',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: workout
+            });
+
+            return promise;
+        }
+
+        public delete (id, workout) {
+            let promise = this.httpService ({
+                url: '/workout/' + id + '/delete',
+                method: 'GET',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: workout
+            });
+
+            return promise;
+        }
     }
 
     app.service ('WorkoutService', WorkoutService);

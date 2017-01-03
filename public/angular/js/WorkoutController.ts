@@ -25,18 +25,18 @@ namespace App {
                 this.read (this.stateParamsService.id);
             }
 
-            // console.log ('Current route: ', this.stateService.current);
-            // if (this.stateService.current.name == 'workout-edit') {
-            //     this.mode = 'edit';
-            // }
-            // else if (this.stateService.current.name == 'workout-create') {
-            //     this.mode = 'create';
-            // }
+            console.log ('Current route: ', this.stateService.current);
+            if (this.stateService.current.name == 'workout-edit') {
+                this.mode = 'Edit';
+            }
+            else if (this.stateService.current.name == 'workout-create') {
+                this.mode = 'Create';
+            }
         }
         public create (id) {
             if (id) {
                 console.log ('Creating a new workout');
-                // this.update (id);
+                this.update (id);
             }
             else {
                 console.log ('Creating a new workout.');
@@ -67,9 +67,33 @@ namespace App {
                 })
         }
 
+        public update (id) {
+            this.workoutService.update (id, this.workout)
+                .success ((response) => {
+                    this.goToPage ('workout-view', { id: id});
+                })
+                .error ((response) => {
+                    console.error ('Unable to update workout: ', response);
+                })
+        }
+
         public goToPage (route, data) {
             console.log ('Here is the data...', route, data);
             this.stateService.go (route, data);
+        }
+
+        public delete (id) {
+            console.log ('Deleted! ', id);
+
+            this.workoutService.delete (id)
+                .success ((response) => {
+                    console.log ('Workout deleted successfully', response);
+
+                    this.stateService.go ('workout');
+                })
+                .error ((response) => {
+                    console.error ('ERROR deleting lesson', response);
+                })
         }
     }
 

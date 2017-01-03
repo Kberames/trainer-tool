@@ -3,15 +3,14 @@
 <button ng-click="workoutController.goToPage ('workout-create')">Create</button>
 <button ng-click="workoutController.read ()">View Workouts</button>
 
-<!-- 12/22 START ON CREATING WORKOUT PAGE -->
 
 <ul>
     <li ng-repeat="workout in workoutController.list">
         <div>
-            <strong>Name: </strong> {{ workout.name }}
+            <strong>Name: </strong><a href="#" ng-click="workoutController.goToPage('workout-view', {id:workout._id})"> {{ workout.name }}</a>
         </div>
-        <div>
+        <!-- <div>
             <strong>Workout: </strong> {{ workout.workout }}
-        </div>
+        </div> -->
     </li>
 </ul>

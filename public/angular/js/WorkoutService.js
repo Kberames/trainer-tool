@@ -31,6 +31,28 @@ var App;
             });
             return promise;
         };
+        WorkoutService.prototype.update = function (id, workout) {
+            var promise = this.httpService({
+                url: '/workout/' + id,
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: workout
+            });
+            return promise;
+        };
+        WorkoutService.prototype.delete = function (id, workout) {
+            var promise = this.httpService({
+                url: '/workout/' + id + '/delete',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: workout
+            });
+            return promise;
+        };
         return WorkoutService;
     }());
     WorkoutService.$inject = ['$http'];
