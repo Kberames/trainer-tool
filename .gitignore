@@ -6,5 +6,7 @@ public/lib
 
 # comenting out this line of code because git need to track server side js
 # *.js
+# replaced this with the next line to ignore js files created from ts
+public/angular/js/*.js
 
 typings/
