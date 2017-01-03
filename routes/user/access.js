@@ -16,7 +16,7 @@ router.post ('/register', function(request, response){
         }
         else {
             console.log('user saved', request.body.username);
-            response.redirect('/user/login')
+            response.redirect('/login')
         }
     });
 });

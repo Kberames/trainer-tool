@@ -8,7 +8,6 @@ router.get ('/create', function (request, response) {
         data: {
             title:'Create new User',
             method: 'POST',
-            user: request.session.user
         }
     })
 })

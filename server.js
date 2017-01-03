@@ -72,7 +72,15 @@ var flash = require ('connect-flash')
 server.use (flash ());
 
 server.use(function (request, response, next) {
-    response.locals.user = request.session.user;
+    var user = request.session.user;
+    if (user) {
+        response.locals.user = user;
+
+        // Check if we have an admin user.
+        if (user && user.type == 'admin') {
+            user.admin = true;
+        }
+    }
 
     response.locals.message = request.flash ();
 

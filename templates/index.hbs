@@ -32,9 +32,13 @@
             <a href="/contact">Contact</a>
             <a href="/register">Register</a>
             <a href="/trainer/#/workout">Workouts</a>
-            <a href="/login">Log-In</a>
+            {{#if user}}
             <a href="/logout">Log-Out</a>
             <a href="/user">Users</a>
+            {{else}}
+            <a href="/login">Log-In</a>
+            {{/if}}
+
         </nav>
 
         {{{ body }}}

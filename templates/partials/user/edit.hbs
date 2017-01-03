@@ -2,7 +2,63 @@
 
 <form method="POST" action="/user/{{ data.user.id }}" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="_method" value="{{data.method}}">
-    <input type="text" name="username" placeholder="Username" value="{{data.user.username}}">
-    <input type="password" name="password" placeholder="Password" value="{{data.user.password}}">
+        <strong>Account LogIn</strong>
+        <div>
+            <input type="email" class="form-control" name="email" placeholder="E-mail" value="{{data.user.email}}" required=>
+        </div>
+        <div>
+            <input type="password" class="form-control" name="password" placeholder="Password" min="8" value="{{data.user.password}}" required="min 8">
+        </div>
+        <strong>Personal Information</strong>
+        <div>
+            <input type="text" class="form-control" name="firstname" placeholder="First Name" value="{{data.user.firstname}}" required>
+        </div>
+        <div>
+            <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="{{data.user.lastname}}">
+        </div>
+        <strong>Gender</strong>
+        <div>
+            <label>Male</label>
+            <input type="radio" name="gender" value="Male">
+        </div>
+        <div>
+            <label>Female</label>
+            <input type="radio" name="gender" value="Female">
+        </div>
+        <strong>Mailing Address</strong>
+        <div>
+            <input type="text" class="form-control" name="address" placeholder="Address" value="{{data.user.address}}">
+        </div>
+        <div>
+            <input type="text" class="form-control" name="city" placeholder="City/Town" value="{{data.user.city}}">
+        </div>
+        <div>
+            <input type="text" class="form-control" name="state" placeholder="State" value="{{data.user.state}}">
+        </div>
+        <div>
+        <input type="text" class="form-control" name="zipcode" max="5" placeholder="Zip/Postal Code" value="{{data.user.zipcode}}">
+        </div>
+        <div>
+            <input type="tel" class="form-control" name="phone" min="10" placeholder="Phone Number" value="{{data.user.phone}}">
+        </div>
+        <strong>Type</strong>
+        {{#if user.admin}}
+        <div>
+            <label>Admin</label>
+            <input type="radio" name="type" value="admin">
+        </div>
+        <div>
+            <label>Trainer</label>
+            <input type="radio" name="type" value="trainer">
+        </div>
+        <div>
+            <label>Client</label>
+            <input type="radio" name="type" value="client">
+        </div>
+        {{/if}}
+        <div>
+            <input type="reset">
+        </div>
     <button type="submit">{{data.title}}</button>
+
 </form>
