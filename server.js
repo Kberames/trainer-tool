@@ -5,9 +5,41 @@ var express = require ('express');
 // NOTE: define server as express
 var server = express ()
 server.use (express.static ('public'));
+
 // NOTE: body-parser
 var bodyParser = require ('body-parser');
 server.use (bodyParser.urlencoded ({ extended: true }));
+server.use (bodyParser.json ());
+
+// Load the method override so express can know what
+// HTTP method other than GET & POST is being used.
+var methodOverride = require ('method-override');
+
+// Let express know that we are overriding the HTTP method
+// and using the method sent in the form data.
+server.use (methodOverride (function (request, response) {
+    // Grab the request information and check to see
+    // if the HTTP method was sent down as an _method value.
+
+    // Check if the request has body content.
+    if (request.body) {
+        if (typeof request.body === 'object') {
+
+            //Check if the body has an '_method' property on it.
+            if (request.body._method) {
+
+                // Grab the HTTP method from the body.
+                var method = request.body._method;
+
+                //Remove the _method property from the body.
+                delete request.body._method;
+
+                // Return the actual HTTP method.
+                return method;
+            }
+        }
+    }
+}));
 
 
 var methodOverride = require ('method-override');
@@ -90,6 +122,12 @@ mongoose.connect ('mongodb://localhost:27017/trainer_database')
 
 mongoose.Promise = require('bluebird');
 
+// var GoogleMapsLoader = require('google-maps');
+//
+// GoogleMapsLoader.load(function(google) {
+//     new google.maps.Map(el, options);
+// });
+
 
 // NOTE: -----------------------------------------------------------------------
 // // NOTE: set up the first routes connetion
@@ -108,3 +146,6 @@ server.use ('/', basicRoutes);
  server.use('/', accessRoutes);
 
  // NOTE: ----------------------------------------------------------------------
+
+ var workoutRoutes = require ('./routes/workout.js');
+ server.use ('/workout', workoutRoutes);

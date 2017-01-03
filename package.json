@@ -21,6 +21,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.14.2",
     "fs-extra": "^1.0.0",
+    "google-maps": "^3.2.1",
     "method-override": "^2.3.7",
     "mongoose": "^4.7.1",
     "nodemon": "^1.11.0"

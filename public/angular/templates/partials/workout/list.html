@@ -1,0 +1,16 @@
+<h2>Workouts</h2>
+
+<button ng-click="workoutController.goToPage ('workout-create')">Create</button>
+<button ng-click="workoutController.read ()">View Workouts</button>
+
+
+<ul>
+    <li ng-repeat="workout in workoutController.list">
+        <div>
+            <strong>Name: </strong><a href="#" ng-click="workoutController.goToPage('workout-view', {id:workout._id})"> {{ workout.name }}</a>
+        </div>
+        <!-- <div>
+            <strong>Workout: </strong> {{ workout.workout }}
+        </div> -->
+    </li>
+</ul>

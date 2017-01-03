@@ -1,0 +1,14 @@
+<h2>{{ workoutController.mode }} Workout</h2>
+
+<form ng-submit="workoutController.create (workoutController.workout._id)">
+    <div>
+        <label>Name: </label>
+        <input ng-model="workoutController.workout.name">
+    </div>
+    <div>
+        <label>Workout: </label>
+        <textarea rows="10" cols="100" ng-model="workoutController.workout.workout"></textarea>
+    </div>
+    <!-- <button>{{ workoutControler.mode }}</button> -->
+    <button>{{ workoutController.mode }}</button>
+</form>
