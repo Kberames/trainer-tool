@@ -39,6 +39,12 @@ h2 {
     font-size: 100px;
     text-align: center;
 }
+h3 {
+    color: #9292a0;
+    font-family: 'Open Sans Condensed';
+    font-size: 100px;
+    text-align: center;
+}
 
 #map {
     width: 100%;
@@ -53,16 +59,20 @@ h2 {
 }
 
 nav {
+    // padding-left: 50px;
     background-color: #000;
     font-family: 'Open Sans Condensed';
     font-size: 30px;
-    margin-left: 125px;
-    margin-right: 125px;
+    width: 100%;
     opacity: 0.7;
     text-align: center;
+    position: relative;
     a {
         color: #9292a0;
         padding: 10px;
+        display: inline-block;
+        float: none;
+
     }
 }
 
@@ -97,4 +107,46 @@ form {
         margin-right: 40px;
         margin-left: 40px;
     }
+}
+
+
+// ------------------- Profile Picture ----------------------
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+// .container {
+//     margin-left: 5px;
+// }
+.profile-header-container{
+    // margin: 0 auto;
+    display: inline-block;
+    width: 5px;
+    float: left;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.profile-header-img  {
+    img.img-circle {
+        width: 50px;
+        height: 50px;
+        opacity: none;
+    }
+}
+
+.profile-header {
+    // margin-top: 43px;
+}
+
+.rank-label-container {
+    margin-top: -19px;
+    /* z-index: 1000; */
+    text-align: left;
+}
+
+.label.label-default.rank-label {
+    padding: 5px 10px 5px 10px;
+    border-radius: 27px;
 }
