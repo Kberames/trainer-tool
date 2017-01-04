@@ -62,7 +62,23 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
     });
 });
 
-router.post ('/register/trainer', function(request, response){
+router.post ('/register/trainer', processUploadFile.single ('imageFile'), function(request, response){
+
+    console.log('file: ', request.file);
+    console.log('body: ', request.body);
+    console.log('path: ', request.file.path);
+
+    var fs = require ('fs-extra');
+    var source = request.file.path;
+    var basePath = './public';
+    var destination = '/img/uploads/' + request.file.originalname;
+
+    fs.move (source, (basePath + destination), function (error) {
+        fs.remove (source, function (error) {
+        })
+    })
+    request.body.imageUrl = destination
+
     request.body.status = "pending";
     request.body.type = "trainer";
     var newUser = User (request.body);
