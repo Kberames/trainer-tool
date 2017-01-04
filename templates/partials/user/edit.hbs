@@ -54,6 +54,11 @@
         <div>
             <input type="text" class="form-control" name="zipcode2" placeholder="Zip/Postal Code" value="{{data.user.zipcode2}}">
         </div>
+        <strong>Certifications</strong>
+        <div>
+            <textarea name="certification" rows="4" cols="40">{{data.user.certification}}</textarea>
+        </div>
+        {{#if user.admin}}
         <strong>Curent Status:  </strong>{{data.user.status}}
         <div>
             <label>Active</label>
@@ -63,11 +68,6 @@
             <label>Pending</label>
             <input type="radio" name="status" value="pending">
         </div>
-        <strong>Certifications</strong>
-        <div>
-            <textarea name="certification" rows="4" cols="40">{{data.user.certification}}</textarea>
-        </div>
-        {{#if user.admin}}
         <strong>Type</strong>
         <div>
             <label>Admin</label>

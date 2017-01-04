@@ -24,6 +24,7 @@
     "google-maps": "^3.2.1",
     "method-override": "^2.3.7",
     "mongoose": "^4.7.1",
+    "multer": "^1.2.1",
     "nodemon": "^1.11.0"
   }
 }

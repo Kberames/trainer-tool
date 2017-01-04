@@ -1,6 +1,6 @@
 <h2>customer registration</h2>
 
-<form method='POST' action="/register" enctype="application/x-www-form-urlencoded">
+<form method='POST' action="/register" enctype="multipart/form-data">
     <strong>Account LogIn</strong>
     <div>
         <input type="text" class="form-control" name="email" placeholder="E-mail" required=>
@@ -11,7 +11,7 @@
     <strong>Personal Information</strong>
     <div>
         <input type="text" class="form-control" name="firstname" placeholder="First Name"required="">
-    </div>
+    </div>    
     <div>
         <input type="text" class="form-control" name="lastname" placeholder="Last Name">
     </div>
@@ -39,6 +39,10 @@
     </div>
     <div>
         <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+    </div>
+    <div>
+        <label>Upload Picture</label>
+        <input type="file" name="imageFile">
     </div>
 
     <button type="submit">Register</button>

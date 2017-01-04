@@ -2,6 +2,10 @@ var express = require ('express');
 var router = express.Router ();
 
 var User = require ('../../model/user.js');
+// NOTE: adding multer to use to upload picture
+var multer = require ('multer');
+var processUploadFile = multer({ dest: './temp'});
+// NOTE: adding multer to use to upload picture
 
 // function onSignIn(googleUser) {
 //     // Useful data for your client-side scripts:
@@ -29,7 +33,21 @@ router.get ('/register/customer', function(request, response) {
     response.render ('user/register/customer')
 })
 
-router.post ('/register', function(request, response){
+router.post ('/register', processUploadFile.single ('imageFile'), function(request, response){
+    console.log('file: ', request.file);
+    console.log('body: ', request.body);
+    console.log('path: ', request.file.path);
+
+    var fs = require ('fs-extra');
+    var source = request.file.path;
+    var basePath = './public';
+    var destination = '/img/uploads/' + request.file.originalname;
+
+    fs.move (source, (basePath + destination), function (error) {
+        fs.remove (source, function (error) {
+        })
+    })
+    request.body.imageUrl = destination
     request.body.type = "customer";
     var newUser = User (request.body);
     newUser.save(function (error) {

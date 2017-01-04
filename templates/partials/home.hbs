@@ -1,2 +1,7 @@
 <h2>Trainer Tool</h2>
- 
+{{#if user}}
+        <h4>
+            WELCOME {{data.user.firstname}}
+        </h4>
+{{/if}}
+<img src="{{data.user.imageUrl}}">

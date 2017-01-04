@@ -1,10 +1,15 @@
 <h2>View User</h2>
-
+{{#if user.admin}}
 <a href="/user/{{ data.user.id }}/edit">Edit User</a>
 <a href="/user/{{ data.user.id }}/delete">Delete User</a>
-
-
+{{/if}}
+{{#if user.trainer}}
+<a href="/user/{{ data.user.id }}/edit">Edit User</a>
+{{/if}}
 <div>
+    <div>
+        <img src="{{data.user.imageUrl}}">
+    </div>
     <div>
         <strong>Name </strong>{{data.user.firstname}} {{data.user.lastname}}
     </div>

@@ -19,8 +19,8 @@ var userSchema = new Schema ({
     city2 : String,
     state2 : String,
     zipcode2 : String,
-    certification: String
-
+    certification: String,
+    imageUrl : String
 })
 
 var User = mongoose.model ('User', userSchema);

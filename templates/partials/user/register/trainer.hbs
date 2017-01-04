@@ -1,5 +1,5 @@
 <h2>Trainer Registration</h2>
-<form method='POST' action="/register/trainer" enctype="application/x-www-form-urlencoded">
+<form method='POST' action="/register/trainer" enctype="multipart/form-data">
     <strong>Account LogIn</strong>
     <div>
         <input type="text" class="form-control" name="email" placeholder="E-mail" required=>
@@ -7,7 +7,7 @@
     <div>
         <input type="password" class="form-control" name="password" placeholder="Password" required="min 8">
     </div>
-    <strong>Personal Information</strong>
+    <!-- <strong>Personal Information</strong>
     <div>
         <input type="text" class="form-control" name="firstname" placeholder="First Name"required="">
     </div>
@@ -52,18 +52,13 @@
     <div>
         <input type="text" class="form-control" name="zipcode2" placeholder="Zip/Postal Code">
     </div>
-    <strong>Status</strong>
-    <label>Active</label>
-    <div>
-        <input type="radio" name="status" value="active">
-    </div>
-    <label>Pending</label>
-    <div>
-        <input type="radio" name="status" value="pending">
-    </div>
     <strong>Certifications</strong>
     <div>
         <textarea name="certification" rows="4" cols="40"></textarea>
+    </div> -->
+    <div>
+        <label>Upload Picture</label>
+        <input type="file" name="imageFile">
     </div>
 
     <button type="submit">Register</button>
