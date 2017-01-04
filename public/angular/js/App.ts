@@ -36,15 +36,41 @@ namespace App {
                     controller: App.WorkoutController,
                     controllerAs: 'workoutController'
                 })
-
-
-            .state ('trainer-map', {
-                url: '/trainer-map',
-                // template: 'Here we are at the workouts.'
-                templateUrl: '/angular/templates/partials/trainer-map.html',
-                controller: App.TrainerMapController,
-                controllerAs: 'trainerMapController'
-            })
+                .state ('trainer-map', {
+                    url: '/trainer-map',
+                    // template: 'Here we are at the workouts.'
+                    templateUrl: '/angular/templates/partials/trainer-map.html',
+                    controller: App.TrainerMapController,
+                    controllerAs: 'trainerMapController'
+                })
+                .state ('schedule', {
+                    url: '/schedule',
+                    // template: 'Here we are at the schedule.'
+                    templateUrl: '/angular/templates/partials/schedule/list.html',
+                    controller: App.ScheduleController,
+                    controllerAs: 'scheduleController'
+                })
+                .state ('schedule-create', {
+                    url: '/schedule/create',
+                    // template: 'Here we are creating a schedule.'
+                    templateUrl: '/angular/templates/partials/schedule/edit.html',
+                    controller: App.ScheduleController,
+                    controllerAs: 'scheduleController'
+                })
+                .state ('schedule-view', {
+                    url: '/schedule/:id',
+                    // template: 'Here we are viewing a schedule.'
+                    templateUrl: '/angular/templates/partials/schedule/view.html',
+                    controller: App.ScheduleController,
+                    controllerAs: 'scheduleController'
+                })
+                .state ('schedule-edit', {
+                    url: '/schedule/:id',
+                    // template: 'Here we are editing a schedule.'
+                    templateUrl: '/angular/templates/partials/schedule/edit.html',
+                    controller: App.ScheduleController,
+                    controllerAs: 'scheduleController'
+                })
         }
     ])
 }
