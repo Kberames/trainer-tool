@@ -4,11 +4,9 @@
         <meta charset="utf-8">
         <title>Trainer Tool</title>
 
-        <link rel="stylesheet" href="/css/style.less" type="text/less">
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" type="text/css">
-        <script src="/lib/less/dist/less.js"></script>
-        <script src="/lib/jquery/dist/jquery.js"></script>
-        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="/css/style.less" type="text/less">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
         <!-- set options before less.js script -->
         <script>
          less = {
@@ -22,8 +20,8 @@
            rootpath: ":/a.com/"
          };
         </script>
-        <script src="/lib/less/dist/less.js"></script>
 
+        <script src="/lib/less/dist/less.js"></script>
         <script src="/lib/jquery/dist/jquery.js"></script>
         <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 
@@ -31,14 +29,22 @@
     <body ng-app='App'>
 
 
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/user/register">Register</a>
-            <a href="/trainer/#/trainer-map">Trainer Map</a>
-            <a href="/trainer/#/workout">Workouts</a>
-            <a href="/trainer/#/schedule">Schedule</a>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <a href="/">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/contact">CONTACT</a>
+                <a href="/register">REGISTER</a>
+                <a href="/trainer/#/trainer-map">TRAINER-MAP</a>
+                <a href="/trainer/#/workout">WORKOUTS</a>
+                <a href="/trainer/#/schedule">SCHEDULE</a>
+                {{#if user}}
+                <a href="/logout">LOG-OUT</a>
+                <a href="/user">USERS</a>
+                {{else}}
+                <a href="/login">LOG-IN</a>
+                {{/if}}
+            </div>
         </nav>
 
 
