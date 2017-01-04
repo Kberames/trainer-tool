@@ -30,11 +30,16 @@
             <a href="/">Home</a>
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
-            <a href="/user/register">Register</a>
+            <a href="/register">Register</a>
             <a href="/trainer/#/workout">Workouts</a>
+            {{#if user}}
+            <a href="/logout">Log-Out</a>
+            <a href="/user">Users</a>
+            {{else}}
+            <a href="/login">Log-In</a>
+            {{/if}}
+
             <a href="/trainer/#/schedule">Schedule</a>
-            <a href="/user/login">Log-In</a>
-            <a href="/user/logout">Log-Out</a>
         </nav>
 
         {{{ body }}}
