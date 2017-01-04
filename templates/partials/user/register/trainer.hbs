@@ -1,0 +1,70 @@
+<h2>Trainer Registration</h2>
+<form method='POST' action="/register/trainer" enctype="application/x-www-form-urlencoded">
+    <strong>Account LogIn</strong>
+    <div>
+        <input type="text" class="form-control" name="email" placeholder="E-mail" required=>
+    </div>
+    <div>
+        <input type="password" class="form-control" name="password" placeholder="Password" required="min 8">
+    </div>
+    <strong>Personal Information</strong>
+    <div>
+        <input type="text" class="form-control" name="firstname" placeholder="First Name"required="">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+    </div>
+    <strong>Gender</strong>
+    <div>
+        <label>Male</label>
+        <input type="radio" name="gender" value="male">
+    </div>
+    <div>
+        <label>Female</label>
+        <input type="radio" name="gender" value="female">
+    </div>
+    <strong>Mailing Address</strong>
+    <div>
+        <input type="text" class="form-control" name="address" placeholder="Address">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="city" placeholder="City/Town">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="state" placeholder="State">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="zipcode" placeholder="Zip/Postal Code">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+    </div>
+    <strong>Gym Address</strong>
+    <div>
+        <input type="text" class="form-control" name="address2" placeholder="Address">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="city2" placeholder="City/Town">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="state2" placeholder="State">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="zipcode2" placeholder="Zip/Postal Code">
+    </div>
+    <strong>Status</strong>
+    <label>Active</label>
+    <div>
+        <input type="radio" name="status" value="active">
+    </div>
+    <label>Pending</label>
+    <div>
+        <input type="radio" name="status" value="pending">
+    </div>
+    <strong>Certifications</strong>
+    <div>
+        <textarea name="certification" rows="4" cols="40"></textarea>
+    </div>
+
+    <button type="submit">Register</button>
+</form>

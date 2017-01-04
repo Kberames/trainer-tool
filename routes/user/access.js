@@ -18,10 +18,19 @@ var User = require ('../../model/user.js');
 //     console.log("ID Token: " + id_token);
 // };
 router.get ('/register', function (request,response) {
-    response.render ('user/register');
+    response.render ('user/register/register');
 });
 
+router.get ('/register/trainer', function(request,response) {
+    response.render ('user/register/trainer')
+})
+
+router.get ('/register/customer', function(request, response) {
+    response.render ('user/register/customer')
+})
+
 router.post ('/register', function(request, response){
+    request.body.type = "customer";
     var newUser = User (request.body);
     newUser.save(function (error) {
         if (error) {
@@ -30,6 +39,24 @@ router.post ('/register', function(request, response){
         }
         else {
             console.log('user saved', request.body.username);
+            response.redirect('/login')
+        }
+    });
+});
+
+router.post ('/register/trainer', function(request, response){
+    request.body.status = "pending";
+    request.body.type = "trainer";
+    var newUser = User (request.body);
+    newUser.save(function (error) {
+        if (error) {
+            console.error('**** un able to save user');
+            console.error(error);
+        }
+        else {
+
+            console.log('user saved', request.body.username);
+            console.log('user status', request.body.status);
             response.redirect('/login')
         }
     });

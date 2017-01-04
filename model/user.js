@@ -13,7 +13,13 @@ var userSchema = new Schema ({
     state : String,
     zipcode : String,
     phone : String,
-    type : String
+    type : String,
+    status : String,
+    address2 : String,
+    city2 : String,
+    state2 : String,
+    zipcode2 : String,
+    certification: String
 
 })
 
