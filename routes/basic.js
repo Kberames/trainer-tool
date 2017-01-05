@@ -12,11 +12,19 @@ router.get('/', function(request, response) {
 });
 // NOTE: contact page
 router.get('/contact', function(request, response) {
-    response.render ('contact');
+    response.render ('contact', {
+        data: {
+            user: request.session.user
+        }
+    });
 });
 // NOTE:
 router.get('/about', function(request, response) {
-    response.render ('about');
+    response.render ('about', {
+        data: {
+            user: request.session.user
+        }
+    });
 });
 
 //--------------------------------
@@ -26,7 +34,10 @@ router.get ('/trainer', function (request, response) {
 
     //Load the angular workout partial.
     response.render ('home', {
-        layout: 'index-angular'
+        layout: 'index-angular',
+        data: {
+            user: request.session.user
+        }
     });
 });
 

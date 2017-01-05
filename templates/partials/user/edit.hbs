@@ -1,5 +1,5 @@
 <h2>{{data.title}}</h2>
-{{data.user.email}}
+
 <form method="POST" action="/user/{{ data.user.id }}" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="_method" value="{{data.method}}">
         <strong>Account LogIn</strong>

@@ -7,7 +7,7 @@ router.get ('/create', function (request, response) {
     response.render('user/edit', {
         data: {
             title:'Create new User',
-            method: 'POST',
+            method: 'POST'
         }
     })
 })
@@ -37,6 +37,7 @@ router.get("/", function (request,response) {
             response.render ('user/list', {
                 data: {
                     usersList: result,
+                    user: request.session.user
                 }
             })
         }
