@@ -1,59 +1,61 @@
-<h2>View User</h2>
-{{#if user.admin}}
-<a href="/user/{{ data.user.id }}/edit">Edit User</a>
-<a href="/user/{{ data.user.id }}/delete">Delete User</a>
-{{/if}}
-{{#if user.trainer}}
-<a href="/user/{{ data.user.id }}/edit">Edit User</a>
-{{/if}}
-<div>
+<body class="workout>
+    "<h2>View User</h2>
+    <!-- {{#if user.admin}} -->
+    <a href="/user/{{ data.user.id }}/edit">Edit User</a>
+    <a href="/user/{{ data.user.id }}/delete">Delete User</a>
+    <!-- {{/if}} -->
+    <!-- {{#if user.trainer}} -->
+    <a href="/user/{{ data.user.id }}/edit">Edit User</a>
+    <!-- {{/if}} -->
     <div>
-        <img src="{{data.user.imageUrl}}">
-    </div>
-    <div>
-        <strong>Name </strong>{{data.user.firstname}} {{data.user.lastname}}
-    </div>
-    <div>
-        <strong>Email </strong>{{data.user.email}}
-    </div>
-    <div>
-        <strong>Gender </strong>{{data.user.gender}}
-    </div>
-    <div>
-        <strong>Address </strong>{{data.user.address}}
-    </div>
-    <div>
-        {{data.user.city}}
-    </div>
-    <div>
-        {{data.user.state}}
-    </div>
-    <div>
-        {{data.user.zipcode}}
-    </div>
-    <div>
-        {{data.user.phone}}
-    </div>
-    <strong>Status </strong>{{data.user.status}}
-    <strong>Type </strong>{{data.user.type}}
+        <div>
+            <img src="{{data.user.imageUrl}}">
+        </div>
+        <div>
+            <strong>Name </strong>{{data.user.firstname}} {{data.user.lastname}}
+        </div>
+        <div>
+            <strong>Email </strong>{{data.user.email}}
+        </div>
+        <div>
+            <strong>Gender </strong>{{data.user.gender}}
+        </div>
+        <div>
+            <strong>Address </strong>{{data.user.address}}
+        </div>
+        <div>
+            {{data.user.city}}
+        </div>
+        <div>
+            {{data.user.state}}
+        </div>
+        <div>
+            {{data.user.zipcode}}
+        </div>
+        <div>
+            {{data.user.phone}}
+        </div>
+        <strong>Status </strong>{{data.user.status}}
+        <strong>Type </strong>{{data.user.type}}
 
-    <div>
-        <strong> Gym Address </strong>{{data.user.address2}}
+        <div>
+            <strong> Gym Address </strong>{{data.user.address2}}
+        </div>
+        <div>
+            {{data.user.city2}}
+        </div>
+        <div>
+            {{data.user.state2}}
+        </div>
+        <div>
+            {{data.user.zipcode2}}
+        </div>
+        <div>
+            {{data.user.phone2}}
+        </div>
+        <strong>Certifications</strong>
+        <div>
+            {{data.user.certification}}
+        </div>
     </div>
-    <div>
-        {{data.user.city2}}
-    </div>
-    <div>
-        {{data.user.state2}}
-    </div>
-    <div>
-        {{data.user.zipcode2}}
-    </div>
-    <div>
-        {{data.user.phone2}}
-    </div>
-    <strong>Certifications</strong>
-    <div>
-        {{data.user.certification}}
-    </div>
-</div>
+</body>
