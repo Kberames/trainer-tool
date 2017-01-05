@@ -44,15 +44,15 @@
                     {{/if}}
                 <a href="/">HOME</a>
                 <a href="/about">ABOUT</a>
-                <a href="/contact">CONTACT</a>
-                <a href="/register">REGISTER</a>
+                <!-- <a href="/contact">CONTACT</a> -->
                 <a href="/trainer/#/trainer-map">TRAINER-MAP</a>
                 <a href="/trainer/#/workout">WORKOUTS</a>
-                <a href="/trainer/#/schedule">SCHEDULE</a>
                 {{#if user}}
-                <a href="/logout">LOG-OUT</a>
+                <a href="/trainer/#/schedule">SCHEDULE</a>
                 <a href="/user">USERS</a>
+                <a href="/logout">LOG-OUT</a>
                 {{else}}
+                <a href="/register">REGISTER</a>
                 <a href="/login">LOG-IN</a>
                 {{/if}}
             </div>
@@ -60,6 +60,13 @@
 
 
         <div ui-view></div>
+        <!-- <div class="row"> -->
+        <footer class="footer">
+            <div class="container">
+                <p class="text">trainertool@gmail.com</p>
+            </div>
+        </footer>
+        <!-- </div> -->
 
         <script src="/lib/angular/angular.js"></script>
         <script src="/lib/angular-ui-router/release/angular-ui-router.js"></script>

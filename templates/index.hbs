@@ -46,20 +46,28 @@
                     {{/if}}
                 <a href="/">HOME</a>
                 <a href="/about">ABOUT</a>
-                <a href="/contact">CONTACT</a>
-                <a href="/register">REGISTER</a>
+                <!-- <a href="/contact">CONTACT</a> -->
                 <a href="/trainer/#/trainer-map">TRAINER-MAP</a>
                 <a href="/trainer/#/workout">WORKOUTS</a>
-                <a href="/trainer/#/schedule">SCHEDULE</a>
                 {{#if user}}
-                <a href="/logout">LOG-OUT</a>
+                <a href="/trainer/#/schedule">SCHEDULE</a>
                 <a href="/user">USERS</a>
+                <a href="/logout">LOG-OUT</a>
                 {{else}}
+                <a href="/register">REGISTER</a>
                 <a href="/login">LOG-IN</a>
                 {{/if}}
             </div>
         </nav>
 
         {{{ body }}}
+
+        <!-- <div class="row"> -->
+        <footer class="footer">
+            <div class="container">
+                <p class="text"><strong>trainertool@gmail.com</strong></p>
+            </div>
+        </footer>
+        <!-- </div> -->
     </body>
 </html>
