@@ -4,7 +4,11 @@ var router = express.Router();
 
 // NOTE: home page route
 router.get('/', function(request, response) {
-    response.render ('home');
+    response.render ('home', {
+        data: {
+            user: request.session.user
+        }
+    });
 });
 // NOTE: contact page
 router.get('/contact', function(request, response) {
