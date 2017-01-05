@@ -80,12 +80,15 @@ server.use(function (request, response, next) {
         if (user && user.type == 'admin') {
             user.admin = true;
         }
+        else if (user && user.type == 'trainer') {
+            user.trainer = true;
+        }
     }
 
     response.locals.message = request.flash ();
 
     var contentType = request.headers ['content-type'];
-    console.log('content type is: ', contentType);
+    // console.log('content type is: ', contentType);
 
     if (contentType == 'application/json') {
         request.sendJson = true;

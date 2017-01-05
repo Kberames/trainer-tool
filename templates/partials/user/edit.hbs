@@ -1,5 +1,5 @@
 <h2>{{data.title}}</h2>
-
+{{data.user.email}}
 <form method="POST" action="/user/{{ data.user.id }}" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="_method" value="{{data.method}}">
         <strong>Account LogIn</strong>
@@ -41,8 +41,34 @@
         <div>
             <input type="tel" class="form-control" name="phone" min="10" placeholder="Phone Number" value="{{data.user.phone}}">
         </div>
-        <strong>Type</strong>
+        <strong>Gym Address</strong>
+        <div>
+            <input type="text" class="form-control" name="address2" placeholder="Address" value="{{data.user.address2}}">
+        </div>
+        <div>
+            <input type="text" class="form-control" name="city2" placeholder="City/Town" value="{{data.user.city2}}">
+        </div>
+        <div>
+            <input type="text" class="form-control" name="state2" placeholder="State" value="{{data.user.state2}}">
+        </div>
+        <div>
+            <input type="text" class="form-control" name="zipcode2" placeholder="Zip/Postal Code" value="{{data.user.zipcode2}}">
+        </div>
+        <strong>Certifications</strong>
+        <div>
+            <textarea name="certification" rows="4" cols="40">{{data.user.certification}}</textarea>
+        </div>
         {{#if user.admin}}
+        <strong>Curent Status:  </strong>{{data.user.status}}
+        <div>
+            <label>Active</label>
+            <input type="radio" name="status" value="active">
+        </div>
+        <div>
+            <label>Pending</label>
+            <input type="radio" name="status" value="pending">
+        </div>
+        <strong>Type</strong>
         <div>
             <label>Admin</label>
             <input type="radio" name="type" value="admin">
