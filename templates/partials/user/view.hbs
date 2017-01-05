@@ -3,8 +3,8 @@
     <!-- {{#if user.admin}} -->
     <a href="/user/{{ data.user.id }}/edit">Edit User</a>
     <a href="/user/{{ data.user.id }}/delete">Delete User</a>
-    <!-- {{/if}} -->
-    <!-- {{#if user.trainer}} -->
+    {{/if}}
+    {{#if user.trainer}}
     <a href="/user/{{ data.user.id }}/edit">Edit User</a>
     <!-- {{/if}} -->
     <div class="info">
@@ -57,5 +57,6 @@
         <div>
             {{data.user.certification}}
         </div>
+        <a href="/user/{{data.user.id}}/pic">Change Profile Picture</a>
     </div>
 </body>

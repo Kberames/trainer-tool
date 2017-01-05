@@ -1,7 +1,10 @@
 var express = require ('express');
 var router = express.Router ();
 var User = require ('../../model/user.js');
-
+// NOTE: adding multer to edic profile picture
+var multer = require ('multer');
+var processUploadFile = multer({ dest: './temp'});
+// NOTE:  adding multer to edit profilepicture
 router.get ('/create', function (request, response) {
     // response.send ('****create page for users')
     response.render('user/edit', {
@@ -108,5 +111,50 @@ router.get('/:id/delete', function(request,response){
     })
 })
 
+//
+// router.get('/:id/pic', function(request, response) {
+//     var userId = request.params.id
+//     User.findById (userId, function(error,result) {
+//         if (error){
+//             console.log('***error finding the ', + userId);
+//             response.send('something went wrong')
+//         }
+//         else {
+//             response.render('user/edit-pic', {
+//                 data: {
+//                     method: 'PUT',
+//                     user : result
+//                 }
+//             })
+//         }
+//     })
+// })
+//
+// router.put('/:id/pic', processUploadFile.single ('imageFile'), function(request,response){
+//     console.log('file: ', request.file);
+//     console.log('body: ', request.body);
+//     console.log('path: ', request.file.path);
+//
+//     var fs = require ('fs-extra');
+//     var source = request.file.path;
+//     var basePath = './public';
+//     var destination = '/img/uploads/' + request.file.originalname;
+//
+//     fs.move (source, (basePath + destination), function (error) {
+//         fs.remove (source, function (error) {
+//         })
+//     })
+//     request.body.imageUrl = destination
+//     var userId = request.params.id
+//     User.findByIdAndUpdate(userId, request.body.imageUrl, function(error,resut) {
+//         if (error){
+//             console.log('cant update user');
+//             response.send('cant update user!!!!!!!!!!!')
+//         }
+//         else{
+//             response.redirect('/user/' + userId)
+//         }
+//     })
+// })
 
  module.exports = router
