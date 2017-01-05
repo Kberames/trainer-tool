@@ -77,11 +77,11 @@ server.use(function (request, response, next) {
         response.locals.user = user;
 
         // Check if we have an admin user.
-        if (user && user.type == 'admin') {
-            user.admin = true;
-        }
         else if (user && user.type == 'trainer') {
             user.trainer = true;
+        }
+        if (user && user.type == 'admin') {
+            user.admin = true;
         }
     }
 
