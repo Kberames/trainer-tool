@@ -36,15 +36,13 @@ namespace App {
                     controller: App.WorkoutController,
                     controllerAs: 'workoutController'
                 })
-
-
-            .state ('trainer-map', {
-                url: '/trainer-map',
-                // template: 'Here we are at the workouts.'
-                templateUrl: '/angular/templates/partials/trainer-map.html',
-                controller: App.TrainerMapController,
-                controllerAs: 'trainerMapController'
-            })
+                .state ('trainer-map', {
+                    url: '/trainer-map',
+                    // template: 'Here we are at the workouts.'
+                    templateUrl: '/angular/templates/partials/trainer-map.html',
+                    controller: App.TrainerMapController,
+                    controllerAs: 'trainerMapController'
+                })
         }
     ])
 }
