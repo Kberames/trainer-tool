@@ -1,0 +1,10 @@
+<h2>{{ scheduleController.mode }} Schedule</h2>
+
+<form ng-submit="scheduleController.create (scheduleController.schedule._id)">
+    <div>
+        <label>Date: </label>
+        <input type="date" ng-model="scheduleController.schedule.date">{{ scheduleController.schedule.date | date: 'yyyy-MM-dd' }}
+    </div>
+
+    <button>{{ scheduleController.mode }}</button>
+</form>

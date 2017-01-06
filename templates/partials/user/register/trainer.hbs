@@ -1,5 +1,5 @@
-<h2>Registration</h2>
-<form method='POST' action="/register" enctype="application/x-www-form-urlencoded">
+<h2>Trainer Registration</h2>
+<form method='POST' action="/register/trainer" enctype="multipart/form-data">
     <strong>Account LogIn</strong>
     <div>
         <input type="text" class="form-control" name="email" placeholder="E-mail" required=>
@@ -16,11 +16,11 @@
     </div>
     <strong>Gender</strong>
     <div>
-        <label class="gender">Male</label>
+        <label>Male</label>
         <input type="radio" name="gender" value="male">
-    <!-- </div>
-    <div> -->
-        <label class="gender">Female</label>
+    </div>
+    <div>
+        <label>Female</label>
         <input type="radio" name="gender" value="female">
     </div>
     <strong>Mailing Address</strong>
@@ -38,6 +38,27 @@
     </div>
     <div>
         <input type="text" class="form-control" name="phone" placeholder="Phone Number">
+    </div>
+    <strong>Gym Address</strong>
+    <div>
+        <input type="text" class="form-control" name="address2" placeholder="Address">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="city2" placeholder="City/Town">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="state2" placeholder="State">
+    </div>
+    <div>
+        <input type="text" class="form-control" name="zipcode2" placeholder="Zip/Postal Code">
+    </div>
+    <strong>Certifications</strong>
+    <div>
+        <textarea name="certification" rows="4" cols="40"></textarea>
+    </div>
+    <div>
+        <label>Upload Picture</label>
+        <input type="file" name="imageFile">
     </div>
 
     <button type="submit">Register</button>

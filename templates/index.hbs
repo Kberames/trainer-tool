@@ -2,12 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="306999994446-eu25e71nkjp2tkiop2bfe62h1et6mdvb.apps.googleusercontent.com">
         <title>Trainer Tool</title>
 
-        <link rel="stylesheet" href="/css/style.less" type="text/less">
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" type="text/css">
+        <link rel="stylesheet" href="/css/style.less" type="text/less">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 
         <!-- set options before less.js script -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script>
          less = {
            env: "development",
@@ -26,16 +30,44 @@
     </head>
     <body>
 
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/user/register">Register</a>
-            <a href="/trainer/#/workout">Workouts</a>
-            <a href="/user/login">Log-In</a>
-            <a href="/user/logout">Log-Out</a>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="container">
+                    {{#if user}}
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img class="img-circle" src="{{data.user.imageUrl}}" />
+                            <!-- Profile name -->
+                            <!-- <div class="rank-label-container">
+                                <span class="label label-default rank-label">{{ firstname}} blob</span>
+                            </div> -->
+                        </div>
+                    </div>
+                    {{/if}}
+                <a href="/">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/contact">CONTACT</a>
+                <a href="/trainer/#/trainer-map">TRAINER-MAP</a>
+                <a href="/trainer/#/workout">WORKOUTS</a>
+                {{#if user}}
+                <a href="/trainer/#/schedule">SCHEDULE</a>
+                <a href="/user">USERS</a>
+                <a href="/logout">LOG-OUT</a>
+                {{else}}
+                <a href="/register">REGISTER</a>
+                <a href="/login">LOG-IN</a>
+                {{/if}}
+            </div>
         </nav>
 
         {{{ body }}}
+
+        <!-- <div class="row"> -->
+        <footer class="footer">
+            <div class="container">
+                <p class="text"><strong>trainertool@gmail.com</strong></p>
+            </div>
+        </footer>
+        <!-- </div> -->
     </body>
 </html>
