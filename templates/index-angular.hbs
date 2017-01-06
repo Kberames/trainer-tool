@@ -49,7 +49,9 @@
                 <a href="/trainer/#/workout">WORKOUTS</a>
                 {{#if user}}
                 <a href="/trainer/#/schedule">SCHEDULE</a>
+                {{#if user.trainer}}
                 <a href="/user">USERS</a>
+                {{/if}}
                 <a href="/logout">LOG-OUT</a>
                 {{else}}
                 <a href="/register">REGISTER</a>

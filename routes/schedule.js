@@ -26,7 +26,7 @@ router.post ('/', function (request, response) {
 
 //Read
 router.get ('/', function (request, response) {
-    Schedule.find (function (error, result) {
+    Schedule.find ().sort('date').exec(function (error, result) {
         if (error) {
             var errorMessage = 'Unable to sort schedule.';
             console.log ('**ERROR: ' + errorMessage);
