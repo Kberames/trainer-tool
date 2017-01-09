@@ -8,5 +8,4 @@ public/lib
 # *.js
 # replaced this with the next line to ignore js files created from ts
 public/angular/js/*.js
-
 typings/

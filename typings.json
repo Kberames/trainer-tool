@@ -4,6 +4,7 @@
   "globalDependencies": {
     "angular": "registry:dt/angular#1.5.0+20161208205636",
     "angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20161110053620",
+    "google.maps": "registry:dt/google.maps#3.25.0+20161208205818",
     "jquery": "registry:dt/jquery#1.10.0+20160929162922"
   }
 }

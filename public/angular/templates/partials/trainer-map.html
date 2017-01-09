@@ -1,22 +1,3 @@
 <h2>Trainer Map</h2>
 
-<script>
-function initMap() {
- var uluru = {lat: 33.557732, lng: -111.889285}; //Coder Camps address
-
- var map = new google.maps.Map(document.getElementById('map'), {
-   zoom: 14,
-   center: uluru
- });
-
- var marker = new google.maps.Marker({
-   position: uluru,
-   map: map
- });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD00VD4eCEvPxHss2JATRHeNSc2Fp6oYnw&callback=initMap"
-  async defer>
-</script>
-
 <div id="map"></div>
