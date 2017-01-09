@@ -47,7 +47,7 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
         fs.remove (source, function (error) {
         })
     })
-    request.body.imageUrl = destination
+    request.body.imageUrl = destination;
     request.body.type = "customer";
     var newUser = User (request.body);
     newUser.save(function (error) {

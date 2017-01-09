@@ -123,18 +123,19 @@ router.get('/:id/pic', function(request, response) {
             response.render('user/edit-pic', {
                 data: {
                     method: 'PUT',
-                    user : result,
+                    user : result
                 }
             })
         }
     })
 });
 
-router.put('/:id/pic', processUploadFile.single ('imageFile'), function(request,response){
+router.post('/:id/pic', processUploadFile.single ('imageFile'), function(request,response){
     console.log('file: ', request.file);
     console.log('body: ', request.body);
     console.log('path: ', request.file.path);
 
+    var userId = request.params.id
     var fs = require ('fs-extra');
     var source = request.file.path;
     var basePath = './public';
@@ -145,8 +146,8 @@ router.put('/:id/pic', processUploadFile.single ('imageFile'), function(request,
         })
     })
     request.body.imageUrl = destination
-    var userId = request.params.id
-    User.findByIdAndUpdate(userId, request.body.imageUrl, function(error,resut) {
+    console.log('Image url', request.body.imageUrl);
+    User.findByIdAndUpdate(userId, request.body, function(error,resut) {
         console.log('user id', userId);
         console.log('Image url', request.body.imageUrl);
         if (error){
