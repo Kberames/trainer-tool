@@ -58,6 +58,10 @@ var App;
                 templateUrl: '/angular/templates/partials/schedule/edit.html',
                 controller: App.ScheduleController,
                 controllerAs: 'scheduleController'
+            })
+                .state('video', {
+                url: '/video',
+                template: 'Here we are viewing videos'
             });
         }
     ]);
