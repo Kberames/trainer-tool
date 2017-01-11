@@ -100,7 +100,6 @@ server.use(function (request, response, next) {
 // NOTE: The port.
 var port = 3000;
 
-
 var handlebars = require ('express-handlebars');
 server.engine ('.hbs', handlebars ({
     // NOTE: this sets the defult lays out and directory.
@@ -128,7 +127,7 @@ server.listen ( port, function (error) {
 
 var mongoose = require ('mongoose');
 // connect mongoose
-mongoose.connect ('mongodb://bobross:password@ds145828.mlab.com:45828/trainer_database')
+mongoose.connect ('mongodb://localhost:27017/trainer_database')
 // set the library to user
 
 mongoose.Promise = require('bluebird');

@@ -9,3 +9,7 @@ public/lib
 # replaced this with the next line to ignore js files created from ts
 public/angular/js/*.js
 typings/
+
+# DO NOT upload to GIT!
+# Place api keys here
+Config.*

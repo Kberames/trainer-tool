@@ -32,11 +32,17 @@ router.get('/about', function(request, response) {
 router.get ('/trainer', function (request, response) {
     // response.send ('This is the workout page with angular');
 
+    // Grab GoogleApiKey
+    var GoogleApiKey = require ('../Config.js');
+
+    console.log('basic.js, API KEY: ' + GoogleApiKey);
+
     //Load the angular workout partial.
     response.render ('home', {
         layout: 'index-angular',
         data: {
-            user: request.session.user
+            user: request.session.user,
+            googleApiKey: GoogleApiKey
         }
     });
 });
