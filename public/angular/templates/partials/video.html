@@ -1,13 +1,22 @@
 <h2>Videos</h2>
 
-<form ng-submit="videoController.create(videoController.video._id)">
-    <div>
-        <label>Name: </label><br>
-        <input ng-model="videoController.video.name">
-    </div>
-    <div>
-        <label>Video Url: </label><br>
-        <input ng-model="videoController.video.url">
-    </div>
-    <button>Add</button>
-</form>
+<button ng-click="videoController.goToPage('video-create')">Create a New Video</button>
+
+<button ng-click="videoController.read ()">Your Videos</button>
+
+<div class="workout">
+    <ul>
+        <li ng-repeat="video in videoController.list">
+            <table border="1">
+                <tr>
+                    <th>Name: </th>
+                    <td>{{ video.name }}</td>
+                </tr>
+                <tr>
+                    <th>Video: </th>
+                    <td>{{ video.url }}</td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+</div>
