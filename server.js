@@ -162,3 +162,6 @@ server.use ('/', basicRoutes);
 
  var scheduleRoutes = require ('./routes/schedule.js');
  server.use ('/schedule', scheduleRoutes);
+
+ var videoRoutes = require ('./routes/video.js');
+ server.use ('/video', videoRoutes);

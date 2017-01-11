@@ -123,30 +123,37 @@ router.get('/:id/pic', function(request, response) {
             response.render('user/edit-pic', {
                 data: {
                     method: 'PUT',
-                    user : result,
+                    user : result
                 }
             })
         }
     })
 });
 
-router.put('/:id/pic', processUploadFile.single ('imageFile'), function(request,response){
-    console.log('file: ', request.file);
-    console.log('body: ', request.body);
-    console.log('path: ', request.file.path);
+router.post('/:id/pic', processUploadFile.single ('imageFile'), function(request,response){
 
-    var fs = require ('fs-extra');
-    var source = request.file.path;
-    var basePath = './public';
-    var destination = '/img/uploads/' + request.file.originalname;
-
-    fs.move (source, (basePath + destination), function (error) {
-        fs.remove (source, function (error) {
-        })
-    })
-    request.body.imageUrl = destination
     var userId = request.params.id
-    User.findByIdAndUpdate(userId, request.body.imageUrl, function(error,resut) {
+        if (request.file) {
+
+        console.log('file: ', request.file);
+        console.log('path: ', request.file.path);
+
+        var fs = require ('fs-extra');
+        var source = request.file.path;
+        var basePath = './public';
+        var destination = '/img/uploads/' + request.file.originalname;
+
+        fs.move (source, (basePath + destination), function (error) {
+            fs.remove (source, function (error) {
+            })
+        })
+        request.body.imageUrl = destination;
+    }
+    else {
+        request.body.imageUrl = '/img/uploads/stitch.png'
+    }
+    console.log('Image url', request.body.imageUrl);
+    User.findByIdAndUpdate(userId, request.body, function(error,resut) {
         console.log('user id', userId);
         console.log('Image url', request.body.imageUrl);
         if (error){

@@ -71,6 +71,13 @@ namespace App {
                     controller: App.ScheduleController,
                     controllerAs: 'scheduleController'
                 })
+                .state ('video', {
+                    url: '/video',
+                    // template: 'Here we are viewing videos',
+                    templateUrl: '/angular/templates/partials/video.html',
+                    controller: App.VideoController,
+                    controllerAs: 'videoController'
+                })
         }
     ])
 }
