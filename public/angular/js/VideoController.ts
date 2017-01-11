@@ -6,7 +6,7 @@ namespace App {
         private stateService;
         private stateParamsService;
 
-        public video
+        public video;
         public list;
 
         constructor (videoService: App.VideoService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {

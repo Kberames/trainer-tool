@@ -12,6 +12,10 @@ var userSchema = new Schema ({
     city : String,
     state : String,
     zipcode : String,
+    location: {
+        lat: Number,
+        lng: Number
+    },
     phone : String,
     type : String,
     status : String,
@@ -19,6 +23,10 @@ var userSchema = new Schema ({
     city2 : String,
     state2 : String,
     zipcode2 : String,
+    location2: {
+        lat: Number,
+        lng: Number
+    },
     certification: String,
     imageUrl : String,
     videoName: String,
