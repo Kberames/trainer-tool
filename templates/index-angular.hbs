@@ -24,8 +24,8 @@
         <script src="/lib/less/dist/less.js"></script>
         <script src="/lib/jquery/dist/jquery.js"></script>
         <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD00VD4eCEvPxHss2JATRHeNSc2Fp6oYnw"
-          async defer>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{data.googleApiKey}}""
+         async defer>
         </script>
 
     </head>
@@ -40,7 +40,7 @@
                             <img class="img-circle" src="{{data.user.imageUrl}}" />
                             <!-- profile name -->
                             <!-- <div class="rank-label-container">
-                                <span class="label label-default rank-label">{{ data.user.firstname}}</span>
+                            <span class="label label-default rank-label">{{ data.user.firstname}}</span>
                             </div> -->
                         </div>
                     </div>
