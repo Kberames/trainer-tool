@@ -6,7 +6,7 @@ namespace App {
         private stateService;
         private stateParamsService;
 
-        public video;
+        public video
         public list;
 
         constructor (videoService: App.VideoService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
@@ -35,9 +35,5 @@ namespace App {
             }
         }
 
-        public goToPage (route, data) {
-            console.log ('Here is the data...', route, data);
-            this.stateService.go (route, data);
-        }
     }
 }

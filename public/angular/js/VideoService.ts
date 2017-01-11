@@ -7,6 +7,7 @@ namespace App {
         private httpService;
 
         constructor ($httpService: angular.IHttpService) {
+            console.log ('video service was loaded....');
             this.httpService = $httpService;
         }
 
@@ -19,7 +20,7 @@ namespace App {
                     'Content-Type' : 'application/json'
                 }
             });
-
+            console.log ('Promise', promise);
             return promise;
         }
     }

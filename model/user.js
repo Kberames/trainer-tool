@@ -20,7 +20,9 @@ var userSchema = new Schema ({
     state2 : String,
     zipcode2 : String,
     certification: String,
-    imageUrl : String
+    imageUrl : String,
+    videoName: String,
+    videoUrl: String
 })
 
 var User = mongoose.model ('User', userSchema);
