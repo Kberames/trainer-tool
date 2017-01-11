@@ -28,7 +28,9 @@ var userSchema = new Schema ({
         lng: Number
     },
     certification: String,
-    imageUrl : String
+    imageUrl : String,
+    videoName: String,
+    videoUrl: String
 })
 
 var User = mongoose.model ('User', userSchema);
