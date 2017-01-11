@@ -1,9 +1,13 @@
+@color-01: #c13046;
+@color-02: #9292a0;
+
 .about {
     width: 50%;
     float: left;
     padding-top: 20px;
     padding-left: 70px;
 }
+
 .about1 {
     width: 45%;
     float: right;
@@ -12,6 +16,7 @@
     padding-bottom: 50px;
 
 }
+
 body {
     // background-color: red;
     background-image: url('/images/vn39uekx00s-scott-webb.jpg');
@@ -26,113 +31,14 @@ body {
     }
 }
 
-
-.workout {
-    margin-left: 36%;
-    margin-right: 40%;
-    opacity: 0.9;
-    padding-bottom: 50px;
-}
-
-.panel-body {
-    font-family: 'Open Sans Condensed';
-    font-size: 20px;
-    text-align: center;
-    strong {
-        font-size: 25px;
-    }
-}
-
 button {
     opacity: 0.7;
     font-family: 'Open Sans Condensed';
     font-size: 30px;
-    color: #c13046;
+    color: @color-01;
     margin: auto;
     // margin-bottom: 100px;
     display: block;
-}
-
-h2 {
-    color: #9292a0;
-    font-family: 'Open Sans Condensed';
-    font-size: 100px;
-    text-align: center;
-}
-h3 {
-    color: #c13046;
-    font-family: 'Open Sans Condensed';
-    font-size: 80px;
-    text-align: center;
-}
-h4 {
-    color: #9292a0;
-    font-family: 'Open Sans Condensed';
-    font-size: 65px;
-    text-align: center;
-}
-h5 {
-    color: #9292a0;
-    font-family: 'Open Sans Condensed';
-    font-size: 50px;
-    text-align: center;
-}
-h6 {
-    color: #9292a0;
-    font-family: 'Open Sans Condensed';
-    font-size: 40px;
-    text-align: center;
-}
-
-h5 {
-    color: #c13046;
-    font-size: 50px;
-    font-family: 'Open Sans Condensed';
-    text-align: center;
-}
-strong {
-    color: #c13046;
-    font-family: 'Open Sans Condensed';
-}
-
-
-
-.register {
-    text-align: center;
-    a {
-        font-family: 'Open Sans Condensed';
-        font-size: 40px;
-    }
-}
-
-#map {
-    // width: 90%;
-    height: 400px;
-    background-color: grey;
-    margin-left: 20px;
-    margin-right: 20px;
-    h2 {
-        font-family: 'Open Sans Condensed';
-        font-size: 100px;
-        color: #9292a0;
-        text-align: center;
-    }
-}
-
-nav {
-    background-color: #2e8ca5 !important;
-    font-family: 'Open Sans Condensed';
-    font-size: 30px;
-    width: 100%;
-    opacity: 0.6;
-    text-align: center;
-    position: relative;
-    a {
-        color: #c13046;
-        padding: 10px;
-        display: inline-block;
-        float: none;
-    }
 }
 
 .footer {
@@ -145,7 +51,7 @@ nav {
     height: 40px;
     background-color: #000;
     opacity: 0.6;
-    border-top: #c13046;
+    border-top: @color-01;
     text-align: center;
     .container {
         padding-right: 15px;
@@ -153,14 +59,10 @@ nav {
 
     }
     .text {
-        color: #c13046;
+        color: @color-01;
         // font-size: 20px;
     }
 
-}
-
-input {
-    text-align: center;
 }
 
 form {
@@ -170,7 +72,7 @@ form {
     padding-left: 300px;
     padding-bottom: 50px;
     text-align: center;
-    color: #9292a0;
+    color: @color-02;
 
     div {
         padding-bottom: 5px;
@@ -191,34 +93,128 @@ form {
         margin-bottom: 20px;
         opacity: 0.7;
     }
-    // textarea {
-    //     // padding-right: 20px;
-    //     // padding-left: 20px;
-    //     // margin-right: 20px;
-    //     // margin-left: 20px;
-    //     padding-left: 2px;
-    // }
+}
+
+h2 {
+    color: @color-02;
+    font-family: 'Open Sans Condensed';
+    font-size: 100px;
+    text-align: center;
+}
+h3 {
+    color: @color-01;
+    font-family: 'Open Sans Condensed';
+    font-size: 80px;
+    text-align: center;
+}
+h4 {
+    color: @color-02;
+    font-family: 'Open Sans Condensed';
+    font-size: 65px;
+    text-align: center;
+}
+h5 {
+    color: @color-02;
+    font-family: 'Open Sans Condensed';
+    font-size: 50px;
+    text-align: center;
+}
+h6 {
+    color: @color-02;
+    font-family: 'Open Sans Condensed';
+    font-size: 40px;
+    text-align: center;
+}
+
+h5 {
+    color: @color-01;
+    font-size: 50px;
+    font-family: 'Open Sans Condensed';
+    text-align: center;
+}
+
+input {
+    text-align: center;
+}
+
+#map {
+    // width: 90%;
+    height: 400px;
+    background-color: grey;
+    margin-left: 20px;
+    margin-right: 20px;
+    h2 {
+        font-family: 'Open Sans Condensed';
+        font-size: 100px;
+        color: @color-02;
+        text-align: center;
+    }
+}
+
+nav {
+    // background-color: #2e8ca5 !important;
+    font-family: 'Open Sans Condensed';
+    font-size: 30px;
+    width: 100%;
+    opacity: 0.6;
+    text-align: center;
+    position: relative;
+    a {
+        color: @color-01;
+        padding: 10px;
+        display: inline-block;
+        float: none;
+    }
 }
 
 p {
     font-family: 'Open Sans Condensed';
     font-size: 30px;
-    color: #9292a0;
+    color: @color-02;
     text-align: center;
+}
+
+.panel-body {
+    font-family: 'Open Sans Condensed';
+    font-size: 20px;
+    text-align: center;
+    strong {
+        font-size: 25px;
+    }
+}
+
+.register {
+    text-align: center;
+    a {
+        font-family: 'Open Sans Condensed';
+        font-size: 40px;
+    }
+}
+
+strong {
+    color: @color-01;
+    font-family: 'Open Sans Condensed';
 }
 
 .users {
     font-family: 'Open Sans Condensed';
     font-size: 30px;
-    color: #9292a0;
+    color: @color-02;
     text-align: center;
     .info {
         padding-bottom: 50px;
 
     }
     strong {
-        color: #9292a0;
+        color: @color-02;
     }
+}
+
+.workout {
+    margin-left: 36%;
+    margin-right: 40%;
+    opacity: 0.9;
+    padding-bottom: 50px;
 }
 
 // ------------------- Profile Picture ----------------------
@@ -227,9 +223,6 @@ body, html {
     background-repeat: no-repeat;
 }
 
-// .container {
-//     margin-left: 5px;
-// }
 .profile-header-container{
     // margin: 0 auto;
     display: inline-block;
@@ -245,10 +238,6 @@ body, html {
         height: 50px;
         opacity: none;
     }
-}
-
-.profile-header {
-    // margin-top: 43px;
 }
 
 //------------Name of user in profile picture in nav bar-----------
