@@ -100,7 +100,6 @@ server.use(function (request, response, next) {
 // NOTE: The port.
 var port = 3000;
 
-
 var handlebars = require ('express-handlebars');
 server.engine ('.hbs', handlebars ({
     // NOTE: this sets the defult lays out and directory.

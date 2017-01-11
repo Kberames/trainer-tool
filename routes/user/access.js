@@ -1,6 +1,21 @@
 var express = require ('express');
 var router = express.Router ();
 
+// Grab GoogleApiKey
+var GoogleApiKey = require ('../../Config.js');
+
+// Node wrapper for google maps geocoder.
+var nodeGeocoder = require ('node-geocoder');
+var options = {
+  provider: 'google',
+
+  // Optional depending on the providers
+  httpAdapter: 'https', // Default
+  apiKey: GoogleApiKey,
+  formatter: null
+};
+var geocoder = nodeGeocoder(options);
+
 var User = require ('../../model/user.js');
 // NOTE: adding multer to use to upload picture
 var multer = require ('multer');
@@ -35,23 +50,44 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
             fs.remove (source, function (error) {
             })
         })
-        request.body.imageUrl = destination;
     }
     else {
         request.body.imageUrl = '/img/uploads/stitch.png'
     }
     request.body.type = "customer";
-    var newUser = User (request.body);
-    newUser.save(function (error) {
-        if (error) {
-            console.error('**** un able to save user');
-            console.error(error);
-        }
-        else {
-            console.log('user saved', request.body.firstname);
-            response.redirect('/login')
-        }
-    });
+
+    var address = request.body.address + ', ' +
+        request.body.city + ', ' +
+        request.body.state + ', ' +
+        request.body.zipcode;
+
+    // Call to get geocode.
+    geocoder.geocode('address')
+        .then (function(results){
+            let loc = {
+                lat: results[0].latitude,
+                lng: results[0].longitude
+            };
+            console.log('lat: ' + loc.lat);
+            console.log('lng: ' + loc.lng);
+
+            var newUser = User (request.body);
+            newUser.location = loc;
+
+            newUser.save(function (error) {
+                if (error) {
+                    console.error('**** un able to save user');
+                    console.error(error);
+                }
+                else {
+                    console.log('user saved', request.body.username);
+                    response.redirect('/login')
+                }
+            });
+        })
+        .catch (function(error) {
+            console.log('geocode error: ' + error);
+        });
 });
 
 router.post ('/register/trainer', processUploadFile.single ('imageFile'), function(request, response){
@@ -77,20 +113,60 @@ router.post ('/register/trainer', processUploadFile.single ('imageFile'), functi
     }
     request.body.status = "pending";
     request.body.type = "trainer";
-    var newUser = User (request.body);
-    newUser.save(function (error) {
-        if (error) {
-            console.error('**** un able to save user');
-            console.error(error);
-        }
-        else {
 
-            console.log('user saved', request.body.username);
-            console.log('user status', request.body.status);
-            response.redirect('/login')
-        }
+    var address = request.body.address + ', ' +
+        request.body.city + ', ' +
+        request.body.state + ', ' +
+        request.body.zipcode;
+
+    var address2 = request.body.address2 + ', ' +
+        request.body.city2 + ', ' +
+        request.body.state2 + ', ' +
+        request.body.zipcode2;
+
+        debugger;
+
+    // Call to get geocodes for multilple addresses.
+    geocoder.batchGeocode([address, address2])
+        .then (function(results){
+            // console.log('batchGeocode results: ' + JSON.stringify(results[0]));
+            // console.log('results[0].value[0].latitude: ' + results[0].value[0].latitude);
+            debugger;
+            let loc = {
+                lat: results[0].value[0].latitude,
+                lng: results[0].value[0].longitude
+            };
+            console.log('lat: ' + loc.lat);
+            console.log('lng: ' + loc.lng);
+
+            let loc2 = {
+                lat: results[1].value[0].latitude,
+                lng: results[1].value[0].longitude
+            };
+            console.log('lat2: ' + loc2.lat);
+            console.log('lng2: ' + loc2.lng);
+
+            var newUser = User (request.body);
+
+            newUser.location = loc;
+            newUser.location2 = loc2;
+
+            newUser.save(function (error) {
+                if (error) {
+                    console.error('**** un able to save user');
+                    console.error(error);
+                }
+                else {
+                    console.log('user saved', request.body.username);
+                    console.log('user status', request.body.status);
+                    response.redirect('/login')
+                }
+            });
+        })
+        .catch (function(error) {
+            console.log('geocode error: ' + error);
+        });
     });
-});
 
 router.get('/login', function(request,response) {
     if (request.session.user) {
@@ -128,8 +204,7 @@ router.post ('/login', function (request, response){
 router.get ('/logout', function (request, response) {
     request.session.destroy ();
     console.log('session destroyed', request.session);
-    response.redirect ('/login')
+    response.redirect ('/login');
 })
 
-
-module.exports = router
+module.exports = router;

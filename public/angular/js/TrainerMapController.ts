@@ -50,7 +50,8 @@ namespace App {
                 }
             ];
 
-            // this should be moved to user save
+            // The call to geocodeAddress should be moved to user save.
+            // Then here we will pull the geocode location directly from the user object.
             let userLoc = this.trainerMapService.geocodeAddress(address, function (loc){
                 console.log('In callback, lat: ' + loc.lat);
                 console.log('In callback, lng: ' + loc.lng);
