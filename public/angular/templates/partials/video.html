@@ -1,13 +1,13 @@
 <h2>Videos</h2>
 
-<form ng-submit="videoController.create()">
+<form ng-submit="videoController.create(videoController.video._id)">
     <div>
         <label>Name: </label><br>
-        <input ng-model="videoController.user.videoName">
+        <input ng-model="videoController.video.name">
     </div>
     <div>
         <label>Video Url: </label><br>
-        <input ng-model="videoController.user.videoUrl">
+        <input ng-model="videoController.video.url">
     </div>
     <button>Add</button>
 </form>

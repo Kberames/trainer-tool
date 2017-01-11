@@ -2,7 +2,7 @@ var express = require ('express');
 
 var router = express.Router ();
 
-var Video = require ('../model/user.js');
+var Video = require ('../model/video.js');
 
 //Create
 router.post ('/', function (request, response) {
@@ -20,8 +20,11 @@ router.post ('/', function (request, response) {
                 });
             }
             else {
-                response.redirect ('/workout');
+                response.redirect ('/video');
             }
+            // response.json ({
+            //     message: 'New video was saved.'
+            // });
         }
     })
 });

@@ -6,8 +6,7 @@ namespace App {
         private stateService;
         private stateParamsService;
 
-        public videoName;
-        public videoUrl;
+        public video
         public list;
 
         constructor (videoService: App.VideoService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
@@ -25,8 +24,8 @@ namespace App {
             }
             else {
                 console.log ('Uploading a video');
-                console.log ('Video has been saved.', this.videoName, this.videoUrl);
-                this.videoService.create (this.videoName, this.videoUrl)
+                console.log ('Video has been saved.', this.video);
+                this.videoService.create (this.video)
                     .success ((response) => {
                         this.stateService.go ('video');
                     })
