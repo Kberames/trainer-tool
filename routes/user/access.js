@@ -7,20 +7,6 @@ var multer = require ('multer');
 var processUploadFile = multer({ dest: './temp'});
 // NOTE: adding multer to use to upload picture
 
-// function onSignIn(googleUser) {
-//     // Useful data for your client-side scripts:
-//     var profile = googleUser.getBasicProfile();
-//     console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-//     console.log('Full Name: ' + profile.getName());
-//     console.log('Given Name: ' + profile.getGivenName());
-//     console.log('Family Name: ' + profile.getFamilyName());
-//     console.log("Image URL: " + profile.getImageUrl());
-//     console.log("Email: " + profile.getEmail());
-//
-//     // The ID token you need to pass to your backend:
-//     var id_token = googleUser.getAuthResponse().id_token;
-//     console.log("ID Token: " + id_token);
-// };
 router.get ('/register', function (request,response) {
     response.render ('user/register/register');
 });
@@ -34,20 +20,26 @@ router.get ('/register/customer', function(request, response) {
 })
 
 router.post ('/register', processUploadFile.single ('imageFile'), function(request, response){
-    console.log('file: ', request.file);
-    console.log('body: ', request.body);
-    console.log('path: ', request.file.path);
 
-    var fs = require ('fs-extra');
-    var source = request.file.path;
-    var basePath = './public';
-    var destination = '/img/uploads/' + request.file.originalname;
+    if (request.file) {
 
-    fs.move (source, (basePath + destination), function (error) {
-        fs.remove (source, function (error) {
+        console.log('file: ', request.file);
+        console.log('path: ', request.file.path);
+
+        var fs = require ('fs-extra');
+        var source = request.file.path;
+        var basePath = './public';
+        var destination = '/img/uploads/' + request.file.originalname;
+
+        fs.move (source, (basePath + destination), function (error) {
+            fs.remove (source, function (error) {
+            })
         })
-    })
-    request.body.imageUrl = destination;
+        request.body.imageUrl = destination;
+    }
+    else {
+        request.body.imageUrl = '/img/uploads/stitch.png'
+    }
     request.body.type = "customer";
     var newUser = User (request.body);
     newUser.save(function (error) {
@@ -56,7 +48,7 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
             console.error(error);
         }
         else {
-            console.log('user saved', request.body.username);
+            console.log('user saved', request.body.firstname);
             response.redirect('/login')
         }
     });
@@ -64,21 +56,25 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
 
 router.post ('/register/trainer', processUploadFile.single ('imageFile'), function(request, response){
 
-    console.log('file: ', request.file);
-    console.log('body: ', request.body);
-    console.log('path: ', request.file.path);
+    if (request.file){
+        console.log('file: ', request.file);
+        console.log('body: ', request.body);
+        console.log('path: ', request.file.path);
 
-    var fs = require ('fs-extra');
-    var source = request.file.path;
-    var basePath = './public';
-    var destination = '/img/uploads/' + request.file.originalname;
+        var fs = require ('fs-extra');
+        var source = request.file.path;
+        var basePath = './public';
+        var destination = '/img/uploads/' + request.file.originalname;
 
-    fs.move (source, (basePath + destination), function (error) {
-        fs.remove (source, function (error) {
+        fs.move (source, (basePath + destination), function (error) {
+            fs.remove (source, function (error) {
+            })
         })
-    })
-    request.body.imageUrl = destination
-
+        request.body.imageUrl = destination
+    }
+    else {
+        request.body.imageUrl = '/img/uploads/stitch.png'
+    }
     request.body.status = "pending";
     request.body.type = "trainer";
     var newUser = User (request.body);

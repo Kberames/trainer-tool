@@ -131,21 +131,27 @@ router.get('/:id/pic', function(request, response) {
 });
 
 router.post('/:id/pic', processUploadFile.single ('imageFile'), function(request,response){
-    console.log('file: ', request.file);
-    console.log('body: ', request.body);
-    console.log('path: ', request.file.path);
 
     var userId = request.params.id
-    var fs = require ('fs-extra');
-    var source = request.file.path;
-    var basePath = './public';
-    var destination = '/img/uploads/' + request.file.originalname;
+        if (request.file) {
 
-    fs.move (source, (basePath + destination), function (error) {
-        fs.remove (source, function (error) {
+        console.log('file: ', request.file);
+        console.log('path: ', request.file.path);
+
+        var fs = require ('fs-extra');
+        var source = request.file.path;
+        var basePath = './public';
+        var destination = '/img/uploads/' + request.file.originalname;
+
+        fs.move (source, (basePath + destination), function (error) {
+            fs.remove (source, function (error) {
+            })
         })
-    })
-    request.body.imageUrl = destination
+        request.body.imageUrl = destination;
+    }
+    else {
+        request.body.imageUrl = '/img/uploads/stitch.png'
+    }
     console.log('Image url', request.body.imageUrl);
     User.findByIdAndUpdate(userId, request.body, function(error,resut) {
         console.log('user id', userId);
