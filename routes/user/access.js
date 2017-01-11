@@ -62,28 +62,32 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
         request.body.zipcode;
 
     // Call to get geocode.
-    geocoder.geocode('address')
+    geocoder.geocode(address)
         .then (function(results){
-            let loc = {
-                lat: results[0].latitude,
-                lng: results[0].longitude
-            };
-            console.log('lat: ' + loc.lat);
-            console.log('lng: ' + loc.lng);
+            if (results.length > 0) {
+                console.log('geocode address: ' + address);
+                console.log('geocode results: ' + JSON.stringify(results.length));
+                let loc = {
+                    lat: results[0].latitude,
+                    lng: results[0].longitude
+                };
+                console.log('lat: ' + loc.lat);
+                console.log('lng: ' + loc.lng);
 
-            var newUser = User (request.body);
-            newUser.location = loc;
+                var newUser = User (request.body);
+                newUser.location = loc;
 
-            newUser.save(function (error) {
-                if (error) {
-                    console.error('**** un able to save user');
-                    console.error(error);
-                }
-                else {
-                    console.log('user saved', request.body.username);
-                    response.redirect('/login')
-                }
-            });
+                newUser.save(function (error) {
+                    if (error) {
+                        console.error('**** un able to save user');
+                        console.error(error);
+                    }
+                    else {
+                        console.log('user saved', request.body.username);
+                        response.redirect('/login')
+                    }
+                });
+            }
         })
         .catch (function(error) {
             console.log('geocode error: ' + error);
