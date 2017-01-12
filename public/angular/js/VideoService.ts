@@ -23,6 +23,25 @@ namespace App {
             console.log ('Promise', promise);
             return promise;
         }
+
+        public read (id) {
+            let url = '/video';
+
+            if (id) {
+                url = url + '/' + id;
+            }
+
+            let promise = this.httpService ({
+                url: url,
+                method: 'GET',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: {}
+            });
+
+            return promise;
+        }
     }
 
     app.service ('VideoService', VideoService);

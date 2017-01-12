@@ -7,7 +7,6 @@ namespace App {
         ($stateProvider) => {
 
             $stateProvider
-
                 .state ('workout', {
                     url: '/workout',
                     // template: 'Here we are at the workouts.'
@@ -75,6 +74,13 @@ namespace App {
                     url: '/video',
                     // template: 'Here we are viewing videos',
                     templateUrl: '/angular/templates/partials/video.html',
+                    controller: App.VideoController,
+                    controllerAs: 'videoController'
+                })
+                .state ('video-create', {
+                    url: '/video/create',
+                    // template: 'Here we are creating a video.',
+                    templateUrl: '/angular/templates/partials/video/edit.html',
                     controller: App.VideoController,
                     controllerAs: 'videoController'
                 })

@@ -1,0 +1,13 @@
+<p>Add a New Video:</p>
+
+<form ng-submit="videoController.create()">
+    <div>
+        <label>Name: </label><br>
+        <input ng-model="videoController.video.name">
+    </div>
+    <div>
+        <label>Video Url: </label><br>
+        <input ng-model="videoController.video.url">
+    </div>
+    <button>Add</button>
+</form>
