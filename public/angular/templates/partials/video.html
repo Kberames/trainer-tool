@@ -1,22 +1,26 @@
 <h2>Videos</h2>
 
-<button ng-click="videoController.goToPage('video-create')">Create a New Video</button>
+<button ng-click="videoController.goToPage('video-create')">Create a New Video</button><br>
 
 <button ng-click="videoController.read ()">Your Videos</button>
 
-<div class="workout">
+<div class="video">
     <ul>
         <li ng-repeat="video in videoController.list">
-            <table border="1">
-                <tr>
-                    <th>Name: </th>
-                    <td>{{ video.name }}</td>
-                </tr>
-                <tr>
-                    <th>Video: </th>
-                    <td>{{ video.url }}</td>
-                </tr>
-            </table>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!-- <table border="1"> -->
+                        <!-- <tr> -->
+                            <strong>Name: </strong>
+                            <div>{{ video.name }}</div><br>
+                        <!-- </tr> -->
+                        <!-- <tr> -->
+                            <strong>Video: </strong>
+                            <div>{{ video.url }}</div>
+                        <!-- </tr> -->
+                    <!-- </table> -->
+                </div>
+            </div>
         </li>
     </ul>
 </div>

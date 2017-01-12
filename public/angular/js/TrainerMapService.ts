@@ -11,7 +11,7 @@ namespace App {
         }
 
         public geocodeAddress(address, callback) {
- 
+
             let geocoder = new google.maps.Geocoder();
 
             geocoder.geocode({'address': address}, function(results, status) {
