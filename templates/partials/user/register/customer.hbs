@@ -1,20 +1,23 @@
 <h2>Customer Registration</h2>
 
 
-<form class="ui massive form" method='POST' action="/register" enctype="multipart/form-data">
+<form class="ui massive inverted form" method='POST' action="/register" enctype="multipart/form-data">
+    <div class="ui massive inverted segment">
     <div class="field">
-        <label>LogIn Information</label>
+        <h6>LogIn Information</h6>
         <div class="two fields">
             <div class="field">
+                <label>E-Mail</label>
                 <input type="text" name="email" placeholder="E-mail" required=>
             </div>
             <div class="field">
+                <label>Password</label>
                 <input type="password" name="password" placeholder="Password" required="min 8">
             </div>
         </div>
     </div>
         <div class="field">
-            <h4 class="ui dividing header">Persoal Information</h4>
+            <h6>Persoal Information</h6>
         <div class="fields">
             <div class="ten wide field">
                 <label>First Name</label>
@@ -28,7 +31,7 @@
         </div>
     <div class="two fields">
         <div class="field">
-            <label>State</label>
+            <label>Gender</label>
             <select class="ui fluid dropdown">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -116,10 +119,12 @@
             <input type="text" name="phone" placeholder="Phone Number">
         </div>
     </div>
-    <h4 class="ui dividing header">Upload Profile Picture</h4>
+    <h6>Upload Profile Picture</h6>
+
     <div class="two fields">
         <div class="field">
             <label>Upload Picture</label>
+            <label>Optional</label>
             <input type="file" name="imageFile">
         </div>
     </div>
