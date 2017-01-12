@@ -127,7 +127,7 @@ server.listen ( port, function (error) {
 
 var mongoose = require ('mongoose');
 // connect mongoose
-mongoose.connect ('mongodb://localhost:27017/trainer_database')
+mongoose.connect ('mongodb://bobross:password@ds145828.mlab.com:45828/trainer_database')
 // set the library to user
 
 mongoose.Promise = require('bluebird');

@@ -18,6 +18,7 @@ var App;
         };
         WorkoutService.prototype.read = function (id) {
             var url = '/workout';
+            //If a valid id was passed in, modify the url.
             if (id) {
                 url = url + '/' + id;
             }
@@ -42,7 +43,7 @@ var App;
             });
             return promise;
         };
-        WorkoutService.prototype.delete = function (id, workout) {
+        WorkoutService.prototype["delete"] = function (id, workout) {
             var promise = this.httpService({
                 url: '/workout/' + id + '/delete',
                 method: 'GET',
