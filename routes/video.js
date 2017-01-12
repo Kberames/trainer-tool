@@ -5,10 +5,10 @@ var router = express.Router ();
 var Video = require ('../model/video.js');
 
 //Create
-
-router.get ('/create', function (request, response) {
-    response.render ('video/create');
-});
+// router.get ('/create', function (request, response) {
+    // response.send ('You are on the create page!');
+//     response.render ('video/create');
+// });
 
 router.post ('/', function (request, response) {
     var newVideo = Video (request.body);

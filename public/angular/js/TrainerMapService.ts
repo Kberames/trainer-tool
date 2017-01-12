@@ -11,7 +11,7 @@ namespace App {
         }
 
         public geocodeAddress(address, callback) {
-
+ 
             let geocoder = new google.maps.Geocoder();
 
             geocoder.geocode({'address': address}, function(results, status) {
@@ -30,7 +30,7 @@ namespace App {
                                                 // parameters would be passed in array format
                 }
                 else {
-                    // NEED to set error instead of alert message.
+                    // NEEDs to set error instead of alert message.
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
             });
