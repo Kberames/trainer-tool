@@ -53,7 +53,7 @@ router.get ('/:id', function (request, response) {
 });
 
 //Update
-router.get ('/:id/edit', function (request, resposne) {
+router.get ('/:id/edit', function (request, response) {
     var scheduleId = request.params.id;
 
     Schedule.findById (scheduleId, function (error, result) {

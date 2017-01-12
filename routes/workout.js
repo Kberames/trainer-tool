@@ -113,7 +113,7 @@ router.get ('/:id/delete', function (request, response) {
                 response.redirect ('/workout/')
             }
         }
-    })
+    });
 });
 
 router.delete ('/:id', function (request, response) {
