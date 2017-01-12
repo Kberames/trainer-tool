@@ -47,6 +47,30 @@ router.get("/", function (request,response) {
     })
 })
 
+// Route to return array of trainers
+router.get ("/trainers", function (request, response) {
+    User.find({type: 'trainer'}, function (error, result) {
+        if (error) {
+            console.log('*** error finding trainers');
+        }
+        else{
+            console.log('trainers: ' + result);
+            response.json (result);
+        }
+    })
+})
+
+router.get ('/session', function (request, response) {
+    console.log('INSIDE GET SESSION USER');
+    if (request.session.user){
+        response.json (request.session.user);
+    }
+    else {
+        // response.redirect('/login');
+        response.send ('No user logged in.');
+    }
+});
+
 // NOTE: This is where we will see one user
 router.get("/:id", function (request,response) {
     // response.send('connected')
@@ -166,4 +190,4 @@ router.post('/:id/pic', processUploadFile.single ('imageFile'), function(request
     })
 })
 
- module.exports = router
+module.exports = router
