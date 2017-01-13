@@ -9,6 +9,7 @@ namespace App {
         public video;
         public list;
         public mode;
+        public urlVideo;
 
         constructor (videoService: App.VideoService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
             console.log ('Video Controller was loaded...');
@@ -60,6 +61,7 @@ namespace App {
                     }
                     else {
                         this.list = response;
+                        console.log ('Response: ', response);
                     }
                 })
                 .error ((response) => {
