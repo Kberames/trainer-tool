@@ -77,11 +77,14 @@ server.use(function (request, response, next) {
         response.locals.user = user;
 
         // Check if we have an admin user.
-        if (user && user.type == 'trainer') {
+        if (user && user.type == 'admin') {
+            user.admin = true;
+        }
+        else if (user && user.type == 'trainer') {
             user.trainer = true;
         }
-        else if (user && user.type == 'admin') {
-            user.admin = true;
+        else if (user && user.type == 'client') {
+            user.client = true;
         }
     }
 
@@ -105,7 +108,7 @@ server.engine ('.hbs', handlebars ({
     // NOTE: this sets the defult lays out and directory.
     layoutsDir: 'templates',
     defaultLayout: 'index',
-    extname: '.hbs'
+    extname: '.hbs',
 }));
 
 server.set('views', __dirname + '/templates/partials');

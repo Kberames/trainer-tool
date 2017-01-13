@@ -54,7 +54,7 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
     else {
         request.body.imageUrl = '/img/uploads/stitch.png'
     }
-    request.body.type = "customer";
+    request.body.type = "client";
 
     var address = request.body.address + ', ' +
         request.body.city + ', ' +

@@ -1,4 +1,4 @@
-namespace App { 
+namespace App {
     let app = angular.module ('App');
 
     export class UserService {
