@@ -1,6 +1,6 @@
-<p>Add a New Video:</p>
+<p>{{ videoController.mode }} Video</p>
 
-<form ng-submit="videoController.create()">
+<form ng-submit="videoController.create (videoController.video._id)">
     <div>
         <label>Name: </label><br>
         <input ng-model="videoController.video.name">
@@ -9,5 +9,5 @@
         <label>Video Url: </label><br>
         <input ng-model="videoController.video.url">
     </div>
-    <button>Add</button>
+    <button>{{ videoController.mode }}</button>
 </form>

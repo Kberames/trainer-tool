@@ -42,6 +42,32 @@ namespace App {
 
             return promise;
         }
+
+        public update (id, video) {
+            let promise = this.httpService ({
+                url: '/video/' + id,
+                method: 'PUT',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: video
+            });
+
+            return promise;
+        }
+
+        public delete (id, video) {
+            let promise = this.httpService ({
+                url: '/video/' + id + '/delete',
+                method: 'GET',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: video
+            });
+
+            return promise;
+        }
     }
 
     app.service ('VideoService', VideoService);

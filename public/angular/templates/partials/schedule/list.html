@@ -6,7 +6,10 @@
 <ul class="workout">
     <li ng-repeat="schedule in scheduleController.list">
         <div class="panel panel-default">
-            <div class="panel-body"><strong>Date: </strong><a href="#" ng-click="scheduleController.goToPage('schedule-view', {id:schedule._id})">{{ schedule.date | date: 'yyyy-MM-dd' }}</a></div>
+            <div class="panel-body">
+                <strong>Date: </strong>
+                <a href="#" ng-click="scheduleController.goToPage('schedule-view', {id:schedule._id})">{{ schedule.date | date: 'yyyy-MM-dd' }}</a>
+            </div>
         </div>
     </li>
 </ul>
