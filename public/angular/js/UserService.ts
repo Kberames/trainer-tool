@@ -41,6 +41,6 @@ namespace App {
         } //public getTrainers
 
     } // export class UserService
-    
+
     app.service ('UserService', UserService);
 } // namespace App
