@@ -87,6 +87,9 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
                         response.redirect('/login')
                     }
                 });
+            } //if (results.length > 0)
+            else {
+                error = 'Unable to geocode address.'
             }
         })
         .catch (function(error) {
@@ -128,14 +131,11 @@ router.post ('/register/trainer', processUploadFile.single ('imageFile'), functi
         request.body.state2 + ', ' +
         request.body.zipcode2;
 
-        debugger;
-
     // Call to get geocodes for multilple addresses.
     geocoder.batchGeocode([address, address2])
         .then (function(results){
             // console.log('batchGeocode results: ' + JSON.stringify(results[0]));
             // console.log('results[0].value[0].latitude: ' + results[0].value[0].latitude);
-            debugger;
             let loc = {
                 lat: results[0].value[0].latitude,
                 lng: results[0].value[0].longitude

@@ -49,6 +49,7 @@ namespace App {
                     //     infowindow.open(map, marker);
                     // });
 
+                    console.log('BEFORE getTrainers');
 
                     this.userService.getTrainers()
                         .success ((response) => {
@@ -78,7 +79,7 @@ namespace App {
                                     '<p><b>Certifications</b>'+' include '+
                                     trainers[i].certification + '<br><br>' +
                                     // replace this href with a route to add the trainer to the user
-                                    '<a href="http://localhost:3000/user/register">Select this trainer</a>' +
+                                    '<a href="http://localhost:3000/user/select-trainer/' + trainers[i]._id + '">Select this trainer</a>' +
                                     '</div>'+
                                     '</div>';
 
