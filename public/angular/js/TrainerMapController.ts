@@ -7,6 +7,8 @@ namespace App {
         private trainerMapService;
         private userService;
 
+        public trainerList;
+
         constructor (
             $state: angular.ui.IStateProvider,
             $stateParams: angular.ui.IStateParamsService,
@@ -55,6 +57,7 @@ namespace App {
                         .success ((response) => {
                             console.log ('Got trainers: ', response);
                             let trainers = response;
+                            this.trainerList = trainers;
                             let markers = [];
 
                             for (let i = 0; i < trainers.length; i++) {
@@ -79,7 +82,7 @@ namespace App {
                                     '<p><b>Certifications</b>'+' include '+
                                     trainers[i].certification + '<br><br>' +
                                     // replace this href with a route to add the trainer to the user
-                                    '<a href="http://localhost:3000/user/select-trainer/' + trainers[i]._id + '">Select this trainer</a>' +
+                                    '<a href="/user/select-trainer/' + trainers[i]._id + '">Select this trainer</a>' +
                                     '</div>'+
                                     '</div>';
 

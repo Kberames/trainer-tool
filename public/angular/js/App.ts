@@ -42,6 +42,9 @@ namespace App {
                     controller: App.TrainerMapController,
                     controllerAs: 'trainerMapController'
                 })
+                .state ('select-trainer', {
+                    url: '/user/select-trainer',
+                })
                 .state ('schedule', {
                     url: '/schedule',
                     // template: 'Here we are at the schedule.'
