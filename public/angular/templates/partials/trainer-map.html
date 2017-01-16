@@ -3,24 +3,28 @@
 <div id="map"></div><br>
 
 <!-- Render list of trainers -->
-<div class="panel panel-default">
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Street</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Certifications</th>
-        </tr>
-        <tr ng-repeat="trainer in trainerMapController.trainerList">
-            <td><a href="/user/select-trainer/{{ trainer._id }}">{{ trainer.firstname }} {{ trainer.lastname }}</a></td>
-            <td>{{ trainer.gender }}</td>
-            <td>{{ trainer.address2 }}</td>
-            <td>{{ trainer.city2 }}</td>
-            <td>{{ trainer.state2 }}</td>
-            <td>{{ trainer.certification }}</td>
-        </tr>
+<div class="table-responsive">
+    <table class="table table-bordered" align="center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Certifications</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="trainer in trainerMapController.trainerList">
+                <td><a href="/user/select-trainer/{{ trainer._id }}">{{ trainer.firstname }} {{ trainer.lastname }}</a></td>
+                <td>{{ trainer.gender }}</td>
+                <td>{{ trainer.address2 }}</td>
+                <td>{{ trainer.city2 }}</td>
+                <td>{{ trainer.state2 }}</td>
+                <td>{{ trainer.certification }}</td>
+            </tr>
+        </tbody>
     </table>
 
 </div>
