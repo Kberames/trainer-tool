@@ -1,0 +1,25 @@
+<h2>Your Clients</h2>
+
+<p>Welcome, {{data.user.firstname}}!</p>
+
+<p>Below is a list of your current clients. By clicking on their name, you can create a workout schedule for that particular client by choosing an existing workout or creating a new workout. Lets get fit!</p>
+
+
+{{#each data.client}}
+<div class="panel panel-default"
+        <div class="panel-body">
+            <div>
+                <strong>Name: </strong>{{ firstName }} {{ lastName }}</a>
+            </div>
+            <div>
+                <strong>Gender: </strong>{{ gender }}
+            </div>
+            <div>
+                <strong>City: </strong>{{ city }}
+            </div>
+            <div>
+                {{ imageUrl }}
+            </div>
+        </div>
+    </div>
+{{/each}}
