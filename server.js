@@ -81,7 +81,7 @@ server.use(function (request, response, next) {
             user.admin = true;
         }
         else if (user && user.type == 'train') {
-            user.trainer = true;
+            user.train = true;
         }
         else if (user && user.type == 'client') {
             user.client = true;

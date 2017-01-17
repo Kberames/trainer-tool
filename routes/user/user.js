@@ -1,5 +1,21 @@
 var express = require ('express');
 var router = express.Router ();
+
+var GoogleApiKey = require ('../../Config.js');
+
+// Node wrapper for google maps geocoder.
+var nodeGeocoder = require ('node-geocoder');
+var options = {
+  provider: 'google',
+
+  // Optional depending on the providers
+  httpAdapter: 'https', // Default
+  apiKey: GoogleApiKey,
+  formatter: null
+};
+var geocoder = nodeGeocoder(options);
+
+
 var User = require ('../../model/user.js');
 // NOTE: adding multer to edic profile picture
 var multer = require ('multer');
@@ -16,17 +32,48 @@ router.get ('/create', function (request, response) {
 })
 
 router.post('/', function(request,response) {
-    var newUser = User (request.body);
-    newUser.save(function (error) {
-        if (error) {
-            console.error('**** not able to save user');
-            console.error(error);
-        }
-        else {
-            console.log('user saved', request.body.username);
-            response.redirect('/user')
-        }
-    });
+    request.body.imageUrl = '/img/uploads/stitch.png'
+    request.body.type = "client"
+
+    var address = request.body.address + ', ' +
+        request.body.city + ', ' +
+        request.body.state + ', ' +
+        request.body.zipcode;
+
+    // Call to get geocode.
+    geocoder.geocode(address)
+        .then (function(results){
+            if (results.length > 0) {
+                console.log('geocode address: ' + address);
+                console.log('geocode results: ' + JSON.stringify(results.length));
+                let loc = {
+                    lat: results[0].latitude,
+                    lng: results[0].longitude
+                };
+                console.log('lat: ' + loc.lat);
+                console.log('lng: ' + loc.lng);
+
+                var newUser = User (request.body);
+                newUser.location = loc;
+
+                newUser.save(function (error) {
+                    if (error) {
+                        console.error('**** un able to save user');
+                        console.error(error);
+                    }
+                    else {
+                        console.log('user saved', request.body.username);
+                        response.redirect('/user')
+                    }
+                });
+            } //if (results.length > 0)
+            else {
+                error = 'Unable to geocode address.'
+            }
+        })
+        .catch (function(error) {
+            console.log('geocode error: ' + error);
+        });
 })
 
 // NOTE: this is to view the users
@@ -138,17 +185,47 @@ router.get('/:id/edit', function(request, response) {
 // NOTE: This is the the route to Put the edit in
 router.put('/:id', function (request,response) {
     // response.send('save here')
-    var userId = request.params.id
-    User.findByIdAndUpdate(userId, request.body, function(error,resut) {
-        if (error){
-            console.log('cant update user');
-            response.send('cant update user!!!!!!!!!!!')
+
+    var address = request.body.address + ', ' +
+        request.body.city + ', ' +
+        request.body.state + ', ' +
+        request.body.zipcode;
+    geocoder.geocode(address)
+    .then (function(results) {
+        if (results.length > 0) {
+            console.log('geocode address: ' + address);
+            console.log('geocode results: ' + JSON.stringify(results.length));
+            let loc = {
+                lat: results[0].latitude,
+                lng: results[0].longitude
+            };
+            console.log('lat: ' + loc.lat);
+            console.log('lng: ' + loc.lng);
+
+            var userId = request.params.id
+
+            User.location = loc;
+            request.body.location = loc;
+            User.findByIdAndUpdate(userId, request.body, function(error,resut) {
+                if (error){
+                    console.log('cant update user');
+                    response.send('cant update user!!!!!!!!!!!')
+                }
+                else{
+                    response.redirect('/user/' + userId)
+                    console.log('new user location', User.location);
+                }
+            })
         }
-        else{
-            response.redirect('/user/' + userId)
+        else {
+            error = 'Unable to geocode address.'
         }
     })
-})
+    .catch (function(error) {
+        console.log('geocode error: ' + error);
+    });
+});
+
 router.get('/:id/delete', function(request,response){
     var userId = request.params.id
     User.findByIdAndRemove(userId, function(error,result){
