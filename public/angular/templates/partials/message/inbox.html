@@ -1,0 +1,11 @@
+<h2>Your Messages</h2>
+
+<button ng-click="messageController.goToPage ('message-create')">Create</button><br>
+
+<ul class="inbox">
+    <li ng-repeat="message in messageController.list">
+        <div class="panel panel-default">
+            <div class="panel-body"><strong>Date: </strong><a href="#" ng-click="messageController.goToPage('message-view', {id: message._id})">{{ message.date | date: 'yyyy-MM-dd' }} {{message.content}} ...</a></div>
+        </div>
+    </li>
+</ul>

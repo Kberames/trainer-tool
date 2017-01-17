@@ -1,0 +1,10 @@
+<h2>Create Message</h2>
+
+<form ng-submit="messageController.create ()">
+    <div>
+        <label>Message: </label>
+        <input type="textarea" ng-model="messageController.message.content">{{ messageController.message.content}}
+    </div>
+
+    <button>Send Message</button>
+</form>
