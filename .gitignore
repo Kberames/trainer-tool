@@ -1,5 +1,6 @@
 node_modules/
 public/lib
+public/img/uploads
 
 .DS_Store
 .orig

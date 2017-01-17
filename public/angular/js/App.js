@@ -35,6 +35,9 @@ var App;
                 controller: App.TrainerMapController,
                 controllerAs: 'trainerMapController'
             })
+                .state('select-trainer', {
+                url: '/user/select-trainer',
+            })
                 .state('schedule', {
                 url: '/schedule',
                 templateUrl: '/angular/templates/partials/schedule/list.html',

@@ -30,7 +30,8 @@ var userSchema = new Schema ({
     certification: String,
     imageUrl : String,
     videoName: String,
-    videoUrl: String
+    videoUrl: String,
+    trainer: { type: Schema.Types.ObjectId, ref: 'User'}
 })
 
 var User = mongoose.model ('User', userSchema);
