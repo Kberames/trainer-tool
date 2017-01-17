@@ -48,8 +48,11 @@
                 <a href="/">HOME</a>
                 <a href="/about">ABOUT</a>
                 <!-- <a href="/contact">CONTACT</a> -->
-                <a href="/trainer/#/trainer-map">TRAINER-MAP</a>
-                {{#if user.trainer}}
+                <!-- <a href="/trainer/#/trainer-map">TRAINER-MAP</a> -->
+                {{#if user.client}}
+                <a href="/trainer/#/schedule">SCHEDULE</a>
+                {{/if}}
+                {{#if user.train}}
                 <a href="/trainer/#/workout">WORKOUTS</a>
                 <!-- NOTE: need to add html template so trainers can view only their clients -->
                 <a href="/user/client">CLIENTS</a>

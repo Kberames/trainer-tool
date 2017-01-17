@@ -80,7 +80,7 @@ server.use(function (request, response, next) {
         if (user && user.type == 'admin') {
             user.admin = true;
         }
-        else if (user && user.type == 'trainer') {
+        else if (user && user.type == 'train') {
             user.trainer = true;
         }
         else if (user && user.type == 'client') {

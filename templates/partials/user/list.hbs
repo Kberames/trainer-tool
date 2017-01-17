@@ -1,6 +1,9 @@
 <body class="users">
 <h2>Users</h2>
+
+{{#if  user.admin}}
 <a class="btn btn-primary"href="/user/create">Create User</a>
+{{/if}}
 
 
 {{#each data.usersList}}
