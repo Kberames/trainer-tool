@@ -87,18 +87,34 @@ router.get ("/trainers", function (request, response) {
     });
 });
 
-// router.get ('/client', function (request, response) {
-//     if (request.session.user) {
-//         User.find ({ trainer: request.session.user._id }, function (error, result) {
-//             response.render ('user/client', {
-//                 data: {
-//                     user: request.session.user,
-//                     client: result
-//                 }
-//             });
-//         });
-//     }
-// });
+router.get ('/client', function (request, response) {
+    if (request.session.user) {
+        User.findOne ({
+            firstname: request.session.user.firstname
+        })
+        .populate('client')
+        .exec (function (error, result) {
+            if (error) {
+                var errorMessage = 'Unable to load user data from firstname';
+                console.error ('***ERROR: ', errorMessage);
+                response.send (errorMessage);
+            }
+            else {
+                if (request.sendJson) {
+                    response.json (result);
+                }
+                else {
+                    response.render ('user/client', {
+                        data: {
+                            user: request.session.user,
+                            client: result
+                        }
+                    });
+                }
+            }
+        });
+    }
+});
 
 router.get ('/session', function (request, response) {
     console.log('INSIDE GET SESSION USER');
