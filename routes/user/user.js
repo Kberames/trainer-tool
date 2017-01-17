@@ -84,8 +84,21 @@ router.get ("/trainers", function (request, response) {
             console.log('trainers: ' + result);
             response.json (result);
         }
-    })
-})
+    });
+});
+
+// router.get ('/client', function (request, response) {
+//     if (request.session.user) {
+//         User.find ({ trainer: request.session.user._id }, function (error, result) {
+//             response.render ('user/client', {
+//                 data: {
+//                     user: request.session.user,
+//                     client: result
+//                 }
+//             });
+//         });
+//     }
+// });
 
 router.get ('/session', function (request, response) {
     console.log('INSIDE GET SESSION USER');
