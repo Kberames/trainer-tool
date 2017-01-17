@@ -1,12 +1,20 @@
 <h2>Your Clients</h2>
 
-<p>Welcome, {{ data.user.firstname }}!</p>
+<!-- I DONT KNOW WHY BELOW ISN'T WORKING! -->
+<!-- <p>Welcome, {{data.user.firstname}}!</p> -->
 
-<p>Below is a list of your current clients. By clicking on their name, you can create a workout schedule for that particular client by choosing an existing workout or creating a new workout. Lets get fit!</p>
+<div class="client">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3>Here is a list of your clients.</h3><p> By clicking on their name, you can create a workout schedule for that particular client by choosing an existing workout or creating a new workout. Lets get fit!</p>
+        </div>
+    </div>
+</div>
 
 
-{{#each data.client}}
-<div class="panel panel-default"
+{{#each data.user}}
+<div class="client1">
+    <div class="panel panel-default">
         <div class="panel-body">
             <div>
                 <strong>Name: </strong>{{ firstname }} {{ lastname }}</a>
@@ -22,4 +30,5 @@
             </div>
         </div>
     </div>
+</div>
 {{/each}}
