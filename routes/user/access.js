@@ -50,6 +50,7 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
             fs.remove (source, function (error) {
             })
         })
+        request.body.imageUrl = destination
     }
     else {
         request.body.imageUrl = '/img/uploads/stitch.png'
