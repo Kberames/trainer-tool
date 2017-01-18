@@ -80,7 +80,7 @@ server.use(function (request, response, next) {
         if (user && user.type == 'admin') {
             user.admin = true;
         }
-        else if (user && user.type == 'train') {
+        else if (user && user.type == 'trainer') {
             user.train = true;
         }
         else if (user && user.type == 'client') {
@@ -130,8 +130,8 @@ server.listen ( port, function (error) {
 
 var mongoose = require ('mongoose');
 // connect mongoose
-mongoose.connect ('mongodb://bobross:password@ds145828.mlab.com:45828/trainer_database');
 // mongoose.connect ('mongodb://bobross:password@ds145828.mlab.com:45828/trainer_database');
+mongoose.connect ('mongodb://bobross:password@ds145828.mlab.com:45828/trainer_database');
 // set the library to user
 
 mongoose.Promise = require('bluebird');
@@ -169,6 +169,6 @@ server.use ('/schedule', scheduleRoutes);
 
 var videoRoutes = require ('./routes/video.js');
 server.use ('/video', videoRoutes);
-  
+
 var messageRoutes = require ('./routes/message.js');
 server.use ('/message', messageRoutes);

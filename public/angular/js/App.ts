@@ -100,9 +100,6 @@ namespace App {
                     controller: App.VideoController,
                     controllerAs: 'videoController'
                 })
-        }
-    ])
-}
                 .state ('message', {
                     url: '/message',
                     templateUrl: '/angular/templates/partials/message/inbox.html',
