@@ -105,9 +105,6 @@ namespace App {
                     controller: App.MessageController,
                     controllerAs: 'messageController'
                 })
-        } // ($stateProvider) => {
-    ]) // app.config ([
-} // namespace App {
                 .state ('video-view', {
                     url: '/video/:id',
                     templateUrl: '/angular/templates/partials/video/view.html',
