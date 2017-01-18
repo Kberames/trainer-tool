@@ -1,8 +1,14 @@
 <h2>Trainer Tool</h2>
 
 {{#if data.user}}
-    <h3>Welcome, {{data.user.firstname}}</h3>
-<br>
-<a class="btn btn-primary btn-block btn-lg" href="/trainer/#/trainer-map">TRAINERS</a>
+<div class="home">
+    <div class="panel panel-default">
+        <div class="panel-body">
+                <h3>Welcome, {{data.user.firstname}}</h3>
 
+            <p>Congrats on your journey to being fit! By choosing Trainer Tool, being fit will be easier and more organized than ever before. By clicking the button below, you will be able to search your area for trainers, contact the one you choose and start getting fit!</p>
+            <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
+        </div>
+    </div>
+</div>
 {{/if}}

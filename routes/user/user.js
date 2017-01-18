@@ -28,8 +28,8 @@ router.get ('/create', function (request, response) {
             title:'Create new User',
             method: 'POST'
         }
-    })
-})
+    });
+});
 
 router.post('/', function(request,response) {
     request.body.imageUrl = '/img/uploads/stitch.png'
@@ -89,10 +89,23 @@ router.get("/", function (request,response) {
                     usersList: result,
                     user: request.session.user
                 }
-            })
+            });
         }
-    })
-})
+    });
+});
+
+// Route to return array of trainers
+router.get ("/trainers", function (request, response) {
+    User.find({type: 'train'}, function (error, result) {
+        if (error) {
+            console.log('*** error finding trainers');
+        }
+        else{
+            console.log('trainers: ' + result);
+            response.json (result);
+        }
+    });
+});
 
 // Route to select a trainer
 router.get ("/select-trainer/:id", function (request, response) {
@@ -112,27 +125,15 @@ router.get ("/select-trainer/:id", function (request, response) {
             else{
                 response.redirect('/');
             }
-        })
+        });
 
     }
     else {
         // response.redirect('/login');
         response.send ('No user logged in.');
     }
-})
+});
 
-// Route to return array of trainers
-router.get ("/trainers", function (request, response) {
-    User.find({type: 'trainer'}, function (error, result) {
-        if (error) {
-            console.log('*** error finding trainers');
-        }
-        else{
-            console.log('trainers: ' + result);
-            response.json (result);
-        }
-    })
-})
 
 // Route to return array of clients linked to a trainer
 router.get ("/clients", function (request, response) {
@@ -159,6 +160,32 @@ router.get ('/session', function (request, response) {
         response.send ('No user logged in.');
     }
 });
+
+router.get ('/client', function (request, response) {
+    console.log ('****user: ', request.session.user._id);
+
+    var currentTrainer = request.session.user;
+    User.find ({type: 'client', trainer: request.session.user._id}, function (error, result) {
+        if (error) {
+            var errorMessage = 'Unable to load user data';
+            console.error ('***ERROR: ', errorMessage);
+            response.send (errorMessage);
+        }
+        else {
+            if (request.sendJson) {
+                response.json (result);
+            }
+            else {
+                response.render ('user/client', {
+                    data: {
+                        user: result,
+                    }
+                });
+            }
+        }
+    });
+});
+
 
 // NOTE: This is where we will see one user
 router.get("/:id", function (request,response) {
