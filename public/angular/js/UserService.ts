@@ -40,6 +40,18 @@ namespace App {
             return promise;
         } //public getTrainers
 
+        public getClients () {
+            let promise = this.httpService ({
+                url: '/user/clients',
+                method: 'GET',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: {}
+            })
+            return promise;
+        } //public getTrainers
+
     } // export class UserService
 
     app.service ('UserService', UserService);

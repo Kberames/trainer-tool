@@ -85,6 +85,24 @@ var App;
                 templateUrl: '/angular/templates/partials/video/edit.html',
                 controller: App.VideoController,
                 controllerAs: 'videoController'
+            })
+                .state('message', {
+                url: '/message',
+                templateUrl: '/angular/templates/partials/message/inbox.html',
+                controller: App.MessageController,
+                controllerAs: 'messageController'
+            })
+                .state('message-create', {
+                url: '/message',
+                templateUrl: '/angular/templates/partials/message/create.html',
+                controller: App.MessageController,
+                controllerAs: 'messageController'
+            })
+                .state('message-view', {
+                url: '/message/:id',
+                templateUrl: '/angular/templates/partials/message/view.html',
+                controller: App.MessageController,
+                controllerAs: 'messageController'
             });
         }
     ]);
