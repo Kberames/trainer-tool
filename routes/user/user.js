@@ -96,7 +96,7 @@ router.get("/", function (request,response) {
 
 // Route to return array of trainers
 router.get ("/trainers", function (request, response) {
-    User.find({type: 'train'}, function (error, result) {
+    User.find({type: 'trainer'}, function (error, result) {
         if (error) {
             console.log('*** error finding trainers');
         }
@@ -139,7 +139,7 @@ router.get ("/select-trainer/:id", function (request, response) {
 router.get ("/clients", function (request, response) {
     var trainer = request.session.user;
 
-    User.find({type: 'customer', trainer: trainer._id}, function (error, result) {
+    User.find({type: 'client', trainer: trainer._id}, function (error, result) {
         if (error) {
             console.log('*** error finding clients');
         }
