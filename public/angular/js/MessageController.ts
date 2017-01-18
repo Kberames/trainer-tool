@@ -10,6 +10,8 @@ namespace App {
         public message;
         public list;
         public user;
+        public trainer; // boolean
+        public clientList; // list of users who are linked to this trainer
 
         constructor (messageService: App.MessageService, userService: App.UserService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
             console.log ('MessageController was loaded...');
@@ -32,9 +34,23 @@ namespace App {
                     console.log ('Got user: ', response);
                     this.user = response;
                     console.log('session user: ' + JSON.stringify(this.user));
+                    if (this.user.type == 'trainer') {
+                        this.trainer = true;
+                        this.userService.getClients()
+                            .success((response) => {
+                                // console.log ('CLIENT LIST: ' + response);
+                                this.clientList = response;
+                            })
+                            .error((response) => {
+                                console.error ('Unable to get client list: ' + response);
+                            })
+                    }
+                    else {
+                        this.trainer = false;
+                    }
                 })
                 .error ((response) => {
-                    console.error ('Unable to get user session info: ', response);
+                    console.error ('Unable to get user session info: ' + response);
                 })
 
             this.read (this.stateParamsService.id);
@@ -48,7 +64,13 @@ namespace App {
             console.log ('Creating a new message!');
             console.log ('Message has been saved.', this.message);
 
-            this.message.to = this.user.trainer;
+            if (this.trainer) {
+                console.log ('TRAINER MESSAGE TO: ' + this.message.to);
+            }
+            else {
+                this.message.to = this.user.trainer;
+            }
+
             this.message.from = this.user._id;
 
             this.messageService.create (this.message)

@@ -87,6 +87,21 @@ router.get ("/trainers", function (request, response) {
     })
 })
 
+// Route to return array of clients linked to a trainer
+router.get ("/clients", function (request, response) {
+    var trainer = request.session.user;
+
+    User.find({type: 'customer', trainer: trainer._id}, function (error, result) {
+        if (error) {
+            console.log('*** error finding clients');
+        }
+        else{
+            console.log('*** trainer clients: ' + result);
+            response.json (result);
+        }
+    })
+})
+
 router.get ('/session', function (request, response) {
     console.log('INSIDE GET SESSION USER');
     if (request.session.user){

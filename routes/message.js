@@ -10,7 +10,7 @@ var moment = require ('moment');
 router.post ('/', function (request, response) {
     var newMessage = Message (request.body);
 
-    moment().format("MMM Do YY");
+    moment().format("MMM DD YY");
     newMessage.save (function (error) {
         if (error) {
             var errorMessage = 'Unable to save the message.';
@@ -91,27 +91,5 @@ router.get ('/:id/delete', function (request, response) {
         }
     }) // Message.findByIdAndRemove
 }); // Delete
-
-// router.delete ('/:id', function (request, response) {
-//     var messageId = request.params.id;
-//
-//     Message.findByIdAndRemove (messageId, function (error, result) {
-//         if (error) {
-//             var errorMessage = 'Unable to delete message.' + messageId;
-//                 console.error ('***ERROR: ' + errorMessage);
-//                 response.send (errorMessage);
-//         }
-//         else {
-//             if (request.sendJson) {
-//                 response.json ({
-//                     message: 'Message was deleted.'
-//                 });
-//             }
-//             else {
-//                 response.redirect ('/message/');
-//             }
-//         }
-//     });
-// });
 
 module.exports = router;
