@@ -1,0 +1,14 @@
+<!-- There needs to be an id connection here for the name of client, to create a schedule and send a message -->
+
+<h2>Connect with {{ messageController.client.firstname }}</h2>
+
+<div class="connect">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p>Here you will be able to schedule workouts and message your clients. Just click on one of the buttons below to get started.</p>
+
+            <button ng-click="messageController.goToPage ('schedule-create')">Create Schedule</button>
+            <button ng-click="messageController.goToPage ('message-create')">Send Message</button>
+        </div>
+    </div>
+</div>

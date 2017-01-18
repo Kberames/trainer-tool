@@ -6,7 +6,8 @@
 <div class="workout">
     <div class="panel panel-default panel-horizontal">
         <div class="panel-body">
-            <strong>Date: </strong>{{ scheduleController.schedule.date | date: 'yyyy-MM-dd' }}
+            <strong>Date: </strong>{{ scheduleController.schedule.date | date: 'yyyy-MM-dd' }}<br>
+            <strong>Workout: </strong> {{ scheduleController.workoutList.name }}
         </div>
     </div>
 </div>

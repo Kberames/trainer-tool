@@ -8,9 +8,9 @@
     <div>
         <label>Choose Workout:</label>
         <!-- Drop down of workouts already created-->
-        <select>
-            <option>NAme</option>
-            <option ng-repeat="workout in workoutController.list">{{ workout.name }}</option>
+        <select ng-model="scheduleController.workoutId">
+            <option>Name</option>
+            <option ng-repeat="workout in scheduleController.workoutList" value="{{workout._id}}">{{ workout.name }}</option>
         </select>
     </div>
     <div>

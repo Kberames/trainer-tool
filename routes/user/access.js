@@ -120,7 +120,7 @@ router.post ('/register/trainer', processUploadFile.single ('imageFile'), functi
         request.body.imageUrl = '/img/uploads/stitch.png'
     }
     request.body.status = "pending";
-    request.body.type = "train";
+    request.body.type = "trainer";
 
     var address = request.body.address + ', ' +
         request.body.city + ', ' +

@@ -106,6 +106,12 @@ namespace App {
                     controller: App.MessageController,
                     controllerAs: 'messageController'
                 })
+                .state ('message-connect', {
+                    url: '/message/connect',
+                    templateUrl: '/angular/templates/partials/message/connect.html',
+                    controller: App.MessageController,
+                    controllerAs: 'messageController'
+                })
                 .state ('message-create', {
                     url: '/message',
                     templateUrl: '/angular/templates/partials/message/create.html',
