@@ -50,11 +50,12 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
             fs.remove (source, function (error) {
             })
         })
+        request.body.imageUrl = destination
     }
     else {
         request.body.imageUrl = '/img/uploads/stitch.png'
     }
-    request.body.type = "customer";
+    request.body.type = "client";
 
     var address = request.body.address + ', ' +
         request.body.city + ', ' +
@@ -119,7 +120,7 @@ router.post ('/register/trainer', processUploadFile.single ('imageFile'), functi
         request.body.imageUrl = '/img/uploads/stitch.png'
     }
     request.body.status = "pending";
-    request.body.type = "trainer";
+    request.body.type = "train";
 
     var address = request.body.address + ', ' +
         request.body.city + ', ' +

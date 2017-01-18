@@ -1,7 +1,9 @@
 Project Description
     This application will help clients find personal trainers in their area.  Once a trainer and client are connected, personal trainers will be able to create workout plans and assign them to their clients.  The app will use Google Maps API to locate trainers on a map near a client's location.
 
-
+User = client
+user.trainer = trainer
+user.admin = admin
 
 User Types
     SuperUser:

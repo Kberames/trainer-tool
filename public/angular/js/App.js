@@ -74,6 +74,18 @@ var App;
                 controller: App.VideoController,
                 controllerAs: 'videoController'
             })
+                .state('video-view', {
+                url: '/video/:id',
+                templateUrl: '/angular/templates/partials/video/view.html',
+                controller: App.VideoController,
+                controllerAs: 'videoController'
+            })
+                .state('video-edit', {
+                url: '/video/:id',
+                templateUrl: '/angular/templates/partials/video/edit.html',
+                controller: App.VideoController,
+                controllerAs: 'videoController'
+            })
                 .state('message', {
                 url: '/message',
                 templateUrl: '/angular/templates/partials/message/inbox.html',

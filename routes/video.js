@@ -42,16 +42,7 @@ router.get ('/', function (request, response) {
             console.log ('***ERRROR: ' + errorMessage);
         }
         else {
-            if (request.sendJson == true) {
-                response.json (result);
-            }
-            else {
-                response.render ('/', {
-                    data: {
-                        video: result
-                    }
-                });
-            }
+            response.json (result);
         }
     });
 });
@@ -75,6 +66,93 @@ router.get ('/:id', function (request, response) {
                         video: result
                     }
                 });
+            }
+        }
+    });
+});
+
+//Update
+router.get ('/:id/edit', function (request, response) {
+    var videoId = request.params.id;
+
+    Video.findById (videoId, function (error, result) {
+        if (error) {
+            var errorMessage = 'Unable to find video by Id: ' + videoId;
+            console.log ('***ERROR: ' + errorMessage);
+            response.send (errorMessage);
+        }
+        else {
+            response.render ('video/edit', {
+                data: {
+                    video: result,
+                    title: 'Edit',
+                    method: 'PUT'
+                }
+            });
+        }
+    });
+});
+
+router.put ('/:id', function (request, response) {
+    var videoId = request.params.id;
+
+    Video.findByIdAndUpdate (videoId, request.body, function (error, result) {
+        if (error) {
+            var errorMessage = 'Unable to update video: ' + videoId;
+            console.log ('**ERROR: ' + errorMessage);
+            response.send (errorMessage);
+        }
+        else {
+            if (request.sendJson == true) {
+                response.json (result);
+            }
+            else {
+                response.redirect ('/video/view')
+            }
+        }
+    });
+});
+
+//Delete
+router.get ('/:id/delete', function (request, response) {
+    var videoId = request.params.id;
+
+    Video.findByIdAndRemove (videoId, function (error, result) {
+        if (error) {
+            var errorMessage = 'Unable to delete video' + videoId;
+            console.error ('***ERROR: ' + errorMessage);
+            response.send (errorMessage);
+        }
+        else {
+            if (request.sendJson) {
+                response.json ({
+                    message: 'Video was deleted'
+                })
+            }
+            else {
+                response.redirect ('/video/')
+            }
+        }
+    });
+});
+
+router.delete ('/:id', function (request, response) {
+    var videoId = request.parmas.id;
+
+    Video.findByIdAndRemove (videoId, function (error, result) {
+        if (error) {
+            var errorMessage = 'Unable to delete video' + videoId;
+            console.error ('***ERROR: ' + errorMessage);
+            resposne.send (errorMessage);
+        }
+        else {
+            if (request.sendJson) {
+                response.json ({
+                    message: 'Video was deleted'
+                });
+            }
+            else {
+                response.redirect ('/video/');
             }
         }
     });

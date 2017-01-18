@@ -7,8 +7,6 @@ var App;
             this.workoutService = workoutService;
             this.stateService = $state;
             this.stateParamsService = $stateParams;
-            //This is pulling in the information so you can read it
-            //by id.
             if (this.stateParamsService.id) {
                 this.read(this.stateParamsService.id);
             }
@@ -68,16 +66,16 @@ var App;
             console.log('Here is the data...', route, data);
             this.stateService.go(route, data);
         };
-        WorkoutController.prototype["delete"] = function (id) {
+        WorkoutController.prototype.delete = function (id) {
             var _this = this;
             console.log('Deleted! ', id);
-            this.workoutService["delete"](id)
+            this.workoutService.delete(id)
                 .success(function (response) {
                 console.log('Workout deleted successfully', response);
                 _this.stateService.go('workout');
             })
                 .error(function (response) {
-                console.error('ERROR deleting lesson', response);
+                console.error('ERROR deleting workout', response);
             });
         };
         return WorkoutController;

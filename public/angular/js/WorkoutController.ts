@@ -36,6 +36,7 @@ namespace App {
         public create (id) {
             if (id) {
                 console.log ('Creating a new workout');
+                //You need this for updating!!!!
                 this.update (id);
             }
             else {
@@ -92,7 +93,7 @@ namespace App {
                     this.stateService.go ('workout');
                 })
                 .error ((response) => {
-                    console.error ('ERROR deleting lesson', response);
+                    console.error ('ERROR deleting workout', response);
                 })
         }
     }
