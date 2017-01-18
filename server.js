@@ -151,21 +151,24 @@ mongoose.Promise = require('bluebird');
 // })
 var basicRoutes = require ('./routes/basic.js');
 server.use ('/', basicRoutes);
- // NOTE: -------------user routes----------------------------------------------
+// NOTE: -------------user routes----------------------------------------------
 
- var userRoutes = require ('./routes/user/user.js');
- server.use('/user', userRoutes);
+var userRoutes = require ('./routes/user/user.js');
+server.use('/user', userRoutes);
 
- var accessRoutes = require ('./routes/user/access.js');
- server.use('/', accessRoutes);
+var accessRoutes = require ('./routes/user/access.js');
+server.use('/', accessRoutes);
 
- // NOTE: ----------------------------------------------------------------------
+// NOTE: ----------------------------------------------------------------------
 
- var workoutRoutes = require ('./routes/workout.js');
- server.use ('/workout', workoutRoutes);
+var workoutRoutes = require ('./routes/workout.js');
+server.use ('/workout', workoutRoutes);
 
- var scheduleRoutes = require ('./routes/schedule.js');
- server.use ('/schedule', scheduleRoutes);
+var scheduleRoutes = require ('./routes/schedule.js');
+server.use ('/schedule', scheduleRoutes);
 
- var videoRoutes = require ('./routes/video.js');
- server.use ('/video', videoRoutes);
+var videoRoutes = require ('./routes/video.js');
+server.use ('/video', videoRoutes);
+  
+var messageRoutes = require ('./routes/message.js');
+server.use ('/message', messageRoutes);
