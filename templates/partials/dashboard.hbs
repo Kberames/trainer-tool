@@ -7,7 +7,7 @@
 <div class="info">
     <a href="/user/{{data.user._id}}/pic">Change Profile Picture</a>
     <div>
-        <a href="/user/{{ data.user._id }}/edit">Edit profilepicture</a>
+        <a href="/user/{{ data.user._id }}/edit">Edit Profile</a>
     </div>
     <div>
         <strong>Name </strong>{{data.user.firstname}} {{data.user.lastname}}
@@ -33,8 +33,6 @@
     <div>
         {{data.user.phone}}
     </div>
-    <strong>Status </strong>{{data.user.status}}
-    <strong>Type </strong>{{data.user.type}}
     {{#if user.train}}
     <div>
         <strong> Gym Address </strong>{{data.user.address2}}
@@ -78,11 +76,19 @@
     </div>
     {{/if}}
 </div>
-<a class="btn btn-primary" href="/trainer/#/trainer-map">Change Trainers</a>
-<br>
-
-<a class="btn btn-primary" href="/user/{{data.user._id}}">View my profile</a>
-<br>
+<div>
+    <div>
+        <strong>Your Trainer  </strong>{{data.user.trainer.firstname}}
+        <img class="dashpic" src="{{data.user.trainer.imageUrl}}" />
+    </div>
+    <div>
+        <a class="btn btn-primary" href="/trainer/#/trainer-map">Change Trainers</a>
+        <a href="/trainer/#/message">Contact Trainer</a>
+    </div>
+    <div>
+        <strong>__</strong>
+    </div>
+</div>
 
 
 </body>
