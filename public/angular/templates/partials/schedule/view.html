@@ -1,8 +1,10 @@
-<h2>Your Schedule</h2>
+<h2>Schedule</h2>
 
 <!-- Need to add if statement -->
-<button ng-click="scheduleController.goToPage('schedule-edit', { id: scheduleController.schedule._id })">Edit</button><br>
-<button ng-click="scheduleController.delete(scheduleController.schedule._id)">Delete</button><br>
+<div ng-if="scheduleController.trainer">
+    <button ng-click="scheduleController.goToPage('schedule-edit', { id: scheduleController.schedule._id })">Edit</button><br>
+    <button ng-click="scheduleController.delete(scheduleController.schedule._id)">Delete</button><br>
+</div>
 
 <div class="workout">
     <div class="panel panel-default panel-horizontal">

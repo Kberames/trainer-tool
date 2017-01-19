@@ -21,6 +21,13 @@ namespace App {
                     controller: App.WorkoutController,
                     controllerAs: 'workoutController'
                 })
+                // .state ('workout-create-client', {
+                //     url: '/workout/create/client',
+                //     // template: 'Here we are creating a workout.'
+                //     templateUrl: '/angular/templates/partials/workout/create.html',
+                //     controller: App.WorkoutController,
+                //     controllerAs: 'workoutController'
+                // })
                 .state ('workout-view', {
                     url: '/workout/:id',
                     // template: 'Here we are viewing a workout.'
@@ -60,7 +67,7 @@ namespace App {
                     controllerAs: 'scheduleController'
                 })
                 .state ('schedule-create-client', {
-                    url: '/schedule/create/client/:id',
+                    url: '/schedule/create/client',
                     // template: 'Here we are creating a schedule.'
                     templateUrl: '/angular/templates/partials/schedule/edit.html',
                     controller: App.ScheduleController,
