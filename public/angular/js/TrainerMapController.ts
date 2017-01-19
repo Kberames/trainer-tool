@@ -73,8 +73,8 @@ namespace App {
                                 let name = trainers[i].firstname + ' ' + trainers[i].lastname;
 
                                 let contentString = '<div id="content">'+
-                                    '<h1 id="firstHeading" class="firstHeading">' +
-                                    name + '</h1>' +
+                                    '<h5 id="firstHeading" class="firstHeading">' +
+                                    name + '</h5>' +
                                     '<div id="bodyContent">'+
                                     '<img src="' + trainers[i].imageUrl +
                                     '" alt="Trainer Image" style="width:50px;height:75px;">'+
