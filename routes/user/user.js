@@ -110,9 +110,9 @@ router.get ("/trainers", function (request, response) {
 // Route to select a trainer
 router.get ("/select-trainer/:id", function (request, response) {
     var trainerId = request.params.id;
-    console.log('*** INSIDE select-trainer route *** ');
-    console.log('trainerId: '+ trainerId);
-    console.log('user: '+ JSON.stringify(request.session.user));
+    // console.log('*** INSIDE select-trainer route *** ');
+    // console.log('trainerId: '+ trainerId);
+    // console.log('user: '+ JSON.stringify(request.session.user));
     var user = request.session.user;
     if (user) {
         user.trainer = trainerId;
@@ -123,7 +123,7 @@ router.get ("/select-trainer/:id", function (request, response) {
                 response.send('Error updating user.')
             }
             else{
-                response.redirect('/');
+                response.redirect('/trainer/#/message');
             }
         });
 
