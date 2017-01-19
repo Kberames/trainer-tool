@@ -41,6 +41,9 @@ namespace App {
             else if (this.stateService.current.name == 'schedule-create') {
                 this.mode = 'Create';
             }
+            else if (this.stateService.current.name == 'schedule-create-client') {
+                this.mode = 'Create';
+            }
         }
 
 
