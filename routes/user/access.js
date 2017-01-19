@@ -199,21 +199,21 @@ router.post ('/login', function (request, response){
                response.redirect ('/login');
             }
             else{
+                request.session.user = result
                 if (request.session.user.trainer) {
-                    console.log('this is the fund user', result);
+                    console.log('this is the fund user with trainer', result);
                     // NOTE: 12f birng in express-sessions in server.js
-                    request.session.user = result
-                    console.log('this is the session data', request.session);
+                    console.log('this is the session data with trainer', request.session);
                     response.redirect ('/dashboard');
                     data: {
                         user: request.session.user
                     }
                 }
                 else {
-                    console.log('this is the fund user', result);
-                    request.session.user = result
-                    console.log('this is the session data', request.session);
-                    console.log('this is the trainer', request.trainer);
+                    console.log('this is the fund user no trainer', result);
+                    // request.session.user = result
+                    console.log('this is the session data with no trainer', request.session);
+                    console.log('this is ', request.trainer);
                     response.redirect ('/')
                 }
             }
