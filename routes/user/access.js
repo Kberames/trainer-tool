@@ -175,7 +175,7 @@ router.post ('/register/trainer', processUploadFile.single ('imageFile'), functi
 
 router.get('/login', function(request,response) {
     if (request.session.user) {
-        response.redirect ('/')
+        response.redirect ('/dashboard')
     }
     else {
         response.render ('user/login')
@@ -199,11 +199,23 @@ router.post ('/login', function (request, response){
                response.redirect ('/login');
             }
             else{
-                console.log('this is the fund user', result);
-                // NOTE: 12f birng in express-sessions in server.js
                 request.session.user = result
-                console.log('this is the session data', request.session);
-                response.redirect ('/');
+                if (request.session.user.trainer) {
+                    console.log('this is the fund user with trainer', result);
+                    // NOTE: 12f birng in express-sessions in server.js
+                    console.log('this is the session data with trainer', request.session);
+                    response.redirect ('/dashboard');
+                    data: {
+                        user: request.session.user
+                    }
+                }
+                else {
+                    console.log('this is the fund user no trainer', result);
+                    // request.session.user = result
+                    console.log('this is the session data with no trainer', request.session);
+                    console.log('this is ', request.trainer);
+                    response.redirect ('/')
+                }
             }
         }); // .exec(function (error, result) {
 });
