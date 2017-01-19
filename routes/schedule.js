@@ -26,9 +26,12 @@ router.post ('/', function (request, response) {
 
 //Read
 router.get ('/', function (request, response) {
-    Schedule.find ()
+    Schedule.find ({user: request.session.user._id})
     .populate ({
-        path: 'name'
+        path: 'workoutId'
+    })
+    .populate ({
+        path: 'trainer'
     })
     .sort('date')
     .exec(function (error, result) {

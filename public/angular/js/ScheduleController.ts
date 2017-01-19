@@ -54,10 +54,10 @@ namespace App {
             }
             else {
                 console.log ('Creating a new schedule!');
-                console.log ('Schedule has been saved.', this.schedule);
-                this.scheduleService.create (this.schedule)
+                console.log ('Schedule has been saved.', this.schedule, this.workoutId);
+                this.scheduleService.create (this.schedule, this.workoutId)
                     .success ((response) => {
-                        this.stateService.go ('schedule');
+                        this.stateService.go ('schedule-view');
                     })
                     .error ((response) => {
                         console.error ('Unable to create the schedule: ', response);

@@ -1,7 +1,14 @@
 <h2>Your Schedule</h2>
 
-<!-- <button ng-click="scheduleController.goToPage ('schedule-create')">Create</button><br> -->
-<button ng-click="scheduleController.read ()">View Schedules</button>
+<div class="list">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p>By clicking the button below, you can view all of the workout schedules you have received from your trainer. Get to it!</p>
+    <!-- <button ng-click="scheduleController.goToPage ('schedule-create')">Create</button><br> -->
+            <button ng-click="scheduleController.read ()">View Schedules</button>
+        </div>
+    </div>
+</div>
 
 <ul class="workout">
     <li ng-repeat="schedule in scheduleController.list">
