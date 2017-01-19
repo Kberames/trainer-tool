@@ -1,13 +1,20 @@
-<p>{{ videoController.mode }} Video</p>
+<h2>{{ videoController.mode }} Video</h2>
 
 <form ng-submit="videoController.create (videoController.video._id)">
-    <div>
-        <label>Name: </label><br>
-        <input ng-model="videoController.video.name">
+    <div class="schedule">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <p>Please copy and paste your video's url into the form. When clients go to view your video, it will take them to YouTube or wherever your video is located.</p>
+                    <label>Name: </label><br>
+                    <input ng-model="videoController.video.name">
+                </div>
+                <div>
+                    <label>Video Url: </label><br>
+                    <input ng-model="videoController.video.url">
+                </div>
+                <a class="btn btn-primary">{{ videoController.mode }}</a>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Video Url: </label><br>
-        <input ng-model="videoController.video.url">
-    </div>
-    <button>{{ videoController.mode }}</button>
 </form>
