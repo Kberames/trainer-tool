@@ -1,13 +1,26 @@
 <h2>Videos</h2>
 
 
-<div class="connect">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h5>Welcome to your Video page! Here you can create new videos and by clicking on one, you can update its information.Lets go!</h5>
-            <a class="btn btn-primary" ng-click="videoController.goToPage('video-create')">Create a New Video</a><br>
+<div ng-if="videoController.trainer">
+    <div class="connect">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h5>Welcome to your Video page! Here you can create new videos and by clicking on one, you can update its information. Lets go!</h5>
+                <a class="btn btn-primary" ng-click="videoController.goToPage('video-create')">Create a New Video</a><br>
+                <a class="btn btn-primary" ng-click="videoController.read ()">View Videos</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <a class="btn btn-primary" ng-click="videoController.read ()">View Videos</a>
+<div ng-if="videoController.trainer == false">
+    <div class="connect">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h5>Here are your trainer's videos! Click View Videos so you can look through and hopefully they will help you with your fit journey!</h5>
+                <!-- <a class="btn btn-primary" ng-click="videoController.goToPage('video-create')">Create a New Video</a><br> -->
+                <a class="btn btn-primary" ng-click="videoController.read ()">View Videos</a>
+            </div>
         </div>
     </div>
 </div>
@@ -20,13 +33,20 @@
                     <!-- <table border="1"> -->
                         <!-- <tr> -->
                             <!-- TRAINER -->
+                            <div ng-if="videoController.trainer">
                             <strong>Name: </strong>
                             <a href="#" ng-click="videoController.goToPage('video-view', {id:video._id})">{{ video.name }}</a><br>
+                            </div>
+                            <div ng-if="videoController.trainer == false">
+                            <strong>Name: </strong>
+                            <a>{{ video.name }}</a><br>
+                            </div>
                         <!-- </tr> -->
                         <!-- <tr> -->
-                            <!-- <strong>Video: </strong> -->
-                            <!-- <iframe ng-src="{{video}}"></iframe> -->
-                            <a href="{{ video.url }}" target="_blank">Youtube</a>
+                            <strong>Video: </strong>
+                            <!-- <iframe src="https://www.youtube.com/watch?v=QtYgmDEddug"></iframe> -->
+                            <!-- <iframe ng-src="{{video.url}}"></iframe> -->
+                            <a href="{{ video.url }}" target="_blank">YouTube</a>
                         <!-- </tr> -->
                     <!-- </table> -->
                 </div>

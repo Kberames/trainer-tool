@@ -1,7 +1,8 @@
 namespace App {
     export class VideoController {
-        static $inject = ['VideoService', '$state', '$stateParams'];
+        static $inject = ['UserService', 'VideoService', '$state', '$stateParams'];
 
+        private userService;
         private videoService;
         private stateService;
         private stateParamsService;
@@ -10,11 +11,14 @@ namespace App {
         public list;
         public mode;
         public urlVideo;
+        public trainer; //boolean
+        public user;
 
-        constructor (videoService: App.VideoService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
+        constructor (userService: App.UserService, videoService: App.VideoService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
             console.log ('Video Controller was loaded...');
             console.log ('Video Service', videoService);
 
+            this.userService = userService;
             this.videoService = videoService;
             this.stateService = $state;
             this.stateParamsService = $stateParams;
@@ -24,6 +28,23 @@ namespace App {
             if (this.stateParamsService.id) {
                 this.read (this.stateParamsService.id);
             }
+
+            this.userService.getSessionUser()
+                .success ((response) => {
+                    console.log ('Got user: ', response);
+                    this.user = response;
+                    console.log('session user: ' + JSON.stringify(this.user));
+                    if (this.user.type == 'trainer') {
+                        this.trainer = true;
+                    }
+                    else {
+                        this.trainer = false;
+                    }
+                })
+                .error ((response) => {
+                    console.error ('Unable to get user session info: ' + response);
+                })
+
 
             console.log ('Current route: ', this.stateService.current);
             if (this.stateService.current.name == 'video-edit') {

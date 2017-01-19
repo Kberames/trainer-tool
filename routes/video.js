@@ -12,6 +12,7 @@ var Video = require ('../model/video.js');
 
 router.post ('/', function (request, response) {
     var newVideo = Video (request.body);
+    newVideo.owner = request.session.user;
 
     newVideo.save (function (error) {
         if (error) {
@@ -36,7 +37,16 @@ router.post ('/', function (request, response) {
 
 //Read
 router.get ('/', function (request, response) {
-    Video.find (function (error, result) {
+    console.log ('Session user: ', request.session.user);
+
+    if (request.session.user.type == 'trainer') {
+        var user = request.session.user;
+    }
+    else {
+        var user = request.session.user.trainer;
+    }
+    Video.find ({owner: user})
+        .exec (function (error, result) {
         if (error) {
             var errorMessage = 'Unable to sort videos';
             console.log ('***ERRROR: ' + errorMessage);

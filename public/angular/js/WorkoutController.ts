@@ -44,7 +44,7 @@ namespace App {
                 console.log ('Workout has been saved.', this.workout);
                 this.workoutService.create (this.workout)
                     .success ((response) => {
-                        this.stateService.go ('workout');
+                        this.stateService.go ('message-connect');
                     })
                     .error ((response) => {
                         console.error ('Unable to create the workout: ', response);
