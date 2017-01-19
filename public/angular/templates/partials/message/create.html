@@ -9,7 +9,9 @@
         </select>
     </div>
     <div ng-if="messageController.trainer == false">
-        <p>PUT TRAINER INFO HERE</p>
+        <h5>To Your Trainer:</h5> <p>{{messageController.user.trainer.firstname + ' ' + messageController.user.trainer.lastname}}</p>
+        <img src="{{messageController.user.trainer.imageUrl}}" alt="Trainer Image" style="width:75px;height:100px;">
+
     </div>
 
     <div>
