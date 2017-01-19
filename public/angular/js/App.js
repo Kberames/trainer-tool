@@ -51,7 +51,7 @@ var App;
                 controllerAs: 'scheduleController'
             })
                 .state('schedule-create-client', {
-                url: '/schedule/create/client/:id',
+                url: '/schedule/create/client',
                 templateUrl: '/angular/templates/partials/schedule/edit.html',
                 controller: App.ScheduleController,
                 controllerAs: 'scheduleController'

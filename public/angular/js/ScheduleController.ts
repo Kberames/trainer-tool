@@ -1,7 +1,8 @@
 namespace App {
     export class ScheduleController {
-        static $inject = ['WorkoutService', 'ScheduleService', '$state', '$stateParams'];
+        static $inject = ['UserService', 'WorkoutService', 'ScheduleService', '$state', '$stateParams'];
 
+        private userService;
         private workoutService;
         private scheduleService;
         private stateService;
@@ -12,15 +13,43 @@ namespace App {
         public list;
         public workoutList;
         public workoutId;
+        public clientList;
+        public user;
+        public trainer; //boolean
 
-        constructor (workoutService: App.WorkoutService, scheduleService: App.ScheduleService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
+        constructor (userService: App.UserService, workoutService: App.WorkoutService, scheduleService: App.ScheduleService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
             console.log ('ScheduleController was loaded...');
             console.log ('Schedule Service', scheduleService);
 
+            this.userService = userService;
             this.workoutService = workoutService;
             this.scheduleService = scheduleService;
             this.stateService = $state;
             this.stateParamsService = $stateParams;
+
+            this.userService.getSessionUser()
+                .success ((response) => {
+                    console.log ('Got user: ', response);
+                    this.user = response;
+                    console.log('session user: ' + JSON.stringify(this.user));
+                    if (this.user.type == 'trainer') {
+                        this.trainer = true;
+                        this.userService.getClients()
+                            .success((response) => {
+                                // console.log ('CLIENT LIST: ' + response);
+                                this.clientList = response;
+                            })
+                            .error((response) => {
+                                console.error ('Unable to get client list: ' + response);
+                            })
+                    }
+                    else {
+                        this.trainer = false;
+                    }
+                })
+                .error ((response) => {
+                    console.error ('Unable to get user session info: ' + response);
+                })
 
             this.workoutService.read ()
                 .success ((response) => {

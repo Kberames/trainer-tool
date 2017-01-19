@@ -7,8 +7,9 @@ var Schedule = require ('../model/schedule.js');
 var moment = require ('moment');
 
 //Create
-router.post ('/', function (request, response) {
+router.post ('/:id', function (request, response) {
     var newSchedule = Schedule (request.body);
+    newSchedule.user = request.params.id;
 
     moment().format("MMM Do YY");
     newSchedule.save (function (error) {
@@ -26,6 +27,7 @@ router.post ('/', function (request, response) {
 
 //Read
 router.get ('/', function (request, response) {
+
     Schedule.find ({user: request.session.user._id})
     .populate ({
         path: 'workoutId'

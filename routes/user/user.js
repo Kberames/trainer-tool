@@ -186,6 +186,10 @@ router.get ('/client', function (request, response) {
     });
 });
 
+router.get ('/trainer/#/message/connect/:id', function (request, response) {
+    response.render ('message/connect');
+});
+
 
 // NOTE: This is where we will see one user
 router.get("/:id", function (request,response) {

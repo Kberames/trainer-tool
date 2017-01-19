@@ -4,6 +4,12 @@
     <div class="schedule">
         <div class="panel panel-default">
             <div class="panel-body">
+                <div ng-if="scheduleController.trainer">
+                    <label>To:</label><br>
+                    <select ng-model="scheduleController.schedule.user">
+                        <option ng-repeat="client in scheduleController.clientList" value="{{client._id}}">{{client.firstname}} {{client.lastname}}</option>
+                    </select>
+                </div>
                 <div>
                     <label>Date: </label><br>
                     <input type="date" ng-model="scheduleController.schedule.date">{{ scheduleController.schedule.date | date: 'yyyy-MM-dd' }}
