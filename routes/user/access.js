@@ -53,7 +53,7 @@ router.post ('/register', processUploadFile.single ('imageFile'), function(reque
         request.body.imageUrl = destination
     }
     else {
-        request.body.imageUrl = '/img/uploads/stitch.png'
+        request.body.imageUrl = '/images/bee.png'
     }
     request.body.type = "client";
 
@@ -117,7 +117,7 @@ router.post ('/register/trainer', processUploadFile.single ('imageFile'), functi
         request.body.imageUrl = destination
     }
     else {
-        request.body.imageUrl = '/img/uploads/stitch.png'
+        request.body.imageUrl = '/images/bee.png'
     }
     request.body.status = "pending";
     request.body.type = "trainer";
