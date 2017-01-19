@@ -22,13 +22,6 @@ namespace App {
             this.stateService = $state;
             this.stateParamsService = $stateParams;
 
-            // if (this.stateParamsService.id) {
-            //     this.read (this.stateParamsService.id);
-            // }
-            // else {
-            //     this.read ();
-            // }
-
             this.userService.getSessionUser()
                 .success ((response) => {
                     console.log ('Got user: ', response);

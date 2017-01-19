@@ -6,8 +6,13 @@
         <div class="panel-body">
                 <h3>Welcome, {{data.user.firstname}}</h3>
 
-            <p>Congrats on your journey to being fit! By choosing Fit2Bee, being fit will be easier and more organized than ever before. By clicking the button below, you will be able to search your area for trainers, contact the one you choose and start getting fit!</p>
-            <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
+            <p>Congrats on your journey to being fit! By choosing Fit2Bee, being fit will be easier and more organized than ever before.</p>
+            
+            {{#if data.user.trainer}}
+            {{else}}
+                <p>By clicking the button below, you will be able to search your area for trainers, contact the one you choose and start getting fit!</p>
+                <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
+            {{/if}}
         </div>
     </div>
 </div>
