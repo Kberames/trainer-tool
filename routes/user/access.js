@@ -185,8 +185,11 @@ router.get('/login', function(request,response) {
 
 router.post ('/login', function (request, response){
 
-    User.findOne (request.body,
-        function (error,result){
+    User.findOne (request.body)
+        .populate({
+            path: 'trainer'
+        })
+        .exec(function (error, result) {
             if (error) {
                 console.error('UNABLE TO FIND USER!!!!!!!');
                 console.error(error);
@@ -202,8 +205,7 @@ router.post ('/login', function (request, response){
                 console.log('this is the session data', request.session);
                 response.redirect ('/');
             }
-        }
-    )
+        }); // .exec(function (error, result) {
 });
 
 router.get ('/logout', function (request, response) {

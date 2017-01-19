@@ -4,10 +4,19 @@
 <div class="home">
     <div class="panel panel-default">
         <div class="panel-body">
-                <h3>Welcome, {{data.user.firstname}}</h3>
+            <h3>Welcome, {{data.user.firstname}}</h3>
 
-            <p>Congrats on your journey to being fit! By choosing Trainer Tool, being fit will be easier and more organized than ever before. By clicking the button below, you will be able to search your area for trainers, contact the one you choose and start getting fit!</p>
-            <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
+            <p>Congrats on your journey to being fit! By choosing Trainer Tool, being fit will be easier and more organized than ever before.</p>
+
+            <!-- Only display the Select Trainer piece if they have not yet selected a trainer. -->
+            {{#if data.user.train}}
+            {{else}}
+                {{#if data.user.trainer}}
+                {{else}}
+                    <p>By clicking the button below, you will be able to search your area for trainers, contact the one you choose and start getting fit!</p>
+                    <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
+                {{/if}}
+            {{/if}}
         </div>
     </div>
 </div>
