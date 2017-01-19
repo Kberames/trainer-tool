@@ -1,8 +1,16 @@
 <h2>Videos</h2>
 
-<button ng-click="videoController.goToPage('video-create')">Create a New Video</button><br>
 
-<button ng-click="videoController.read ()">Your Videos</button>
+<div class="connect">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h5>Welcome to your Video page! Here you can create new videos and by clicking on one, you can update its information.Lets go!</h5>
+            <a class="btn btn-primary" ng-click="videoController.goToPage('video-create')">Create a New Video</a><br>
+
+            <a class="btn btn-primary" ng-click="videoController.read ()">View Videos</a>
+        </div>
+    </div>
+</div>
 
 <div class="video">
     <ul>
