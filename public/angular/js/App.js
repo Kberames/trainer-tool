@@ -50,6 +50,12 @@ var App;
                 controller: App.ScheduleController,
                 controllerAs: 'scheduleController'
             })
+                .state('schedule-create-client', {
+                url: '/schedule/create/client/:id',
+                templateUrl: '/angular/templates/partials/schedule/edit.html',
+                controller: App.ScheduleController,
+                controllerAs: 'scheduleController'
+            })
                 .state('schedule-view', {
                 url: '/schedule/:id',
                 templateUrl: '/angular/templates/partials/schedule/view.html',
@@ -92,8 +98,20 @@ var App;
                 controller: App.MessageController,
                 controllerAs: 'messageController'
             })
+                .state('message-connect', {
+                url: '/message/connect',
+                templateUrl: '/angular/templates/partials/message/connect.html',
+                controller: App.MessageController,
+                controllerAs: 'messageController'
+            })
                 .state('message-create', {
                 url: '/message',
+                templateUrl: '/angular/templates/partials/message/create.html',
+                controller: App.MessageController,
+                controllerAs: 'messageController'
+            })
+                .state('message-create-client', {
+                url: '/message/client/:id',
                 templateUrl: '/angular/templates/partials/message/create.html',
                 controller: App.MessageController,
                 controllerAs: 'messageController'

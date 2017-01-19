@@ -1,5 +1,6 @@
 @color-01: #c13046;
 @color-02: #9292a0;
+@color-03: #f4bf42;
 
 .about {
     width: 50%;
@@ -42,7 +43,9 @@ button {
 
 .btn-primary {
     background-color: @color-01;
-    border: @color-02;
+    border: @color-01;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .client {
@@ -59,16 +62,14 @@ button {
 .client1 {
     width: 45%;
     float: right;
-    padding-top: 150px;
+    // padding-top: 150px;
     padding-right: 100px;
     padding-bottom: 50px;
 }
 
-.workout {
-    margin-left: 36%;
-    margin-right: 40%;
-    opacity: 0.9;
-    padding-bottom: 50px;
+.connect {
+    margin-left: 250px;
+    margin-right: 250px;
 }
 
 .footer {
@@ -125,10 +126,17 @@ form {
     }
 }
 
-h2 {
-    color: @color-02;
+h1 {
+    color: @color-03;
     font-family: 'Open Sans Condensed';
-    font-size: 100px;
+    font-size: 200px;
+    text-align: center;
+    // padding-top: 20px;
+}
+h2 {
+    color: @color-03;
+    font-family: 'Open Sans Condensed';
+    font-size: 120px;
     text-align: center;
 }
 h3 {
@@ -177,12 +185,17 @@ input {
     text-align: center;
 }
 
+.list {
+    margin-left: 300px;
+    margin-right: 285px;
+}
+
 #map {
     // width: 90%;
     height: 400px;
     background-color: grey;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
     h2 {
         font-family: 'Open Sans Condensed';
         font-size: 100px;
@@ -237,9 +250,23 @@ p {
     }
 }
 
+.schedule {
+    padding-right: 20%;
+    padding-left: 20%;
+    color: @color-01;
+}
+
 strong {
     color: @color-01;
     font-family: 'Open Sans Condensed';
+}
+
+table {
+    background-color: @color-01;
+}
+
+.table-responsive {
+    padding-bottom: 50px;
 }
 
 .users {
@@ -271,8 +298,8 @@ strong {
 }
 
 .workout {
-    margin-left: 36%;
-    margin-right: 40%;
+    margin-left: 275px;
+    margin-right: 300px;
     opacity: 0.9;
     padding-bottom: 50px;
 }

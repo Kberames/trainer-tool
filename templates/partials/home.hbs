@@ -1,22 +1,31 @@
-<h2>Trainer Tool</h2>
+<h1>Fit2Bee</h1>
 
-{{#if data.user}}
+{{#if data.user.client}}
+<div class="home">
+    <div class="panel panel-default">
+        <div class="panel-body">
+                <h3>Welcome, {{data.user.firstname}}</h3>
+
+            <p>Congrats on your journey to being fit! By choosing Fit2Bee, being fit will be easier and more organized than ever before.</p>
+            
+            {{#if data.user.trainer}}
+            {{else}}
+                <p>By clicking the button below, you will be able to search your area for trainers, contact the one you choose and start getting fit!</p>
+                <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
+            {{/if}}
+        </div>
+    </div>
+</div>
+{{/if}}
+
+{{#if data.user.train}}
 <div class="home">
     <div class="panel panel-default">
         <div class="panel-body">
             <h3>Welcome, {{data.user.firstname}}</h3>
 
-            <p>Congrats on your journey to being fit! By choosing Trainer Tool, being fit will be easier and more organized than ever before.</p>
-
-            <!-- Only display the Select Trainer piece if they have not yet selected a trainer. -->
-            {{#if data.user.train}}
-            {{else}}
-                {{#if data.user.trainer}}
-                {{else}}
-                    <p>By clicking the button below, you will be able to search your area for trainers, contact the one you choose and start getting fit!</p>
-                    <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
-                {{/if}}
-            {{/if}}
+            <p>Here at Fit2Bee, we are super excited to have you be part of the training family! By choosing Fit2Bee, connecting with your clients will be easier and more organized than ever before. The button below will take you to a map and list of other trainers on this site. Lets get started!</p>
+            <a class="btn btn-primary" href="/trainer/#/trainer-map">TRAINERS</a>
         </div>
     </div>
 </div>

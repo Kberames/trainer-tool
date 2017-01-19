@@ -59,6 +59,13 @@ namespace App {
                     controller: App.ScheduleController,
                     controllerAs: 'scheduleController'
                 })
+                .state ('schedule-create-client', {
+                    url: '/schedule/create/client/:id',
+                    // template: 'Here we are creating a schedule.'
+                    templateUrl: '/angular/templates/partials/schedule/edit.html',
+                    controller: App.ScheduleController,
+                    controllerAs: 'scheduleController'
+                })
                 .state ('schedule-view', {
                     url: '/schedule/:id',
                     // template: 'Here we are viewing a schedule.'
@@ -106,8 +113,20 @@ namespace App {
                     controller: App.MessageController,
                     controllerAs: 'messageController'
                 })
+                .state ('message-connect', {
+                    url: '/message/connect',
+                    templateUrl: '/angular/templates/partials/message/connect.html',
+                    controller: App.MessageController,
+                    controllerAs: 'messageController'
+                })
                 .state ('message-create', {
                     url: '/message',
+                    templateUrl: '/angular/templates/partials/message/create.html',
+                    controller: App.MessageController,
+                    controllerAs: 'messageController'
+                })
+                .state ('message-create-client', {
+                    url: '/message/client/:id',
                     templateUrl: '/angular/templates/partials/message/create.html',
                     controller: App.MessageController,
                     controllerAs: 'messageController'

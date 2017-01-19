@@ -3,7 +3,7 @@
 <form id="msg" ng-submit="messageController.create ()">
 
     <div ng-if="messageController.trainer">
-        <label>To:</label>
+        <label>To:</label><br>
         <select ng-model="messageController.message.to">
             <option ng-repeat="client in messageController.clientList" value="{{client._id}}">{{client.firstname}} {{client.lastname}}</option>
         </select>
@@ -13,7 +13,7 @@
     </div>
 
     <div>
-        <label>Message: </label>
+        <label>Message: </label><br>
         <textarea rows="5" cols="50" autofocus form="msg" ng-model="messageController.message.content">
         </textarea>
     </div>

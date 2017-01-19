@@ -1,12 +1,11 @@
 <h2>Your Clients</h2>
 
-<!-- I DONT KNOW WHY BELOW ISN'T WORKING! -->
 <!-- <p>Welcome, {{data.user.firstname}}!</p> -->
 
 <div class="client">
     <div class="panel panel-default">
         <div class="panel-body">
-            <h3>Here is a list of your clients.</h3><p> By clicking on their name, you can create a workout schedule for that particular client by choosing an existing workout or creating a new workout. Lets get fit!</p>
+            <h3>Here is a list of your clients.</h3><p> By clicking on any client's name, you can create a workout schedule and message them. Lets get fit!</p>
         </div>
     </div>
 </div>
@@ -17,7 +16,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div>
-                <strong>Name: </strong>{{ firstname }} {{ lastname }}</a>
+                <strong>Name: </strong><a href="/trainer/#/message/connect">{{ firstname }} {{ lastname }}</a>
             </div>
             <div>
                 <strong>Gender: </strong>{{ gender }}
@@ -25,9 +24,9 @@
             <div>
                 <strong>City: </strong>{{ city }}
             </div>
-            <div>
-                {{ imageUrl }}
-            </div>
+            <img src="{{imageUrl}}">
+                <!-- {{ imageUrl }} -->
+            </img>
         </div>
     </div>
 </div>

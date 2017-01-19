@@ -1,9 +1,15 @@
 <h2>Workouts</h2>
 
-<button ng-click="workoutController.goToPage ('workout-create')">Create</button><br>
-<button ng-click="workoutController.read ()">View Workouts</button><br>
-<button ng-click="workoutController.goToPage ('video')">View Videos</button>
-
+<div class="connect">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h5>Here you can create and view your current workouts. By clicking on a specific workout, you can update and delete it.</h5>
+            <a class="btn btn-primary" ng-click="workoutController.goToPage ('workout-create')">Create Workout</a><br>
+            <a class="btn btn-primary" ng-click="workoutController.read ()">View Workouts</a><br>
+            <a class="btn btn-primary" ng-click="workoutController.goToPage ('video')">Go To Your Videos</a>
+        </div>
+    </div>
+</div>
 
 <ul class="workout">
     <li ng-repeat="workout in workoutController.list">

@@ -1,7 +1,8 @@
 namespace App {
     export class ScheduleController {
-        static $inject = ['ScheduleService', '$state', '$stateParams'];
+        static $inject = ['WorkoutService', 'ScheduleService', '$state', '$stateParams'];
 
+        private workoutService;
         private scheduleService;
         private stateService;
         private stateParamsService;
@@ -9,14 +10,25 @@ namespace App {
         public schedule;
         public mode;
         public list;
+        public workoutList;
+        public workoutId;
 
-        constructor (scheduleService: App.ScheduleService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
+        constructor (workoutService: App.WorkoutService, scheduleService: App.ScheduleService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
             console.log ('ScheduleController was loaded...');
             console.log ('Schedule Service', scheduleService);
 
+            this.workoutService = workoutService;
             this.scheduleService = scheduleService;
             this.stateService = $state;
             this.stateParamsService = $stateParams;
+
+            this.workoutService.read ()
+                .success ((response) => {
+                    this.workoutList = response;
+                })
+                .error ((response) => {
+                    console.error ('There was an error');
+                })
 
             if (this.stateParamsService.id) {
                 this.read (this.stateParamsService.id);
@@ -29,6 +41,9 @@ namespace App {
             else if (this.stateService.current.name == 'schedule-create') {
                 this.mode = 'Create';
             }
+            else if (this.stateService.current.name == 'schedule-create-client') {
+                this.mode = 'Create';
+            }
         }
 
 
@@ -39,10 +54,10 @@ namespace App {
             }
             else {
                 console.log ('Creating a new schedule!');
-                console.log ('Schedule has been saved.', this.schedule);
-                this.scheduleService.create (this.schedule)
+                console.log ('Schedule has been saved.', this.schedule, this.workoutId);
+                this.scheduleService.create (this.schedule, this.workoutId)
                     .success ((response) => {
-                        this.stateService.go ('schedule');
+                        this.stateService.go ('schedule-view');
                     })
                     .error ((response) => {
                         console.error ('Unable to create the schedule: ', response);

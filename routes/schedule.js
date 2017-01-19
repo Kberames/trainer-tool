@@ -26,7 +26,15 @@ router.post ('/', function (request, response) {
 
 //Read
 router.get ('/', function (request, response) {
-    Schedule.find ().sort('date').exec(function (error, result) {
+    Schedule.find ({user: request.session.user._id})
+    .populate ({
+        path: 'workoutId'
+    })
+    .populate ({
+        path: 'trainer'
+    })
+    .sort('date')
+    .exec(function (error, result) {
         if (error) {
             var errorMessage = 'Unable to sort schedule.';
             console.log ('**ERROR: ' + errorMessage);

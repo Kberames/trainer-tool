@@ -1,10 +1,27 @@
 <h2>{{ scheduleController.mode }} Schedule</h2>
 
 <form ng-submit="scheduleController.create (scheduleController.schedule._id)">
-    <div>
-        <label>Date: </label>
-        <input type="date" ng-model="scheduleController.schedule.date">{{ scheduleController.schedule.date | date: 'yyyy-MM-dd' }}
-    </div>
-
+    <div class="schedule">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <label>Date: </label><br>
+                    <input type="date" ng-model="scheduleController.schedule.date">{{ scheduleController.schedule.date | date: 'yyyy-MM-dd' }}
+                </div>
+                <div>
+                    <label>Choose Workout:</label>
+                    <!-- Drop down of workouts already created-->
+                    <select ng-model="scheduleController.workoutId">
+                        <option ng-repeat="workout in scheduleController.workoutList" value="{{workout._id}}">{{ workout.name }}</option>
+                    </select>
+                </div>
+                <label>OR</label>
+                <div>
+                    <!-- <label>Create a New Workout:</label> -->
+                    <!-- Button taking you to create a workout page and after you create it, it takes you back to this page and populates that new workout -->
+                    <a class="btn btn-primary" ng-click="scheduleController.goToPage ('workout-create')">Create a New Workout</a>
+                </div>
+            </div>
+        </div>
     <button>{{ scheduleController.mode }}</button>
 </form>
