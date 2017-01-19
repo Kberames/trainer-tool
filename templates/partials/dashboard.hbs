@@ -1,0 +1,88 @@
+<h3>Dashboard</h3>
+<body class="users">
+
+<img class="dashpic" src="{{data.user.imageUrl}}" />
+<br>
+
+<div class="info">
+    <a href="/user/{{data.user._id}}/pic">Change Profile Picture</a>
+    <div>
+        <a href="/user/{{ data.user._id }}/edit">Edit profilepicture</a>
+    </div>
+    <div>
+        <strong>Name </strong>{{data.user.firstname}} {{data.user.lastname}}
+    </div>
+    <div>
+        <strong>Email </strong>{{data.user.email}}
+    </div>
+    <div>
+        <strong>Gender </strong>{{data.user.gender}}
+    </div>
+    <div>
+        <strong>Address </strong>{{data.user.address}}
+    </div>
+    <div>
+        {{data.user.city}}
+    </div>
+    <div>
+        {{data.user.state}}
+    </div>
+    <div>
+        {{data.user.zipcode}}
+    </div>
+    <div>
+        {{data.user.phone}}
+    </div>
+    <strong>Status </strong>{{data.user.status}}
+    <strong>Type </strong>{{data.user.type}}
+    {{#if user.train}}
+    <div>
+        <strong> Gym Address </strong>{{data.user.address2}}
+    </div>
+    <div>
+        {{data.user.city2}}
+    </div>
+    <div>
+        {{data.user.state2}}
+    </div>
+    <div>
+        {{data.user.zipcode2}}
+    </div>
+    <div>
+        {{data.user.phone2}}
+    </div>
+    <strong>Certifications</strong>
+    <div>
+        {{data.user.certification}}
+    </div>
+    {{/if}}
+    {{#if user.admin}}
+    <div>
+        <strong> Gym Address </strong>{{data.user.address2}}
+    </div>
+    <div>
+        {{data.user.city2}}
+    </div>
+    <div>
+        {{data.user.state2}}
+    </div>
+    <div>
+        {{data.user.zipcode2}}
+    </div>
+    <div>
+        {{data.user.phone2}}
+    </div>
+    <strong>Certifications</strong>
+    <div>
+        {{data.user.certification}}
+    </div>
+    {{/if}}
+</div>
+<a class="btn btn-primary" href="/trainer/#/trainer-map">Change Trainers</a>
+<br>
+
+<a class="btn btn-primary" href="/user/{{data.user._id}}">View my profile</a>
+<br>
+
+
+</body>

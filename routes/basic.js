@@ -26,6 +26,15 @@ router.get('/about', function(request, response) {
         }
     });
 });
+// NOTE: this is the route for the dashboard
+router.get ('/dashboard', function(request,response) {
+    response.render ('dashboard', {
+        data: {
+            user: request.session.user
+        }
+    })
+    console.log(request.session.user);
+})
 
 //--------------------------------
 //Route to load the Angular UI Frontend.
