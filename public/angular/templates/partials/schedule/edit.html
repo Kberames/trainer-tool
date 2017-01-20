@@ -21,12 +21,12 @@
                         <option ng-repeat="workout in scheduleController.workoutList" value="{{workout._id}}">{{ workout.name }}</option>
                     </select>
                 </div>
-                <label>OR</label>
-                <div>
+                <!-- <label>OR</label>
+                <div> -->
                     <!-- <label>Create a New Workout:</label> -->
                     <!-- Button taking you to create a workout page and after you create it, it takes you back to this page and populates that new workout -->
-                    <a class="btn btn-primary" ng-click="scheduleController.goToPage ('workout-create')">Create a New Workout</a>
-                </div>
+                    <!-- <a class="btn btn-primary" ng-click="scheduleController.goToPage ('workout-create')">Create a New Workout</a>
+                </div> -->
             </div>
         </div>
     <button>{{ scheduleController.mode }}</button>

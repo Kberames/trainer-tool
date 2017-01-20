@@ -6,33 +6,32 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <img class="dashpic" src="{{data.user.imageUrl}}" /><br>
-            <a href="/user/{{data.user._id}}/pic">Change Profile Picture</a>
+            <a href="/user/{{data.user._id}}/pic">Change Profile Picture</a><br>
+            <a class="btn btn-primary" href="/trainer/#/message">Inbox</a><br>
+
+            <strong>
             <div>
+                <strong>Name: </strong>{{data.user.firstname}} {{data.user.lastname}}
             </div>
             <div>
-                <strong>Name </strong>{{data.user.firstname}} {{data.user.lastname}}
+                <strong>Email: </strong>{{data.user.email}}
             </div>
             <div>
-                <strong>Email </strong>{{data.user.email}}
+                <strong>Gender: </strong>{{data.user.gender}}
             </div>
             <div>
-                <strong>Gender </strong>{{data.user.gender}}
-            </div>
-            <div>
-                <strong>Address </strong>{{data.user.address}}
+                <strong>Address: </strong><br>{{data.user.address}}
             </div>
             <div>
                 {{data.user.city}}
             </div>
             <div>
-                {{data.user.state}}
-            </div>
-            <div>
+                {{data.user.state}},
                 {{data.user.zipcode}}
             </div>
-            <div>
+            <!-- <div>
                 {{data.user.phone}}
-            </div>
+            </div> -->
             {{#if user.train}}
             <div>
                 <strong> Gym Address </strong>{{data.user.address2}}
@@ -74,8 +73,9 @@
             <div>
                 {{data.user.certification}}
             </div>
+        </strong>
             {{/if}}
-            <a href="/user/{{ data.user._id }}/edit">Edit Profile</a>
+            <a href="/user/{{ data.user._id }}/edit">Edit Profile</a><br>
         </div>
     </div>
 </div>
@@ -87,12 +87,13 @@
         <div class="panel-body">
             {{#if user.client}}
             <div>
-            <strong>Your Trainer  </strong>{{data.user.trainer.firstname}}
+            <strong>Your Trainer:  {{data.user.trainer.firstname}}</strong><br>
             <img class="dashpic" src="{{data.user.trainer.imageUrl}}" />
-            </div>
+            </div><br>
             <div>
-                <a class="btn btn-primary" href="/trainer/#/trainer-map">Change Trainers</a><br>
-                <a class="btn btn-primary" href="/trainer/#/message">Contact Trainer</a>
+                <a class="btn btn-primary" href="/trainer/#/message">Contact Trainer</a><br>
+                <a href="/trainer/#/trainer-map">Change Your Trainer</a><br>
+
             </div>
             {{/if}}
 
