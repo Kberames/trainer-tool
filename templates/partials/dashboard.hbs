@@ -6,7 +6,9 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <img class="dashpic" src="{{data.user.imageUrl}}" /><br>
-            <a href="/user/{{data.user._id}}/pic">Change Profile Picture</a>
+            <a href="/user/{{data.user._id}}/pic">Change Profile Picture</a><br>
+            <a class="btn btn-primary" href="/trainer/#/message">Inbox</a><br>
+
             <strong>
             <div>
                 <strong>Name: </strong>{{data.user.firstname}} {{data.user.lastname}}
@@ -24,7 +26,7 @@
                 {{data.user.city}}
             </div>
             <div>
-                {{data.user.state}}, 
+                {{data.user.state}},
                 {{data.user.zipcode}}
             </div>
             <!-- <div>
@@ -73,7 +75,7 @@
             </div>
         </strong>
             {{/if}}
-            <a href="/user/{{ data.user._id }}/edit">Edit Profile</a>
+            <a href="/user/{{ data.user._id }}/edit">Edit Profile</a><br>
         </div>
     </div>
 </div>
@@ -91,6 +93,7 @@
             <div>
                 <a class="btn btn-primary" href="/trainer/#/message">Contact Trainer</a><br>
                 <a href="/trainer/#/trainer-map">Change Your Trainer</a><br>
+
             </div>
             {{/if}}
 
