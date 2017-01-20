@@ -1,10 +1,11 @@
-<h2>{{ scheduleController.mode }} Schedule</h2>
+<h2>{{ scheduleController.mode }} Schedule <br>
+for {{ scheduleController.client.firstname + ' ' + scheduleController.client.lastname }}</h2>
 
 <form ng-submit="scheduleController.create (scheduleController.schedule._id)">
     <div class="schedule">
         <div class="panel panel-default">
             <div class="panel-body">
-                <div ng-if="scheduleController.trainer">
+                <div ng-if="scheduleController.trainer && messageController.clientId == false"">
                     <label>To:</label><br>
                     <select ng-model="scheduleController.schedule.user">
                         <option ng-repeat="client in scheduleController.clientList" value="{{client._id}}">{{client.firstname}} {{client.lastname}}</option>
@@ -17,7 +18,7 @@
                 <div>
                     <label>Choose Workout:</label>
                     <!-- Drop down of workouts already created-->
-                    <select ng-model="scheduleController.workoutId">
+                    <select ng-model="scheduleController.schedule.workout">
                         <option ng-repeat="workout in scheduleController.workoutList" value="{{workout._id}}">{{ workout.name }}</option>
                     </select>
                 </div>

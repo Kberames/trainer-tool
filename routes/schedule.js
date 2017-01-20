@@ -7,11 +7,11 @@ var Schedule = require ('../model/schedule.js');
 var moment = require ('moment');
 
 //Create
-router.post ('/:id', function (request, response) {
+router.post ('/', function (request, response) {
     var newSchedule = Schedule (request.body);
-    newSchedule.user = request.params.id;
+    newSchedule.trainer = request.session.user;
 
-    moment().format("MMM Do YY");
+    moment().format("MMM DD YY");
     newSchedule.save (function (error) {
         if (error) {
             var errorMessage = 'Unable to save the schedule.';
@@ -25,15 +25,37 @@ router.post ('/:id', function (request, response) {
     });
 });
 
+// //Create
+// router.post ('/:id', function (request, response) {
+//     var newSchedule = Schedule (request.body);
+//     newSchedule.user = request.params.id;
+//
+//     moment().format("MMM Do YY");
+//     newSchedule.save (function (error) {
+//         if (error) {
+//             var errorMessage = 'Unable to save the schedule.';
+//             console.log ('***ERROR: ' + errorMessage);
+//         }
+//         else {
+//             response.json ({
+//                 message: 'New schedule was saved.'
+//             });
+//         }
+//     });
+// });
+
 //Read
 router.get ('/', function (request, response) {
 
     Schedule.find ({user: request.session.user._id})
     .populate ({
-        path: 'workoutId'
+        path: 'workout'
     })
     .populate ({
         path: 'trainer'
+    })
+    .populate ({
+        path: 'user'
     })
     .sort('date')
     .exec(function (error, result) {
@@ -50,7 +72,18 @@ router.get ('/', function (request, response) {
 router.get ('/:id', function (request, response) {
     var scheduleId = request.params.id;
 
-    Schedule.findById (scheduleId, function (error, result) {
+    Schedule.findById (scheduleId)
+    .populate ({
+        path: 'workout'
+    })
+    .populate ({
+        path: 'trainer'
+    })
+    .populate ({
+        path: 'user'
+    })
+    .sort('date')
+    .exec(function (error, result) {
         if (error) {
             var errorMessage = 'Unable to find schedule by id: ' + scheduleId;
             console.error ('***ERROR: ' + errorMessage);

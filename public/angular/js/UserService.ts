@@ -52,6 +52,21 @@ namespace App {
             return promise;
         } //public getTrainers
 
+        public getClientById (id) {
+            console.log ('getClientById: ' + id);
+            let promise = this.httpService ({
+                url: '/user/' + id,
+                method: 'GET',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                data: {
+                    // id: id
+                }
+            })
+            return promise;
+        } //public getClientById
+
     } // export class UserService
 
     app.service ('UserService', UserService);

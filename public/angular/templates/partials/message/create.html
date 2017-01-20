@@ -2,7 +2,7 @@
 
 <form id="msg" ng-submit="messageController.create ()">
 
-    <div ng-if="messageController.trainer">
+    </div><div ng-if="messageController.trainer && messageController.clientId == false">
         <label>To:</label><br>
         <select ng-model="messageController.message.to">
             <option ng-repeat="client in messageController.clientList" value="{{client._id}}">{{client.firstname}} {{client.lastname}}</option>

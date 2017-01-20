@@ -12,6 +12,8 @@ var Workout = require ('../model/workout.js')
 router.post ('/', function (request, response) {
     var newWorkout = Workout (request.body);
 
+    newWorkout.trainer = request.session.user;
+
     newWorkout.save (function (error) {
         if (error) {
             var errorMessage = 'Unable to save the workout';
@@ -28,7 +30,7 @@ router.post ('/', function (request, response) {
 
 //Read
 router.get ('/', function (request, response) {
-    Workout.find (function (error, result) {
+    Workout.find ({trainer: request.session.user._id}, function (error, result) {
         if (error) {
             var errorMessage = 'Unable to sort workouts.';
             console.log ('**ERROR: ' + errorMessage);

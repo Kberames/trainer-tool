@@ -7,20 +7,44 @@ namespace App {
         private stateService;
         private stateParamsService;
 
+        public messageId;
         public message;
         public list;
         public user;
         public trainer; // boolean
         public clientList; // list of users who are linked to this trainer
+        public clientId; // used to store selected client when trainer wants to send a message
+        public client; // used to store selected client info when trainer wants to send a message
 
         constructor (messageService: App.MessageService, userService: App.UserService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
             console.log ('MessageController was loaded...');
-            console.log ('Message Service', messageService);
+            // console.log ('Message Service', messageService);
 
             this.messageService = messageService;
             this.userService = userService;
             this.stateService = $state;
             this.stateParamsService = $stateParams;
+
+            // If trainer goes to connect page this allows them to pre-select the client they want to message.
+            if (this.stateService.current.name == 'message-connect' || this.stateService.current.name == 'message-create-client') {
+                this.messageId = '';
+                this.clientId = this.stateParamsService.id;
+                console.log ('*** messageController clientId: ' + this.clientId);
+            }
+            else {
+                this.messageId = this.stateParamsService.id;
+                this.clientId = 0;
+            }
+
+
+            this.userService.getClientById(this.clientId)
+                .success ((response) => {
+                    console.log ('Got client: ', response);
+                    this.client = response;
+                })
+                .error ((response) => {
+                    console.error ('Unable to get client info: ' + response);
+                })
 
             this.userService.getSessionUser()
                 .success ((response) => {
@@ -46,7 +70,7 @@ namespace App {
                     console.error ('Unable to get user session info: ' + response);
                 })
 
-            this.read (this.stateParamsService.id);
+            this.read (this.messageId);
 
         }
 
@@ -58,6 +82,9 @@ namespace App {
             console.log ('Message has been saved.', this.message);
 
             if (this.trainer) {
+                if (this.clientId) { // Client was selected on Client page.
+                    this.message.to = this.clientId;
+                }
                 console.log ('TRAINER MESSAGE TO: ' + this.message.to);
             }
             else {
@@ -68,7 +95,12 @@ namespace App {
 
             this.messageService.create (this.message)
                 .success ((response) => {
-                    this.stateService.go ('message');
+                    if (this.stateService.current.name == 'message-create-client') {
+                        this.stateService.go ('message-connect', {id: this.clientId});
+                    }
+                    else {
+                        this.stateService.go ('message');
+                    }
                 })
                 .error ((response) => {
                     console.error ('Unable to create the message: ', response);
