@@ -324,7 +324,7 @@ router.post('/:id/pic', processUploadFile.single ('imageFile'), function(request
         request.body.imageUrl = destination;
     }
     else {
-        request.body.imageUrl = '/img/uploads/stitch.png'
+        request.body.imageUrl = '/images/bee.png'
     }
     console.log('Image url', request.body.imageUrl);
     User.findByIdAndUpdate(userId, request.body, function(error,resut) {

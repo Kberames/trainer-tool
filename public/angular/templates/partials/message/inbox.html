@@ -1,6 +1,26 @@
 <h2>Your Messages</h2>
 
-<button ng-click="messageController.goToPage ('message-create')">Create</button><br>
+<div ng-if="messageController.trainer">
+    <div class="inbox">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>Below is your inbox of messages your clients have sent you. If you want to send any one of your clients a message, please click on the Create button. Lets get training!</p>
+                <button ng-click="messageController.goToPage ('message-create')">Create</button><br>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="messageController.trainer == false">
+    <div class="inbox">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>Below is your inbox of messages your trainer has sent you. If you need to contact your trainer, please click on the Create button. Lets get training!</p>
+                <button ng-click="messageController.goToPage ('message-create')">Create</button><br>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <ul class="inbox">
     <li ng-repeat="message in messageController.list">
