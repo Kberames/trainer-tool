@@ -9,13 +9,16 @@ namespace App {
         private stateParamsService;
 
         public schedule;
+        public scheduleId;
         public mode;
         public list;
         public workoutList;
-        public workoutId;
+        // public workoutId;
         public clientList;
         public user;
         public trainer; //boolean
+        public clientId;
+        public client;
 
         constructor (userService: App.UserService, workoutService: App.WorkoutService, scheduleService: App.ScheduleService, $state: angular.ui.IStateProvider, $stateParams: angular.ui.IStateParamsService) {
             console.log ('ScheduleController was loaded...');
@@ -59,39 +62,61 @@ namespace App {
                     console.error ('There was an error');
                 })
 
-            if (this.stateParamsService.id) {
-                this.read (this.stateParamsService.id);
-            }
-
             console.log ('Current route: ', this.stateService.current);
             if (this.stateService.current.name == 'schedule-edit') {
                 this.mode = 'Edit';
+                this.scheduleId = this.stateParamsService.id;
+                this.clientId = 0;
             }
             else if (this.stateService.current.name == 'schedule-create') {
                 this.mode = 'Create';
+                this.scheduleId = '';
+                this.clientId = 0;
             }
             else if (this.stateService.current.name == 'schedule-create-client') {
                 this.mode = 'Create';
+                this.scheduleId = '';
+                this.clientId = this.stateParamsService.id;
+
+                this.userService.getClientById(this.clientId)
+                    .success ((response) => {
+                        console.log ('Got client: ', response);
+                        this.client = response;
+                    })
+                    .error ((response) => {
+                        console.error ('Unable to get client info: ' + response);
+                    })
             }
+
+            // if (this.stateParamsService.id) {
+                this.read (this.scheduleId);
+            // }
         }
 
 
-        public create (id) {
-            if (id) {
-                console.log ('Creating a new schedule');
-                this.update (id);
+        public create () {
+            // if (id) {
+            //     // console.log ('Creating a new schedule');
+            //     this.update (id);
+            // }
+            // else {
+            if (this.stateService.current.name == 'schedule-create-client') {
+                this.schedule.user = this.clientId;
             }
-            else {
                 console.log ('Creating a new schedule!');
-                console.log ('Schedule has been saved.', this.schedule, this.workoutId);
-                this.scheduleService.create (this.schedule, this.workoutId)
+                this.scheduleService.create (this.schedule)
                     .success ((response) => {
-                        this.stateService.go ('schedule-view');
+                        if (this.stateService.current.name == 'schedule-create-client') {
+                            this.stateService.go ('message-connect', {id: this.clientId});
+                        }
+                        else {
+                            this.stateService.go ('home');
+                        }
                     })
                     .error ((response) => {
                         console.error ('Unable to create the schedule: ', response);
                     })
-            }
+            // }
         }
 
         public read (id) {

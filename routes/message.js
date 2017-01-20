@@ -92,4 +92,14 @@ router.get ('/:id/delete', function (request, response) {
     }) // Message.findByIdAndRemove
 }); // Delete
 
+router.get ('/connect/:id', function (request, response) {
+    var userId = request.params.id;
+
+    response.render ('message/connect', {
+        data: {
+            userId: userId
+        }
+    });
+});
+
 module.exports = router;

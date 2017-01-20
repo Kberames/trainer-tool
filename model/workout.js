@@ -7,7 +7,8 @@ var Schema = mongoose.Schema;
 //Create the schema for the workout.
 var workoutSchema = new Schema ({
     name: String,
-    workout: String
+    workout: String,
+    trainer: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 //Create the model object
