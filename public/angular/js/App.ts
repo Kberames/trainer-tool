@@ -67,7 +67,7 @@ namespace App {
                     controllerAs: 'scheduleController'
                 })
                 .state ('schedule-create-client', {
-                    url: '/schedule/create/client',
+                    url: '/schedule/create/client/:id',
                     // template: 'Here we are creating a schedule.'
                     templateUrl: '/angular/templates/partials/schedule/edit.html',
                     controller: App.ScheduleController,
@@ -121,7 +121,7 @@ namespace App {
                     controllerAs: 'messageController'
                 })
                 .state ('message-connect', {
-                    url: '/message/connect',
+                    url: '/message/connect/:id',
                     templateUrl: '/angular/templates/partials/message/connect.html',
                     controller: App.MessageController,
                     controllerAs: 'messageController'

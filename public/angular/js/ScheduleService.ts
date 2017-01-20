@@ -10,14 +10,14 @@ namespace App {
             this.httpService = $httpService;
         }
 
-        public create (schedule, workoutId) {
+        public create (schedule) {
             let promise = this.httpService ({
                 url: '/schedule',
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'
                 },
-                data: schedule, workoutId
+                data: schedule
             });
 
             return promise;

@@ -51,7 +51,7 @@ var App;
                 controllerAs: 'scheduleController'
             })
                 .state('schedule-create-client', {
-                url: '/schedule/create/client',
+                url: '/schedule/create/client/:id',
                 templateUrl: '/angular/templates/partials/schedule/edit.html',
                 controller: App.ScheduleController,
                 controllerAs: 'scheduleController'
@@ -99,7 +99,7 @@ var App;
                 controllerAs: 'messageController'
             })
                 .state('message-connect', {
-                url: '/message/connect',
+                url: '/message/connect/:id',
                 templateUrl: '/angular/templates/partials/message/connect.html',
                 controller: App.MessageController,
                 controllerAs: 'messageController'
