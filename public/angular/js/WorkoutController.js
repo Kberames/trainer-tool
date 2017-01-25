@@ -29,7 +29,7 @@ var App;
                 console.log('Workout has been saved.', this.workout);
                 this.workoutService.create(this.workout)
                     .success(function (response) {
-                    _this.stateService.go('message-connect');
+                    _this.stateService.go('workout');
                 })
                     .error(function (response) {
                     console.error('Unable to create the workout: ', response);

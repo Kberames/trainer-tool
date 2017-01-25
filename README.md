@@ -1,21 +1,20 @@
 ## Trainer Tool
 
-**Trainer-Tool** is a way to keep a Gym trainer and their students connected and working towadrs their goal. The ability to keep trianes connected even when not is very important and is what we have done and will continue to expand with time.
+**Trainer-Tool** is a way to keep a Gym trainer and their students connected and working towards their goal. The ability to keep trianers connected even when not is very important and is what we have done and will continue to expand with time.
 
 ## Tecnologys
 
-We used the MEAN stack to develop this web site. We also used the Google maps API to help ocate the traines and connect with one the fits your  schedule and location.
+We used the MEAN stack to develop this web site. We also used the Google maps API to help locate the traines and connect with one the fits your  schedule and location.
 ## Motivation
 
-Our motivation for this is that when working with a trainer twice a week, some times you are left wondering what to do when he/she is not there with you. Maybe your trainer Writes it all down or prints it out for you, but we know that it does not work all the time for many reasons. We do know that most of us will carry our phone with us either for music or to stay connected. Well with the **Trainer-Tool** the trainer will be aable to assign a work out and give the client a digital way to keep it with them at all time.
+Our motivation for this is that when working with a trainer twice a week, some times you are left wondering what to do when he/she is not there with you. Maybe your trainer Writes it all down or prints it out for you, but we know that it does not work all the time for many reasons. We do know that most of us will carry our phone with us either for music or to stay connected. Well with the **Trainer-Tool** the trainer will be able to assign a work out and give the client a digital way to keep it with them at all time.
 
 ## Installation
 
-Download repo and run npm install and bower install.
+Download repo and run npm install and bower install. It uses TypeScript, compile to js is needed.
 
 ## This software is licensed under the MIT license.
 
-Copyright (c) 2016 Michael Schennum
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
