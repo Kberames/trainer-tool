@@ -5,7 +5,7 @@ for {{ scheduleController.client.firstname + ' ' + scheduleController.client.las
     <div class="schedule">
         <div class="panel panel-default">
             <div class="panel-body">
-                <div ng-if="scheduleController.trainer && messageController.clientId == false"">
+                <div ng-if="scheduleController.trainer && messageController.clientId == false">
                     <label>To:</label><br>
                     <select ng-model="scheduleController.schedule.user">
                         <option ng-repeat="client in scheduleController.clientList" value="{{client._id}}">{{client.firstname}} {{client.lastname}}</option>
